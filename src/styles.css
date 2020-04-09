@@ -1,16 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width:100%;
-    height: 70px;
-    background-color: blue;
-    text-align: center;
-    color: white;
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~material-icons/iconfont/material-icons.css';
+html {
+  position: relative;
+  min-height: 100%;
 }
 
+body {
+/* Margin bottom by footer height */
+margin-bottom: 50px;
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  height: 50px;
+  border-top-color: #333333;
+  background: #444444;
+  color: #999999;
+  text-align: center;
+}
+/* section {
+  border: 0 0 1px 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+} */
+footer{
+  border-top: 10px solid #333333;
+}
+.container > .card{
+  margin-bottom: 60px;
+}
 /*
 server-side-angular-way.component.css
  */
@@ -23,4 +43,41 @@ server-side-angular-way.component.css
 */
 .dataTables_empty {
   display: none;
+}
+
+.margin-10px {
+  margin: 10px
+}
+.query-text-color {
+  color: #1e9494;
+  font-weight: bold;
+}
+.space-right{
+  margin-right: 5px;
+}
+.push-right{
+  float: right;
+}
+.btn-search {
+  background: #424242 !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-color: #1c1c1c !important;
+}
+.btn-search:link, .btn-search:visited {
+  color: #fff !important;
+}
+.btn-search:active, .btn-search:hover {
+  background: #1c1c1c !important;
+  color: #fff !important;
+}
+
+.material-icons {
+  font-size: 20px;
+}
+.btn {
+  line-height: 1 !important;
+  border-radius: 1.25rem !important;
 }
