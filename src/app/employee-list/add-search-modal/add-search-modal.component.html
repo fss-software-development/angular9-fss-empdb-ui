@@ -1,0 +1,121 @@
+<h1 mat-dialog-title>Advance Employee Search</h1>
+<div mat-dialog-content>
+    <div class="row">
+        <div class="col-xs-4 col-md-4">
+          <div class="form-group">
+            <label for="region">Employee Code</label>
+            <input type="text" class="form-control" id="region" placeholder="Employee Code" required name="region">
+          </div>
+          <div class="form-group">
+            <label for="account">Employee Name</label>
+            <input type="text"  class="form-control" id="account" placeholder="Employee Name" name="account">
+          </div>
+          <div class="form-group">
+              <label for="designation">Designation</label>
+              <select class="drop-down-input form-control" id="designation" name="designation">
+                <option [ngValue]="''">--Select--</option>
+                <option [ngValue]="''">Software Engineer Trainee</option>
+                <option [ngValue]="''">Software Engineer</option>
+                <option [ngValue]="''">Senior Software Engineer</option>
+                <option [ngValue]="''">Tech Lead</option>
+                <option [ngValue]="''">Team Lead</option>
+                <option [ngValue]="''">Project manager</option>
+                <option [ngValue]="''">Associate Vice President</option>
+                <option [ngValue]="''">CEO</option>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select  class="drop-down-input form-control" id="department" name="department">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">Solution OFSD</option>
+                  <option [ngValue]="''">Solution AMS</option>
+                  <option [ngValue]="''">HR</option>
+                </select>
+              </div>
+        </div>
+        <div class="col-xs-4 col-md-4">
+            <div  class="form-group">
+                <label for="region">Region</label>
+                <select class="drop-down-input form-control" id="region" name="region">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">Chennai</option>
+                  <option [ngValue]="''">Mumbai</option>
+                  <option [ngValue]="''">Hyderabad</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="account">Account</label>
+                <select class="drop-down-input form-control" id="account" name="account">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">Incomm</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="service">Service Line</label>
+                <select class="drop-down-input form-control" id="service" name="service">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">Incomm</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="billableStatus">Billable Status</label>
+                <select class="drop-down-input form-control" id="billableStatus" name="billableStatus">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">Billable</option>
+                  <option [ngValue]="''">Non-Billable</option>
+                </select>
+              </div>
+        </div>
+        <div class="col-xs-4 col-md-4">
+            <div class="form-group">
+                <label for="project">Project</label>
+                <select class="drop-down-input form-control" id="project" name="project">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">Incomm</option>
+                  <option [ngValue]="''">FSS Employee Database</option>
+                  <option [ngValue]="''">Tokenization</option>
+                  <option [ngValue]="''">AEPS</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="location">Location</label>
+                <select class="drop-down-input form-control" id="location" name="location">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">Chennai</option>
+                  <option [ngValue]="''">Mumbai</option>
+                  <option [ngValue]="''">Hyderabad</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="grade">Grade</label>
+                <select class="drop-down-input form-control" id="grade" name="grade">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">M1</option>
+                  <option [ngValue]="''">M2</option>
+                  <option [ngValue]="''">M3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="grade">Academics</label>
+                <select class="drop-down-input form-control" id="academics" name="academics">
+                  <option [ngValue]="''">--Select--</option>
+                  <option [ngValue]="''">MCA</option>
+                  <option [ngValue]="''">BTech ECE</option>
+                </select>
+              </div>
+        </div>
+      </div>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-danger margin-10px" (click)="onNoClick()">
+      <span class="material-icons">
+    close
+    </span>Cancel</button>
+  <button class="btn btn-search margin-10px" [mat-dialog-close]="data.email" cdkFocusInitial>
+        <span class="material-icons">
+        search
+        </span>
+      Search
+    </button>
+</div>
