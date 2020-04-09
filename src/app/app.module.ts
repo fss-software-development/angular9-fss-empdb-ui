@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {DataTablesModule} from 'angular-datatables';
+import { DataTablesModule } from 'angular-datatables';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routingcomponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
@@ -14,6 +14,12 @@ import { LogoutComponent } from './logout/logout.component';
 
 import { BasicAuthHtppInterceptorService } from './httpInterceptor.service';
 import { MenuComponent } from './menu/menu.component';
+import { MenuPageComponent } from './menu-page/menu-page.component';
+
+import { MaterialModule } from './material/material.module';
+import { BrowserAnimationsModule } 
+       from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -25,14 +31,18 @@ import { MenuComponent } from './menu/menu.component';
     UpdateEmployeeComponent,
     LoginComponent,
 	LogoutComponent,
-	MenuComponent
+	MenuComponent,
+  MenuPageComponent,
+  routingcomponent
   ],
   imports: [
     BrowserModule,
-	DataTablesModule,
+	  DataTablesModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule 
   ],
   providers: [
    {
