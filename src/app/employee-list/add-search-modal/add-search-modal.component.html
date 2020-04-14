@@ -3,106 +3,76 @@
     <div class="row">
         <div class="col-xs-4 col-md-4">
           <div class="form-group">
-            <label for="region">Employee Code</label>
-            <input type="text" class="form-control" id="region" placeholder="Employee Code" required name="region">
+            <label for="employeeId">Employee Code</label>
+            <input type="text" class="form-control" id="employeeId" placeholder="Employee Code" required name="employeeId">
           </div>
           <div class="form-group">
-            <label for="account">Employee Name</label>
-            <input type="text"  class="form-control" id="account" placeholder="Employee Name" name="account">
+            <label for="employeeName">Employee Name</label>
+            <input type="text"  class="form-control" id="employeeName" placeholder="Employee Name" name="employeeName">
           </div>
           <div class="form-group">
               <label for="designation">Designation</label>
-              <select class="drop-down-input form-control" id="designation" name="designation">
-                <option [ngValue]="''">--Select--</option>
-                <option [ngValue]="''">Software Engineer Trainee</option>
-                <option [ngValue]="''">Software Engineer</option>
-                <option [ngValue]="''">Senior Software Engineer</option>
-                <option [ngValue]="''">Tech Lead</option>
-                <option [ngValue]="''">Team Lead</option>
-                <option [ngValue]="''">Project manager</option>
-                <option [ngValue]="''">Associate Vice President</option>
-                <option [ngValue]="''">CEO</option>
-              </select>
+              <mat-select placeholder="Designation" class="drop-down-input form-control" [formControl] ="designation" multiple>
+                <mat-option *ngFor="let designation of designationList" [value]="designation.designationId">{{designation.designationName}}</mat-option>
+              </mat-select>
             </div>
             <div class="form-group">
                 <label for="department">Department</label>
-                <select  class="drop-down-input form-control" id="department" name="department">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">Solution OFSD</option>
-                  <option [ngValue]="''">Solution AMS</option>
-                  <option [ngValue]="''">HR</option>
-                </select>
+                <mat-select placeholder="Department" class="drop-down-input form-control" [formControl] ="department" multiple>
+                  <mat-option *ngFor="let department of departmentList" [value]="department.departmentId">{{department.departmentName}}</mat-option>
+                </mat-select>
               </div>
         </div>
         <div class="col-xs-4 col-md-4">
             <div  class="form-group">
                 <label for="region">Region</label>
-                <select class="drop-down-input form-control" id="region" name="region">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">Chennai</option>
-                  <option [ngValue]="''">Mumbai</option>
-                  <option [ngValue]="''">Hyderabad</option>
-                </select>
+                <mat-select placeholder="Region" class="drop-down-input form-control" [formControl] ="region" multiple>
+                  <mat-option *ngFor="let region of regionList" [value]="region.regionId">{{region.regionName}}</mat-option>
+                </mat-select>
               </div>
               <div class="form-group">
                 <label for="account">Account</label>
-                <select class="drop-down-input form-control" id="account" name="account">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">Incomm</option>
-                </select>
+                <mat-select placeholder="Account" class="drop-down-input form-control" [formControl] ="account" multiple>
+                  <mat-option *ngFor="let account of accountList" [value]="account.accountId">{{account.accountName}}</mat-option>
+                </mat-select>
               </div>
               <div class="form-group">
                 <label for="service">Service Line</label>
-                <select class="drop-down-input form-control" id="service" name="service">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">Incomm</option>
-                </select>
+                <mat-select placeholder="Service Line" class="drop-down-input form-control" [formControl] ="serviceLine" multiple>
+                  <mat-option *ngFor="let service of serviceList" [value]="service.serviceLineId">{{service.serviceName}}</mat-option>
+                </mat-select>
               </div>
               <div class="form-group">
                 <label for="billableStatus">Billable Status</label>
-                <select class="drop-down-input form-control" id="billableStatus" name="billableStatus">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">Billable</option>
-                  <option [ngValue]="''">Non-Billable</option>
-                </select>
+                <mat-select placeholder="Billable Status" class="drop-down-input form-control" [formControl] ="billableStatus" multiple>
+                  <mat-option *ngFor="let billable of billableList" [value]="billable.billableStatusId">{{billable.billableStatus}}</mat-option>
+                </mat-select>
               </div>
         </div>
         <div class="col-xs-4 col-md-4">
             <div class="form-group">
                 <label for="project">Project</label>
-                <select class="drop-down-input form-control" id="project" name="project">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">Incomm</option>
-                  <option [ngValue]="''">FSS Employee Database</option>
-                  <option [ngValue]="''">Tokenization</option>
-                  <option [ngValue]="''">AEPS</option>
-                </select>
+                <mat-select placeholder="Project" class="drop-down-input form-control" [formControl] ="project" multiple>
+                  <mat-option *ngFor="let project of projectList" [value]="project.projectId">{{project.projectName}}</mat-option>
+                </mat-select>
               </div>
               <div class="form-group">
                 <label for="location">Location</label>
-                <select class="drop-down-input form-control" id="location" name="location">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">Chennai</option>
-                  <option [ngValue]="''">Mumbai</option>
-                  <option [ngValue]="''">Hyderabad</option>
-                </select>
+                <mat-select placeholder="Location" class="drop-down-input form-control" [formControl] ="location" multiple>
+                  <mat-option *ngFor="let location of locationList" [value]="location.locationId">{{location.locationName}}</mat-option>
+                </mat-select>
               </div>
               <div class="form-group">
                 <label for="grade">Grade</label>
-                <select class="drop-down-input form-control" id="grade" name="grade">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">M1</option>
-                  <option [ngValue]="''">M2</option>
-                  <option [ngValue]="''">M3</option>
-                </select>
+                <mat-select placeholder="Grade" class="drop-down-input form-control" [formControl] ="grade" multiple>
+                  <mat-option *ngFor="let grade of gradeList" [value]="grade.gradeId">{{grade.gradeName}}</mat-option>
+                </mat-select>
               </div>
               <div class="form-group">
-                <label for="grade">Academics</label>
-                <select class="drop-down-input form-control" id="academics" name="academics">
-                  <option [ngValue]="''">--Select--</option>
-                  <option [ngValue]="''">MCA</option>
-                  <option [ngValue]="''">BTech ECE</option>
-                </select>
+                <label for="academics">Academics</label>
+                <mat-select placeholder="Academics" class="drop-down-input form-control" [formControl] ="academics" multiple>
+                  <mat-option *ngFor="let academics of academicsList" [value]="academics.academicsId">{{academics.academicsName}}</mat-option>
+                </mat-select>
               </div>
         </div>
       </div>

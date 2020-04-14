@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {DataTablesModule} from 'angular-datatables';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -37,6 +37,7 @@ import { AddSearchModalComponent } from './employee-list/add-search-modal/add-se
 	  DataTablesModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     HttpClientModule
   ],
