@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of  } from 'rxjs';
+import * as EMP_LIST_DATA from '../assets/mock-api-resources/empList.json';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
 
-  private baseUrl = 'http://localhost:8081/empdb/services/empdb/v1/employees';
+  //private baseUrl = 'http://localhost:8081/empdb/services/empdb/v1/employees';
 
+private baseUrl = 'http://dummy.restapiexample.com/api/v1/employees';
   constructor(private http: HttpClient) { }
 
   getEmployee(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    //return this.http.get(`${this.baseUrl}/${id}`);
+    return of(EMP_LIST_DATA);
   }
 
   createEmployee(employee: Object): Observable<Object> {
@@ -27,7 +30,8 @@ export class EmployeeService {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
-  getEmployeesList(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+  getEmployeesList(): Observable<any[]> {
+    // return this.http.get<any>(`${this.baseUrl}`);
+    return of(EMP_LIST_DATA);
   }
 }
