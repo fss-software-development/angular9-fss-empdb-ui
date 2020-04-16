@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MasterService}  from '../../master.service';
 import { FormControl } from '@angular/forms';
-interface DialogData {
-  email: string;
-}
+// interface DialogData {
+//   email: string;
+// }
 @Component({
   selector: 'app-add-search-modal',
   templateUrl: './add-search-modal.component.html',
@@ -35,8 +35,8 @@ public grade = new FormControl();
 public academics = new FormControl();
 
   constructor(private masterService: MasterService,
-    public dialogRef: MatDialogRef<AddSearchModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    public dialogRef: MatDialogRef<AddSearchModalComponent>
+    ) { }
 
   ngOnInit(): void {
     this.getMasters();
@@ -55,6 +55,9 @@ public academics = new FormControl();
     this.masterService.getAccount().subscribe((data) => {
       this.accountList = data;
     })
+    this.masterService.getServiceLine().subscribe((data) => {
+      this.serviceList = data;
+    })
     this.masterService.getBillableStatus().subscribe((data) => {
       this.billableList = data;
     })
@@ -72,6 +75,10 @@ public academics = new FormControl();
     })
   }
   onNoClick(): void {
+    this.dialogRef.close();
+  }
+  onSearch(): void {
+    console.log('onSearch designation', this.designation.value);
     this.dialogRef.close();
   }
 }

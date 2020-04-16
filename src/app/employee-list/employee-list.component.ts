@@ -63,8 +63,8 @@ export class EmployeeListComponent implements OnInit {
       data: {}
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.email = result;
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   this.email = result;
+    // });
   }
 }

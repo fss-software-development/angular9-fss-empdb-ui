@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of  } from 'rxjs';
 import * as MASTER from '../assets/mock-api-resources/master.json';
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MasterService {
 
   constructor(private http: HttpClient) { }
@@ -21,6 +19,9 @@ export class MasterService {
   getAccount(): Observable<any[]>{
     return of(MASTER.account);
   }
+  getServiceLine(): Observable<any[]>{
+    return of(MASTER.serviceLine);
+  }
   getBillableStatus(): Observable<any[]>{
     return of(MASTER.billableStatus);
   }
@@ -35,5 +36,15 @@ export class MasterService {
   }
   getAcademics(): Observable<any[]>{
     return of(MASTER.academics);
+  }
+  getCustomersList(): Observable<any[]> {
+    return of(MASTER.customerList);
+  }
+  getCustomerById(id): Observable<any> {
+    const custList = MASTER.customerList
+    var selectedCustomer =  custList.filter(function(customer) {
+      return customer.customerId == id;
+    });
+    return of(selectedCustomer);
   }
 }

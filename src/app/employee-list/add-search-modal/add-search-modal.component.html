@@ -39,7 +39,7 @@
               <div class="form-group">
                 <label for="service">Service Line</label>
                 <mat-select placeholder="Service Line" class="drop-down-input form-control" [formControl] ="serviceLine" multiple>
-                  <mat-option *ngFor="let service of serviceList" [value]="service.serviceLineId">{{service.serviceName}}</mat-option>
+                  <mat-option *ngFor="let service of serviceList" [value]="service.serviceLineId">{{service.serviceLineName}}</mat-option>
                 </mat-select>
               </div>
               <div class="form-group">
@@ -82,7 +82,7 @@
       <span class="material-icons">
     close
     </span>Cancel</button>
-  <button class="btn btn-search margin-10px" [mat-dialog-close]="data.email" cdkFocusInitial>
+  <button class="btn btn-search margin-10px"  (click)="onSearch()"  cdkFocusInitial>
         <span class="material-icons">
         search
         </span>

@@ -1,88 +1,314 @@
 [
     {
-        "employeeSqid": 1,
-        "employeeId": "10453",
-        "departmentId": 1,
-        "departmentName": "",
-        "accountId": 1,
-        "accountName": "",
-        "regionId": 1,
-        "regionName": "",
-        "locationId": 1,
-        "locationName": "",
-        "firstName": "Rama",
-        "middleName": "Prabhu",
-        "lastName": "Radhakrishnan",
-        "mobileNumber": "1234",
-        "emailId": "ramaprabhur@fss.co.in",
-        "gradeId": 4,
-        "designationId": 1,
-        "designationName": "",
-        "reportingManager": "Balaji",
-        "previousExperience": 0,
-        "joiningDate": "2004-08-19",
-        "activityName": "",
-        "billableId": 1,
-        "billableName": "",
-        "serviceLineId": 1,
-        "serviceLineName": "",
-        "primarySkillId": 1,
-        "primarySkillName": "",
-        "experienceGaps": 0,
-        "academicsId": 1,
-        "academicsName": "",
-        "projectTaggingId": 1,
-        "projectTaggingName": "",
-        "definiteRoleId": 1,
-        "definiteRoleName": "",
-        "possibleRoleId": 1,
-        "possibleRoleName": "",
+        "employeeSqId": 1,
+        "employeeId": 16001,
+        "department": [
+            {
+                "departmentId": 1,
+                "departmentName": "Solution-OFSD",
+                "departmentHead": "Vinod B"
+            }
+        ],
+        "account": [
+            {
+                "accountId": 1,
+                "accountName": "HDFC",
+                "insUser": 1
+            }
+        ],
+        "region": [
+            {
+                "regionId": 1,
+                "regionName": "US"
+            }
+        ],
+        "location": [
+            {
+                "locationId": 1,
+                "locationName": "Mumbai"
+            }
+        ],
+        "firstName": "malk",
+        "middleName": "lh",
+        "lastName": "Mlha",
+        "mobileNum": 766627,
+        "emailId": "rakeskkllkhhm@fss.co.in",
+        "grade": [
+            {
+                "gradeId": 1,
+                "gradeName": "M1"
+            }
+        ],
+        "designation": [
+            {
+                "designationId": 1,
+                "designationName": "PROJECT LEADER"
+            }
+        ],
+        "reportingManager": "XYZ",
+        "previousExp": 3,
+        "joiningDate": "2020-01-01",
+        "billableStatus": [
+            {
+                "billableStatusId": 1,
+                "billableStatus": "EARMARKED"
+            }
+        ],
+        "serviceLine": [
+            {
+                "serviceLineId": 1,
+                "serviceLineName": "Engineering"
+            }
+        ],
+        "activityName": "Abc",
+        "primarySkill": [
+            {
+                "skillId": 1,
+                "skillName": "Java"
+            }
+        ],
+        "experienceGaps": 2,
+        "role": [
+            {
+                "roleId": 1,
+                "roleName": "Project Manager"
+            }
+        ],
+        "academics": [
+            {
+                "academicsId": 1,
+                "academicsName": "BSC"
+            }
+        ],
         "insUser": 1,
-        "insDate": "2020-03-28T17:57:25.000+0000",
-        "lastUpdUser": 1,
-        "lastUpdDate": null
+        "insDate": "2020-01-01",
+        "lastUpdateUser": 1,
+        "lastUpdateDate": "2020-01-01",
+        "designationId": 1,
+        "departmentId": 1,
+        "regionId": 1,
+        "accountId": 1,
+        "serviceLineId": 1,
+        "billableStatusId": 1,
+        "locationId": 1,
+        "gradeId": 1,
+        "academicId": 1,
+        "projectTaggingId": 1,
+        "roleId": 1,
+        "primarySkillId": 1,
+        "projectTagging": [
+            {
+                "projectTaggingId": 1,
+                "projectTaggingName": "Reserved"
+            }
+        ]
     },
     {
-        "employeeSqid": 1,
-        "employeeId": "10454",
-        "departmentId": 1,
-        "departmentName": "",
-        "accountId": 1,
-        "accountName": "",
-        "regionId": 1,
-        "regionName": "",
-        "locationId": 1,
-        "locationName": "",
+        "employeeSqId": 2,
+        "employeeId": 16002,
+        "department": [
+            {
+                "departmentId": 1,
+                "departmentName": "Solution-OFSD",
+                "departmentHead": "Vinod B"
+            }
+        ],
+        "account": [
+            {
+                "accountId": 1,
+                "accountName": "HDFC",
+                "insUser": 1
+            }
+        ],
+        "region": [
+            {
+                "regionId": 1,
+                "regionName": "US"
+            }
+        ],
+        "location": [
+            {
+                "locationId": 1,
+                "locationName": "Mumbai"
+            }
+        ],
         "firstName": "Prasad",
         "middleName": "",
         "lastName": "Gidh",
-        "mobileNumber": "1234",
+        "mobileNum": 766627,
         "emailId": "prasadg@fss.co.in",
-        "gradeId": 4,
-        "designationId": 1,
-        "designationName": "",
-        "reportingManager": "Anil B. Bawa",
-        "previousExperience": 0,
-        "joiningDate": "2004-08-19",
-        "activityName": "",
-        "billableId": 1,
-        "billableName": "",
-        "serviceLineId": 1,
-        "serviceLineName": "",
-        "primarySkillId": 1,
-        "primarySkillName": "",
-        "experienceGaps": 0,
-        "academicsId": 1,
-        "academicsName": "",
-        "projectTaggingId": 1,
-        "projectTaggingName": "",
-        "definiteRoleId": 1,
-        "definiteRoleName": "",
-        "possibleRoleId": 1,
-        "possibleRoleName": "",
+        "grade": [
+            {
+                "gradeId": 1,
+                "gradeName": "M1"
+            }
+        ],
+        "designation": [
+            {
+                "designationId": 1,
+                "designationName": "PROJECT LEADER"
+            }
+        ],
+        "reportingManager": "XYZ",
+        "previousExp": 3,
+        "joiningDate": "2020-01-01",
+        "billableStatus": [
+            {
+                "billableStatusId": 1,
+                "billableStatus": "EARMARKED"
+            }
+        ],
+        "serviceLine": [
+            {
+                "serviceLineId": 1,
+                "serviceLineName": "Engineering"
+            }
+        ],
+        "activityName": "Abc",
+        "primarySkill": [
+            {
+                "skillId": 1,
+                "skillName": "Java"
+            }
+        ],
+        "experienceGaps": 2,
+        "role": [
+            {
+                "roleId": 1,
+                "roleName": "Project Manager"
+            }
+        ],
+        "academics": [
+            {
+                "academicsId": 1,
+                "academicsName": "BSC"
+            }
+        ],
         "insUser": 1,
-        "insDate": "2020-03-28T17:57:25.000+0000",
-        "lastUpdUser": 1,
-        "lastUpdDate": null
+        "insDate": "2020-01-01",
+        "lastUpdateUser": 1,
+        "lastUpdateDate": "2020-01-01",
+        "designationId": 1,
+        "departmentId": 1,
+        "regionId": 1,
+        "accountId": 1,
+        "serviceLineId": 1,
+        "billableStatusId": 1,
+        "locationId": 1,
+        "gradeId": 1,
+        "academicId": 1,
+        "projectTaggingId": 1,
+        "roleId": 1,
+        "primarySkillId": 1,
+        "projectTagging": [
+            {
+                "projectTaggingId": 1,
+                "projectTaggingName": "Reserved"
+            }
+        ]
+    },
+    {
+        "employeeSqId": 3,
+        "employeeId": 10453,
+        "department": [
+            {
+                "departmentId": 1,
+                "departmentName": "Solution-OFSD",
+                "departmentHead": "Vinod B"
+            }
+        ],
+        "account": [
+            {
+                "accountId": 1,
+                "accountName": "HDFC",
+                "insUser": 1
+            }
+        ],
+        "region": [
+            {
+                "regionId": 1,
+                "regionName": "US"
+            }
+        ],
+        "location": [
+            {
+                "locationId": 1,
+                "locationName": "Mumbai"
+            }
+        ],
+        "firstName": "Rama",
+        "middleName": "Prabhu",
+        "lastName": "Radhakrishnan",
+        "mobileNum": 766627,
+        "emailId": "ramaprabhur@fss.co.in",
+        "grade": [
+            {
+                "gradeId": 1,
+                "gradeName": "M1"
+            }
+        ],
+        "designation": [
+            {
+                "designationId": 1,
+                "designationName": "PROJECT LEADER"
+            }
+        ],
+        "reportingManager": "Balaji",
+        "previousExp": 3,
+        "joiningDate": "2020-01-01",
+        "billableStatus": [
+            {
+                "billableStatusId": 1,
+                "billableStatus": "EARMARKED"
+            }
+        ],
+        "serviceLine": [
+            {
+                "serviceLineId": 1,
+                "serviceLineName": "Engineering"
+            }
+        ],
+        "activityName": "Abc",
+        "primarySkill": [
+            {
+                "skillId": 1,
+                "skillName": "Java"
+            }
+        ],
+        "experienceGaps": 2,
+        "role": [
+            {
+                "roleId": 1,
+                "roleName": "Project Manager"
+            }
+        ],
+        "academics": [
+            {
+                "academicsId": 1,
+                "academicsName": "BSC"
+            }
+        ],
+        "insUser": 1,
+        "insDate": "2020-01-01",
+        "lastUpdateUser": 1,
+        "lastUpdateDate": "2020-01-01",
+        "designationId": 1,
+        "departmentId": 1,
+        "regionId": 1,
+        "accountId": 1,
+        "serviceLineId": 1,
+        "billableStatusId": 1,
+        "locationId": 1,
+        "gradeId": 1,
+        "academicId": 1,
+        "projectTaggingId": 1,
+        "roleId": 1,
+        "primarySkillId": 1,
+        "projectTagging": [
+            {
+                "projectTaggingId": 1,
+                "projectTaggingName": "Reserved"
+            }
+        ]
     }
 ]
