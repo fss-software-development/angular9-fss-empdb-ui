@@ -48,6 +48,12 @@ server-side-angular-way.component.css
 .margin-10px {
   margin: 10px
 }
+
+.search-button{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
 .query-text-color {
   color: #1e9494;
   font-weight: bold;
@@ -80,4 +86,11 @@ server-side-angular-way.component.css
 .btn {
   line-height: 1 !important;
   border-radius: 1.25rem !important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.required {
+  color: red;
 }

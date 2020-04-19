@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
+
 interface Food {
   value: string;
   viewValue: string;
@@ -26,6 +27,12 @@ export class MenuPageComponent implements OnInit {
   onSearch(){
 
     this.router.navigate(['/employees']);
-
   }
+
+  onProjectSearch(){
+    this.router.navigate(['/search-project']);
+  }
+
+
+ 
 }

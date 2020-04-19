@@ -1,12 +1,18 @@
 <app-menu></app-menu>
 <router-outlet></router-outlet>
 <div class="container">
-  <br>
-  <h2 style="text-align: center;">{{title}}</h2>
   
+  <h2 style="text-align: center;">{{title}}</h2>
+  <nav class="navbar bg-dark text-white">
+    <app-menu-page></app-menu-page>
+  </nav>
+
   <div class="card">
     <div class="card-body">
-  <router-outlet></router-outlet>
+      
+
+      <router-outlet></router-outlet>
+      <!--<app-employee-list></app-employee-list>-->
     </div>
   </div>
 </div>
