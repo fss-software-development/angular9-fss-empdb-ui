@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "angular9-fss-empdb-ui": {
@@ -26,14 +26,13 @@
             "styles": [
               "src/styles.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-            "node_modules/jquery/dist/jquery.js",
-            "node_modules/datatables.net/js/jquery.dataTables.js",
-            "node_modules/bootstrap/dist/js/bootstrap.js"
-            ],
-            "scripts": []
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -70,7 +69,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "angular9-fss-empdb-ui:build",
-			"proxyConfig": "src/proxy.conf.json"
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
@@ -127,7 +126,10 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "angular9-fss-empdb-ui",
-	
+  "cli": {
+    "analytics": "a051148f-efcb-4ddc-9462-69fadb3b6ed3"
+  }
 }

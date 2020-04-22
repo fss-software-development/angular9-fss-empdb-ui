@@ -1,77 +1,94 @@
 <h1 mat-dialog-title>Advance Employee Search</h1>
 <div mat-dialog-content>
-    <div class="row">
+    <div class="row" [formGroup]="employeeSearchForm">
         <div class="col-xs-4 col-md-4">
           <div class="form-group">
             <label for="employeeId">Employee Code</label>
-            <input type="text" class="form-control" id="employeeId" placeholder="Employee Code" required name="employeeId">
+            <input type="text" 
+            class="form-control" 
+            id="employeeId" 
+            placeholder="Employee Code" 
+            required 
+            name="employeeId"
+            formControlName="employeeId">
           </div>
           <div class="form-group">
             <label for="employeeName">Employee Name</label>
-            <input type="text"  class="form-control" id="employeeName" placeholder="Employee Name" name="employeeName">
+            <input type="text"  
+            class="form-control" 
+            id="employeeName" 
+            placeholder="Employee Name" 
+            name="employeeName"
+            formControlName="employeeName">
           </div>
           <div class="form-group">
               <label for="designation">Designation</label>
-              <mat-select placeholder="Designation" class="drop-down-input form-control" [formControl] ="designation" multiple>
-                <mat-option *ngFor="let designation of designationList" [value]="designation.designationId">{{designation.designationName}}</mat-option>
+              <mat-select placeholder="Designation" 
+                          class="drop-down-input form-control" 
+                          formControlName ="designation" 
+                          multiple>
+                <mat-option *ngFor="let designation of designationList" 
+                            [value]="designation">
+                {{designation.designationName}}
+                </mat-option>
               </mat-select>
             </div>
             <div class="form-group">
                 <label for="department">Department</label>
-                <mat-select placeholder="Department" class="drop-down-input form-control" [formControl] ="department" multiple>
-                  <mat-option *ngFor="let department of departmentList" [value]="department.departmentId">{{department.departmentName}}</mat-option>
+                <mat-select placeholder="Department" class="drop-down-input form-control" formControlName ="department" multiple>
+                  <mat-option *ngFor="let department of departmentList" [value]="department">{{department.departmentName}}</mat-option>
                 </mat-select>
               </div>
         </div>
         <div class="col-xs-4 col-md-4">
             <div  class="form-group">
                 <label for="region">Region</label>
-                <mat-select placeholder="Region" class="drop-down-input form-control" [formControl] ="region" multiple>
-                  <mat-option *ngFor="let region of regionList" [value]="region.regionId">{{region.regionName}}</mat-option>
+                <mat-select placeholder="Region" class="drop-down-input form-control" formControlName ="region" multiple>
+                  <mat-option *ngFor="let region of regionList" [value]="region">{{region.regionName}}</mat-option>
                 </mat-select>
               </div>
               <div class="form-group">
                 <label for="account">Account</label>
-                <mat-select placeholder="Account" class="drop-down-input form-control" [formControl] ="account" multiple>
-                  <mat-option *ngFor="let account of accountList" [value]="account.accountId">{{account.accountName}}</mat-option>
+                <mat-select placeholder="Account" class="drop-down-input form-control" formControlName ="account" multiple>
+                  <mat-option *ngFor="let account of accountList" [value]="account">{{account.accountName}}</mat-option>
                 </mat-select>
               </div>
               <div class="form-group">
                 <label for="service">Service Line</label>
-                <mat-select placeholder="Service Line" class="drop-down-input form-control" [formControl] ="serviceLine" multiple>
-                  <mat-option *ngFor="let service of serviceList" [value]="service.serviceLineId">{{service.serviceName}}</mat-option>
+                <mat-select placeholder="Service Line" class="drop-down-input form-control" formControlName ="serviceLine" multiple>
+                  <mat-option *ngFor="let service of serviceList" [value]="service">{{service.serviceLineName}}</mat-option>
                 </mat-select>
               </div>
               <div class="form-group">
                 <label for="billableStatus">Billable Status</label>
-                <mat-select placeholder="Billable Status" class="drop-down-input form-control" [formControl] ="billableStatus" multiple>
-                  <mat-option *ngFor="let billable of billableList" [value]="billable.billableStatusId">{{billable.billableStatus}}</mat-option>
+                <mat-select placeholder="Billable Status" class="drop-down-input form-control" formControlName ="billableStatus" multiple>
+                  <mat-option *ngFor="let billable of billableList" [value]="billable">{{billable.billableStatus}}</mat-option>
                 </mat-select>
               </div>
         </div>
         <div class="col-xs-4 col-md-4">
             <div class="form-group">
                 <label for="project">Project</label>
-                <mat-select placeholder="Project" class="drop-down-input form-control" [formControl] ="project" multiple>
-                  <mat-option *ngFor="let project of projectList" [value]="project.projectId">{{project.projectName}}</mat-option>
+                <mat-select placeholder="Project" class="drop-down-input form-control" formControlName ="project" multiple>
+                  <mat-option *ngFor="let project of projectList" [value]="project">{{project.projectName}}</mat-option>
                 </mat-select>
               </div>
               <div class="form-group">
                 <label for="location">Location</label>
-                <mat-select placeholder="Location" class="drop-down-input form-control" [formControl] ="location" multiple>
-                  <mat-option *ngFor="let location of locationList" [value]="location.locationId">{{location.locationName}}</mat-option>
+                <mat-select placeholder="Location" class="drop-down-input form-control" formControlName ="location" multiple>
+                  <mat-option *ngFor="let location of locationList" [value]="location">{{location.locationName}}</mat-option>
                 </mat-select>
               </div>
               <div class="form-group">
                 <label for="grade">Grade</label>
-                <mat-select placeholder="Grade" class="drop-down-input form-control" [formControl] ="grade" multiple>
-                  <mat-option *ngFor="let grade of gradeList" [value]="grade.gradeId">{{grade.gradeName}}</mat-option>
+                <mat-select placeholder="Grade" class="drop-down-input form-control" formControlName ="grade" multiple>
+                  <mat-option *ngFor="let grade of gradeList" [value]="grade">{{grade.gradeName}}</mat-option>
                 </mat-select>
               </div>
               <div class="form-group">
                 <label for="academics">Academics</label>
-                <mat-select placeholder="Academics" class="drop-down-input form-control" [formControl] ="academics" multiple>
-                  <mat-option *ngFor="let academics of academicsList" [value]="academics.academicsId">{{academics.academicsName}}</mat-option>
+                <mat-select placeholder="Academics" class="drop-down-input form-control" formControlName ="academics" multiple>
+                  <mat-option *ngFor="let academics of academicsList" [value]="academics">{{academics.academicsName}}</mat-option>
                 </mat-select>
               </div>
         </div>
@@ -82,7 +99,7 @@
       <span class="material-icons">
     close
     </span>Cancel</button>
-  <button class="btn btn-search margin-10px" [mat-dialog-close]="data.email" cdkFocusInitial>
+  <button class="btn btn-search margin-10px"  (click)="onSearch()"  cdkFocusInitial>
         <span class="material-icons">
         search
         </span>

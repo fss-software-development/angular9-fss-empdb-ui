@@ -21,10 +21,7 @@ margin-bottom: 50px;
   color: #999999;
   text-align: center;
 }
-/* section {
-  border: 0 0 1px 0 solid rgba(0,0,0,.125);
-  border-radius: .25rem;
-} */
+
 footer{
   border-top: 10px solid #333333;
 }
@@ -37,10 +34,6 @@ server-side-angular-way.component.css
 .no-data-available {
   text-align: center;
 }
-
-/*
-   src/styles.css (i.e. your global style)
-*/
 .dataTables_empty {
   display: none;
 }
@@ -55,8 +48,12 @@ server-side-angular-way.component.css
 .space-right{
   margin-right: 5px;
 }
-.push-right{
+.push-right {
   float: right;
+  text-align: right;
+}
+.center{
+  text-align: center;
 }
 .btn-search {
   background: #424242 !important;
@@ -80,4 +77,29 @@ server-side-angular-way.component.css
 .btn {
   line-height: 1 !important;
   border-radius: 1.25rem !important;
+}
+.custom-control {
+  max-width: 40%;
+  display: inline !important;
+}
+.custom-matseclect {
+  max-width: 40%;
+}
+hr {
+  margin-top: 0 !important;
+}
+section {
+  padding: 12px;
+  margin-bottom: 25px;
+}
+.search-section-border {
+    border-width: 1px;
+    border-style: solid !important;
+    border-color: #1c1c1c !important;
+}
+
+.section-sub-title {
+  font-size: 18px;
+  color: #2d2d2d;
+  font-weight: 600;
 }
