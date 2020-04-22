@@ -4,19 +4,24 @@ import {
   SkipSelf
 } from '@angular/core';
 import {DatePipe} from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import {MasterService} from '../master.service';
-import {EmployeeService} from '../employee.service';
 import {AuthGuardService} from '../auth-guard.service';
-// import {
- 
-// } from 'services';
+import {
+  EmployeeCommandHandlerService,
+  EmployeeFormStateService,
+  CustomerCommandHandlerService,
+  CustomerFormStateService
+} from '../../services';
 
-// import {
-  
-// } from 'framework';
-
+import {FormModalConverterService} from '../../framework';
+import {
+  EmployeeDataService,
+  EmployeeDataInterface,
+  CustomerDataInterface,
+  CustomerDataService
+} from '../../data-access-layer';
+import {AuthenticationService} from '../login/auth.service';
 /**
  * The Core Module
  *
@@ -33,8 +38,21 @@ import {AuthGuardService} from '../auth-guard.service';
   providers: [
     DatePipe,
     MasterService,
-    EmployeeService,
-    AuthGuardService
+    AuthGuardService,
+    EmployeeCommandHandlerService,
+    EmployeeFormStateService,
+    FormModalConverterService,
+    CustomerCommandHandlerService,
+    CustomerFormStateService,
+    {
+      provide: EmployeeDataInterface,
+      useClass: EmployeeDataService
+    },
+    {
+      provide: CustomerDataInterface,
+      useClass: CustomerDataService
+    },
+    AuthenticationService
   ]
 })
 

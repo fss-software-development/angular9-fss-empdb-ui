@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import {AutowireViewModel} from '../../../../framework';
+import { 
+   Router,
+   ActivatedRoute
+   } from '@angular/router';
 import {MasterService} from '../../../master.service';
+import {
+  CustomerCommandHandlerService,
+  CustomerSearchFormModel,
+  CustomerFormStateService
+} from '../../../../services';
 import {ConfirmationModalComponent} from '../../../../app-commons/confirmation-modal/confirmation-modal.component';
 @Component({
   selector: 'app-search-customer',
@@ -14,29 +23,35 @@ export class SearchCustomerComponent implements OnInit {
   customers: any;
   public temp: Object=false;
   public regionList: any[];
-  public customerName = new FormControl();
-  public region = new FormControl();
+  @AutowireViewModel('CustomerSearch') customerSearchForm: FormGroup;
   constructor(private masterService: MasterService,
               private route: ActivatedRoute,
               private router: Router,
               public dialog: MatDialog,
+              private commandHandlerService: CustomerCommandHandlerService,
+              private formStateService: CustomerFormStateService
             ) { }
 
   ngOnInit(): void {
-    this.reloadData();
+    this.buidForm();
+    this.commandHandlerService.getCustomersList(this.customerSearchForm.value);
+    this.initSubscriber();
     this.getRegionList();
     this.dtOptions = {
         pagingType: 'full_numbers',
         pageLength: 5
       };
   }
-  reloadData(): void {
-    this.masterService.getCustomersList().subscribe((res)=>{
-      console.log("reloadData getCustomersList", res);
+  buidForm(): void {
+    this.customerSearchForm.reset(new CustomerSearchFormModel());
+  }
+  initSubscriber(): void {
+    this.formStateService.customerList.subscribe((res) => {
       this.customers= res;
       this.temp = true;
-    });
+    })
   }
+  
   getRegionList(): void {
     this.masterService.getRegion().subscribe((data) => {
       this.regionList = data;
@@ -70,5 +85,8 @@ export class SearchCustomerComponent implements OnInit {
         this.router.navigate(['master']);
       }
     });
+  }
+  onCustomerSearch(): void {
+    this.commandHandlerService.getCustomersListOnSearch(this.customerSearchForm.value);
   }
 }

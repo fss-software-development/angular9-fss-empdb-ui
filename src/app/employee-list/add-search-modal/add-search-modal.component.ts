@@ -1,16 +1,19 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef} from '@angular/material/dialog';
+import { FormGroup } from '@angular/forms';
 import {MasterService}  from '../../master.service';
-import { FormControl } from '@angular/forms';
-// interface DialogData {
-//   email: string;
-// }
+import {AutowireViewModel} from '../../../framework';
+import {
+  EmployeeSearchFormModel,
+ EmployeeCommandHandlerService
+} from '../../../services';
 @Component({
   selector: 'app-add-search-modal',
   templateUrl: './add-search-modal.component.html',
   styleUrls: ['./add-search-modal.component.css']
 })
 export class AddSearchModalComponent implements OnInit {
+
 public designationList: any[];
 public departmentList: any[];
 public regionList: any[];
@@ -22,26 +25,22 @@ public locationList: any[];
 public gradeList: any[];
 public academicsList: any[];
 
-// Will be removed once the code for form group is written
-public designation = new FormControl();
-public department = new FormControl();
-public region = new FormControl();
-public account = new FormControl();
-public serviceLine = new FormControl();
-public billableStatus = new FormControl();
-public project = new FormControl();
-public location = new FormControl();
-public grade = new FormControl();
-public academics = new FormControl();
+@AutowireViewModel('EmployeeSearch') employeeSearchForm: FormGroup;
 
-  constructor(private masterService: MasterService,
-    public dialogRef: MatDialogRef<AddSearchModalComponent>
+  constructor(
+    private masterService: MasterService,
+    public dialogRef: MatDialogRef<AddSearchModalComponent>,
+    private commandHandlerService: EmployeeCommandHandlerService
     ) { }
 
   ngOnInit(): void {
+    this.buidForm();
     this.getMasters();
   }
-
+  buidForm(): void {
+    this.employeeSearchForm.reset(new EmployeeSearchFormModel());
+  }
+  
   getMasters(): void {
     this.masterService.getDesignation().subscribe((data) => {
       this.designationList = data
@@ -78,7 +77,8 @@ public academics = new FormControl();
     this.dialogRef.close();
   }
   onSearch(): void {
-    console.log('onSearch designation', this.designation.value);
+    this.commandHandlerService.advancedEmployeeSearch(this.employeeSearchForm.value);
     this.dialogRef.close();
   }
+  
 }

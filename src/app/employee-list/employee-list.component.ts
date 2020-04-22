@@ -1,9 +1,16 @@
-import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
-import { EmployeeService } from "../employee.service";
-import { Employee } from "../employee";
-import { Component, OnInit } from "@angular/core";
+import { 
+  Component,
+  OnInit
+ } from "@angular/core";
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import {AutowireViewModel} from '../../framework';
+import {
+  EmployeeFormStateService,
+  EmployeeCommandHandlerService,
+  EmployeeSearchFormModel
+} from '../../services';
 import {AddSearchModalComponent} from './add-search-modal/add-search-modal.component'
 @Component({
   selector: "app-employee-list",
@@ -11,11 +18,12 @@ import {AddSearchModalComponent} from './add-search-modal/add-search-modal.compo
   styleUrls: ["./employee-list.component.css"]
 })
 export class EmployeeListComponent implements OnInit {
-  public email: string;
+  @AutowireViewModel('EmployeeSearch') employeeSearchForm: FormGroup;
   constructor(
-    private employeeService: EmployeeService,
-     private router: Router,
-     public dialog: MatDialog
+      private commandHandlerService: EmployeeCommandHandlerService,
+      private formStateService: EmployeeFormStateService,
+      private router: Router,
+      public dialog: MatDialog
      ) {}
   
   public employees: any;
@@ -24,29 +32,27 @@ export class EmployeeListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   
   ngOnInit() {
-
-	this.reloadData();
-	this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5
-    };
+    this.buidForm();
+    this.commandHandlerService.getEmployeesList(this.employeeSearchForm.value);
+    this.initSubscriber();
+    this.dtOptions = {
+        pagingType: 'full_numbers',
+        pageLength: 5
+      };
 }
+  buidForm(): void {
+    this.employeeSearchForm.reset(new EmployeeSearchFormModel());
+  }
 
-  reloadData() {
-    this.employeeService.getEmployeesList().subscribe((res)=>{
-      this.employees= (res  as  any).default;
-	  this.temp = true;
-    })  ;
+  initSubscriber(): void{
+    this.formStateService.employeeList.subscribe((res) => {
+      this.employees= res;
+      this.temp = true;
+    })
   }
  
   
   deleteEmployee(id: number) {
-    this.employeeService.deleteEmployee(id)
-      .subscribe(
-        data => {
-          this.reloadData();
-        },
-        error => console.log(error));
   }
 
   employeeDetails(id: number){
@@ -62,9 +68,5 @@ export class EmployeeListComponent implements OnInit {
       width: '60%',
       data: {}
     });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.email = result;
-    // });
   }
 }

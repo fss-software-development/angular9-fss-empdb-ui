@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material.module';
 import {FirstLetterCapitalizedPipe} from './pipe/first-letter-capitalized.pipe';
 import {InitialsPipe} from './pipe/initials.pipe';
