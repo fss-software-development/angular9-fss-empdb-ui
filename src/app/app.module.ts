@@ -16,6 +16,8 @@ import { AddSearchModalComponent } from './employee-list/add-search-modal/add-se
 import { MasterModule } from './master/master.module';
 import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core/core.module';
+import {MenuPageComponent} from './menu-page/menu-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,8 @@ import {CoreModule} from './core/core.module';
     LoginComponent,
 	  LogoutComponent,
 	  MenuComponent,
-	  AddSearchModalComponent
+    AddSearchModalComponent,
+    MenuPageComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import {CoreModule} from './core/core.module';
     SharedModule,
     CoreModule,
     AppRoutingModule,
-    MasterModule
+    MasterModule,
+    
   ],
   entryComponents: [AddSearchModalComponent],
   providers: [

@@ -47,4 +47,15 @@ export class MasterService {
     });
     return of(selectedCustomer);
   }
+  getProjectList(): Observable<any[]> {
+    return of(MASTER.projectList);
+  }
+  getProjectById(id): Observable<any> {
+    const custList = MASTER.projectList
+    var selectedProject =  custList.filter(function(project) {
+      return project.projectId == id;
+    });
+    return of(selectedProject);
+  }
+
 }

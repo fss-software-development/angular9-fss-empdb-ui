@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from './../login/auth.service';
 
 
 interface Food {
@@ -17,15 +18,24 @@ export class MenuPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private authService: AuthenticationService,
     //private authenticationService: AuthenticationService
     ){   }
-  ngOnInit(): void {
+
+
+
+  ngOnInit() {
+   // this.isUserLoggedIn$ = this.authService.isUserLoggedIn;
+
   }
 
   
   onSearch(){
-
     this.router.navigate(['/employees']);
-
   }
+
+  onProjectSearch(){
+    this.router.navigate(['/search-project']);
+  }
+
 }

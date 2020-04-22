@@ -1,34 +1,37 @@
-<h3>Menu</h3>
 
-<button mat-button [matMenuTriggerFor]="belowMenu" color="primary">EMPLOYEE</button>
-<mat-menu #belowMenu="matMenu" yPosition="below">
-  <button mat-menu-item>ADD</button>
-  <button mat-menu-item (click)="onSearch()">SEARCH</button>
-</mat-menu>
 
-<button mat-button [matMenuTriggerFor]="animals" color="primary">MASTERS</button>
-
-<mat-menu #animals="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="vertebrates">CUSTOMERS</button>
-  <button mat-menu-item [matMenuTriggerFor]="invertebrates">USERS</button>
-</mat-menu>
-
-<mat-menu #vertebrates="matMenu">
-  <button mat-menu-item >ADD CUSTOMER</button>
-  <button mat-menu-item >SEARCH CUSTOMER</button>
   
-</mat-menu>
-
-<mat-menu #invertebrates="matMenu">
-  <button mat-menu-item>ADD USERS</button>
-  <button mat-menu-item>DELETE USER</button>
-  <button mat-menu-item>RESET PASSWORD</button>
-</mat-menu>
-
-
-
-<button mat-button [matMenuTriggerFor]="afterMenu" color="primary">MMR</button>
-<mat-menu #afterMenu="matMenu" xPosition="after">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+  <button mat-button [matMenuTriggerFor]="belowMenu"  >EMPLOYEE</button>
+  <mat-menu #belowMenu="matMenu" yPosition="below">
+    <button mat-menu-item (click)="onSearch()">SEARCH</button>
+  </mat-menu>
+  
+  <button mat-button [matMenuTriggerFor]="masters" >MASTERS</button>
+  <mat-menu #masters="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="vertebrates">CUSTOMERS</button>
+    <button mat-menu-item [matMenuTriggerFor]="invertebrates">USERS</button>
+    <button mat-menu-item [matMenuTriggerFor]="invertebrates2">PROJECT</button>
+  </mat-menu>
+  
+  <mat-menu #vertebrates="matMenu">
+    <button mat-menu-item >SEARCH CUSTOMER</button>
+    
+  </mat-menu>
+  
+  <mat-menu #invertebrates="matMenu">
+    <button mat-menu-item>ADD USERS</button>
+    <button mat-menu-item>DELETE USER</button>
+    <button mat-menu-item>RESET PASSWORD</button>
+  </mat-menu>
+  
+  <mat-menu #invertebrates2="matMenu">
+    <button mat-menu-item  (click)="onProjectSearch()">SEARCH PROJECT</button>
+  </mat-menu>
+  
+  
+  <button mat-button [matMenuTriggerFor]="mmr" >MMR</button>
+  <mat-menu #mmr="matMenu" >
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+  
