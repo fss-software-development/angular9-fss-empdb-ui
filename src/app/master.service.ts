@@ -45,4 +45,10 @@ export class MasterService {
   getCustomerById(id): Observable<any> {
     return this.http.get(`${this.baseUrl}/customers/${id}`);
   }
+  getProjectList(): Observable<any[]> {
+    return this.http.get<any>(`${this.baseUrl}` + 'projects');
+  }
+  getProjectById(id): Observable<any> {
+    return this.http.get(`${this.baseUrl}/projects/${id}`);
+  }
 }

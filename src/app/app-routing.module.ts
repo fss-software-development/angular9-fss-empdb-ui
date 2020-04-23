@@ -8,6 +8,9 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './auth-guard.service';
 import { LogoutComponent } from './logout/logout.component';
 
+
+
+
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' ,canActivate:[AuthGuardService]},
   {path: 'login', component: LoginComponent},
