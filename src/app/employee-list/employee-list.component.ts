@@ -34,8 +34,9 @@ export class EmployeeListComponent implements OnInit {
 
   reloadData() {
     this.employeeService.getEmployeesList().subscribe((res)=>{
-      this.employees= (res  as  any).default;
+      this.employees= res; //(res  as  any).default;
 	  this.temp = true;
+	  console.log('emp ---' + this.employees);
     })  ;
   }
  
