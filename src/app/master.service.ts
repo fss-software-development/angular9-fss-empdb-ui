@@ -1,50 +1,48 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of  } from 'rxjs';
-import * as MASTER from '../assets/mock-api-resources/master.json';
+
 @Injectable()
 export class MasterService {
+
+  private baseUrl = 'http://localhost:8081/empdb/services/v1/masters/';
 
   constructor(private http: HttpClient) { }
 
   getDesignation(): Observable<any[]> {
-    return of(MASTER.destination);
+    return this.http.get<any>(`${this.baseUrl}` + 'designations');
   }
   getDepartment(): Observable<any[]> {
-    return of(MASTER.department);
+    return this.http.get<any>(`${this.baseUrl}` + 'departments');
   }
   getRegion(): Observable<any[]> {
-    return of(MASTER.region);
+    return this.http.get<any>(`${this.baseUrl}` + 'regions');
   }
   getAccount(): Observable<any[]>{
-    return of(MASTER.account);
+    return this.http.get<any>(`${this.baseUrl}` + 'accounts');
   }
   getServiceLine(): Observable<any[]>{
-    return of(MASTER.serviceLine);
+    return this.http.get<any>(`${this.baseUrl}` + 'serviceLines');
   }
   getBillableStatus(): Observable<any[]>{
-    return of(MASTER.billableStatus);
+    return this.http.get<any>(`${this.baseUrl}` + 'billableStatus');
   }
   getProject(): Observable<any[]>{
-    return of(MASTER.project);
+    return this.http.get<any>(`${this.baseUrl}` + 'projects');
   }
   getLocation(): Observable<any[]>{
-    return of(MASTER.location);
+    return this.http.get<any>(`${this.baseUrl}` + 'locations');
   }
   getGrade(): Observable<any[]>{
-    return of(MASTER.grade);
+    return this.http.get<any>(`${this.baseUrl}` + 'grades');
   }
   getAcademics(): Observable<any[]>{
-    return of(MASTER.academics);
+    return this.http.get<any>(`${this.baseUrl}` + 'academics');
   }
   getCustomersList(): Observable<any[]> {
-    return of(MASTER.customerList);
+    return this.http.get<any>(`${this.baseUrl}` + 'customers');
   }
   getCustomerById(id): Observable<any> {
-    const custList = MASTER.customerList
-    var selectedCustomer =  custList.filter(function(customer) {
-      return customer.customerId == id;
-    });
-    return of(selectedCustomer);
+    return this.http.get(`${this.baseUrl}/customers/${id}`);
   }
 }
