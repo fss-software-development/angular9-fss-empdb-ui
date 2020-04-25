@@ -1,61 +1,50 @@
 {
     "destination": [
        {
-           "designationSqId": 1,
            "designationId": "001",
            "designationName": "Software Engineer Trainee"
        },
        {
-           "designationSqId": 2,
            "designationId": "002",
            "designationName": "Software Engineer"
        },
        {
-           "designationSqId": 3,
            "designationId": "003",
            "designationName": "Senior Software Engineer"
        },
        {
-           "designationSqId": 4,
            "designationId": "004",
            "designationName": "Tech Lead"
        },
        {
-           "designationSqId": 5,
            "designationId": "005",
            "designationName": "Project Lead"
        },
        {
-           "designationSqId": 6,
            "designationId": "006",
            "designationName": "Project manager"
        },
        {
-           "designationSqId": 7,
            "designationId": "007",
            "designationName": "Associate Vice President"
        },
        {
-           "designationSqId": 8,
            "designationId": "008",
            "designationName": "CEO"
        }
        ],
     "department": [
        {
-           "departmentSqId": 1,
            "departmentId": "001",
            "departmentName": "Solution-OFSD",
            "departmentHead": "Vinod B"
        },
        {
-           "departmentSqId": 2,
            "departmentId": "002",
            "departmentName": "Solution AMS",
            "departmentHead": "Vinod B"
        },
        {
-           "departmentSqId": 3,
            "departmentId": "003",
            "departmentName": "HR",
            "departmentHead": "Bharathan Prahalad"

@@ -1,4 +1,4 @@
-import { EmployeeService } from '../employee.service';
+import { EmployeeCommandHandlerService } from '../../services';
 import { Employee } from '../employee';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,8 +13,10 @@ export class CreateEmployeeComponent implements OnInit {
   employee: Employee = new Employee();
   submitted = false;
 
-  constructor(private employeeService: EmployeeService,
-    private router: Router) { }
+  constructor(
+        private commandHandlerService: EmployeeCommandHandlerService,
+        private router: Router
+    ) { }
 
   ngOnInit() {
   }
@@ -25,8 +27,7 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   save() {
-    this.employeeService.createEmployee(this.employee)
-      .subscribe(data => console.log(data), error => console.log(error));
+    this.commandHandlerService.createEmployee(this.employee);
     this.employee = new Employee();
     this.gotoList();
   }

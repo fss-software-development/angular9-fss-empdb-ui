@@ -4,26 +4,27 @@
       <h2 class="section-sub-title">Advanced Search</h2>
     </div>
     <div class="panel-body">
-      <div class="row">
+      <div class="row" [formGroup]="customerSearchForm">
         <div class="col-xs-12 col-md-12 max-auto">
             <input type="text"  
-            class="form-control custom-control space-right" 
-            id="employeeName" 
-            [formControl] ="customerName" 
-            placeholder="Customer Name" 
-            name="employeeName">
+              class="form-control custom-control space-right" 
+              id="accountName" 
+              placeholder="Account Name" 
+              name="accountName"
+              formControlName="accountName">
             <mat-select placeholder="Region" 
-            class="drop-down-input form-control custom-matseclect" 
-            [formControl] ="region" 
-            multiple>
+              class="drop-down-input form-control custom-matseclect" 
+              formControlName="region"
+              multiple>
               <mat-option 
                 *ngFor="let region of regionList" 
-                [value]="region.regionId">
+                [value]="region">
                 {{region.regionName}}
               </mat-option>
             </mat-select>
             <button  
-            class="btn btn-search margin-10px">
+                class="btn btn-search margin-10px"
+                (click)="onCustomerSearch()">
                 <span class="material-icons">
                     search
                     </span>

@@ -1,9 +1,10 @@
-import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
-import { EmployeeService } from "../employee.service";
-import { Employee } from "../employee";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import {
+  EmployeeFormStateService,
+  EmployeeCommandHandlerService
+} from '../../services';
 import {AddSearchModalComponent} from './add-search-modal/add-search-modal.component'
 @Component({
   selector: "app-employee-list",
@@ -13,9 +14,10 @@ import {AddSearchModalComponent} from './add-search-modal/add-search-modal.compo
 export class EmployeeListComponent implements OnInit {
   public email: string;
   constructor(
-    private employeeService: EmployeeService,
-     private router: Router,
-     public dialog: MatDialog
+      private commandHandlerService: EmployeeCommandHandlerService,
+      private formStateService: EmployeeFormStateService,
+      private router: Router,
+      public dialog: MatDialog
      ) {}
   
   public employees: any;
@@ -24,30 +26,23 @@ export class EmployeeListComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   
   ngOnInit() {
-
-	this.reloadData();
-	this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5
-    };
+    this.commandHandlerService.getEmployeesList();
+    this.initSubscriber();
+    this.dtOptions = {
+        pagingType: 'full_numbers',
+        pageLength: 5
+      };
 }
 
-  reloadData() {
-    this.employeeService.getEmployeesList().subscribe((res)=>{
-      this.employees= res; //(res  as  any).default;
-	  this.temp = true;
-	  console.log('emp ---' + this.employees);
-    })  ;
+  initSubscriber(): void{
+    this.formStateService.employeeList.subscribe((res) => {
+      this.employees= res;
+      this.temp = true;
+    })
   }
  
   
   deleteEmployee(id: number) {
-    this.employeeService.deleteEmployee(id)
-      .subscribe(
-        data => {
-          this.reloadData();
-        },
-        error => console.log(error));
   }
 
   employeeDetails(id: number){
