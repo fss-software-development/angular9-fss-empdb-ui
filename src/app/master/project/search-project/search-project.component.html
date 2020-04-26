@@ -5,38 +5,43 @@
       <h2 class="section-sub-title">Project Search</h2>
     </div>
     <div class="panel-body">
-      <div class="row">
+      <div class="row" [formGroup]="projectSearchForm">
         <div class="col-xs-12 col-md-12 max-auto">
           
             <input type="text"  
             class="form-control custom-control space-right" 
             id="projectName" 
-            [formControl] ="projectName" 
+            formControlName="projectName"
             placeholder="Project Name" 
             name="projectName">
-          
-          
-            <input type="text"  
-            class="form-control custom-control space-right" 
-            id="accountName" 
-            [formControl] ="accountName" 
-            placeholder="Customer Name" 
-            name="accountName">
-        
-
-            <mat-select placeholder="Region" 
+            
+            <mat-select
+            placeholder="Account" 
             class="drop-down-input form-control custom-matseclect" 
-            [formControl] ="region" 
+            formControlName="account"
             multiple>
               <mat-option 
-                *ngFor="let region of regionList" 
-                [value]="region.regionId">
-                {{region.regionName}}
+                *ngFor="let account of accountList" 
+                [value]="account">
+                {{account.accountName}}
               </mat-option>
+          </mat-select>
+
+            <mat-select
+              placeholder="Region" 
+              class="drop-down-input form-control custom-matseclect" 
+              formControlName="region"
+              multiple>
+                <mat-option 
+                  *ngFor="let region of regionList" 
+                  [value]="region">
+                  {{region.regionName}}
+                </mat-option>
             </mat-select>
 
             <button  
-            class="btn btn-search margin-10px">
+              class="btn btn-search margin-10px"
+              (click)="onProjectSearch()">
                 <span class="material-icons">
                     search
                     </span>

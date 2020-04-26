@@ -1,85 +1,90 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import {MasterService} from '../../../master.service';
 import {ConfirmationModalComponent} from '../../../../app-commons/confirmation-modal/confirmation-modal.component';
+import { FormGroup } from '@angular/forms';
+import {AutowireViewModel} from '../../../../framework';
+import {
+  ProjectCommandHandlerService,
+  ProjectSearchFormModel,
+  ProjectFormStateService,
+  CustomerCommandHandlerService,
+  CustomerFormStateService
+} from '../../../../services';
+
 
 @Component({
   selector: 'app-search-project',
   templateUrl: './search-project.component.html',
   styleUrls: ['./search-project.component.css']
 })
-export class SearchProjectComponent implements OnInit {
+export class SearchProjectComponent implements OnInit, OnDestroy {
 
  
   dtOptions: DataTables.Settings = {};
-  projects: any;
+  project: any;
   public temp: Object=false;
   public regionList: any[];
-  public projectStartDateList: any[];
-  public projectEndDateList : any[];
-  public accountNameList: any[];
-  public projectName = new FormControl();
-  public region = new FormControl();
-  public projectStartDate=new FormControl();
-  public projectEndDate = new FormControl();
-  public accountName = new FormControl();
+  public accountList: any[];
+  @AutowireViewModel('ProjectSearch') projectSearchForm: FormGroup;
+  @AutowireViewModel('CustomerSearch') customerSearchForm: FormGroup;
   constructor(private masterService: MasterService,
               private route: ActivatedRoute,
               private router: Router,
               public dialog: MatDialog,
+              private projectCommandHandlerService: ProjectCommandHandlerService,
+              private customerCommandHandlerService: CustomerCommandHandlerService,
+              private projectFormStateService: ProjectFormStateService,
+              private customerFormStateService: CustomerFormStateService
             ) { }
 
   ngOnInit(): void {
-    this.reloadData();
+    this.buidForm();
+    this.projectCommandHandlerService.getProjectList(this.projectSearchForm.value);
+    this.customerCommandHandlerService.getCustomersList();
+    this.initSubscriber();
     this.getRegionList();
-
     this.dtOptions = {
         pagingType: 'full_numbers',
         pageLength: 5
       };
   }
-  reloadData(): void {
-    this.masterService.getProjectList().subscribe((res)=>{
-      console.log("reloadData getProjectList", res);
-      this.projects= res;
-      this.temp = true;
-    });
+  ngOnDestroy(): void {
+    this.projectFormStateService.destroyFormState();
+    this.customerFormStateService.destroyFormState();
+    this.resetForm();
   }
+  buidForm(): void {
+    this.projectSearchForm.reset(new ProjectSearchFormModel());
+  }
+  initSubscriber(): void {
+    this.projectFormStateService.projectList.subscribe((res) => {
+      this.project= res;
+      this.temp = true;
+    })
+    this.customerFormStateService.customerList.subscribe((res) => {
+      console.log("customerList", res);
+      this.accountList = res;
+    })
+  }
+  
   getRegionList(): void {
     this.masterService.getRegion().subscribe((data) => {
       this.regionList = data;
     })
   }
-
-  getAccountName(): void {
-    this.masterService.getProjectList().subscribe((data) => {
-      this.accountNameList = data;
-    })
-  }
-
-  getProjectStartDate(): void {
-    this.masterService.getProjectList().subscribe((data) => {
-      this.projectStartDateList = data;
-    })
-  }
-
-  getprojectEndDateList(): void {
-    this.masterService.getProjectList().subscribe((data) => {
-      this.projectEndDateList = data;
-    })
-  }
-
   goToAddProject(): void {
     this.router.navigate(['add-project']);
   }
 
   viewProjectDetails(id: number): void {
     console.log("viewProjectDetails");
-    this.router.navigate(['view-project']);
+    this.router.navigate(['view-project', id]);
   }
-
+  resetForm(): void {
+    this.projectSearchForm.reset();
+  }
   deleteProject(id: number, name: string): void {
     const msg = `Are you sure want to delete ${name} ?`;
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
@@ -99,6 +104,10 @@ export class SearchProjectComponent implements OnInit {
         this.router.navigate(['master']);
       }
     });
+  }
+  onProjectSearch(): void {
+    this.projectCommandHandlerService.getProjectListOnSearch(this.projectSearchForm.value);
+    this.resetForm();
   }
 
 }

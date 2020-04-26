@@ -8,10 +8,13 @@ import {
 } from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../material/material.module';
 import {FirstLetterCapitalizedPipe} from './pipe/first-letter-capitalized.pipe';
 import {InitialsPipe} from './pipe/initials.pipe';
-import { ConfirmationModalComponent } from '../../app-commons/confirmation-modal/confirmation-modal.component';
+import {OnScreenMessageComponent} from '../../framework';
+import { 
+  ConfirmationModalComponent
+ } from '../../app-commons';
 
 @NgModule({
   imports: [
@@ -26,6 +29,7 @@ import { ConfirmationModalComponent } from '../../app-commons/confirmation-modal
     FirstLetterCapitalizedPipe,
     InitialsPipe,
     ConfirmationModalComponent,
+    OnScreenMessageComponent
   ],
   exports: [
     CommonModule,
@@ -36,6 +40,8 @@ import { ConfirmationModalComponent } from '../../app-commons/confirmation-modal
     DataTablesModule,
     FirstLetterCapitalizedPipe,
     InitialsPipe,
+    OnScreenMessageComponent,
+    ConfirmationModalComponent
   ],
   providers: [
   ]

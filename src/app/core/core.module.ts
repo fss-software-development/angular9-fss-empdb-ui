@@ -10,6 +10,8 @@ import {AuthGuardService} from '../auth-guard.service';
 import {
   EmployeeCommandHandlerService,
   EmployeeFormStateService,
+  ProjectFormStateService,
+  ProjectCommandHandlerService,
   CustomerCommandHandlerService,
   CustomerFormStateService
 } from '../../services';
@@ -18,6 +20,8 @@ import {FormModalConverterService} from '../../framework';
 import {
   EmployeeDataService,
   EmployeeDataInterface,
+  ProjectDataInterface,
+    ProjectDataService,
   CustomerDataInterface,
   CustomerDataService
 } from '../../data-access-layer';
@@ -42,6 +46,8 @@ import {AuthenticationService} from '../login/auth.service';
     EmployeeCommandHandlerService,
     EmployeeFormStateService,
     FormModalConverterService,
+    ProjectCommandHandlerService,
+    ProjectFormStateService,
     CustomerCommandHandlerService,
     CustomerFormStateService,
     {
@@ -52,7 +58,11 @@ import {AuthenticationService} from '../login/auth.service';
       provide: CustomerDataInterface,
       useClass: CustomerDataService
     },
-    AuthenticationService
+    AuthenticationService,
+    {
+      provide: ProjectDataInterface,
+      useClass: ProjectDataService
+    }
   ]
 })
 

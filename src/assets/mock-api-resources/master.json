@@ -51,220 +51,39 @@
        }
        ],
     "region": [
-       {"regionName": "Brazil", "regionId": "BR"},
-       {"regionName": "British Indian Ocean Territory", "regionId": "IO"},
-       {"regionName": "Brunei Darussalam", "regionId": "BN"},
-       {"regionName": "Bulgaria", "regionId": "BG"},
-       {"regionName": "Burkina Faso", "regionId": "BF"},
-       {"regionName": "Burundi", "regionId": "BI"},
-       {"regionName": "Cambodia", "regionId": "KH"},
-       {"regionName": "Cameroon", "regionId": "CM"},
-       {"regionName": "Canada", "regionId": "CA"},
-       {"regionName": "Cape Verde", "regionId": "CV"},
-       {"regionName": "Cayman Islands", "regionId": "KY"},
-       {"regionName": "Central African Republic", "regionId": "CF"},
-       {"regionName": "Chad", "regionId": "TD"},
-       {"regionName": "Chile", "regionId": "CL"},
-       {"regionName": "China", "regionId": "CN"},
-       {"regionName": "Christmas Island", "regionId": "CX"},
-       {"regionName": "Cocos (Keeling) Islands", "regionId": "CC"},
-       {"regionName": "Colombia", "regionId": "CO"},
-       {"regionName": "Comoros", "regionId": "KM"},
-       {"regionName": "Congo", "regionId": "CG"},
-       {"regionName": "Congo, The Democratic Republic of the", "regionId": "CD"},
-       {"regionName": "Cook Islands", "regionId": "CK"},
-       {"regionName": "Costa Rica", "regionId": "CR"},
-       {"regionName": "Cote D\"Ivoire", "regionId": "CI"},
-       {"regionName": "Croatia", "regionId": "HR"},
-       {"regionName": "Cuba", "regionId": "CU"},
-       {"regionName": "Cyprus", "regionId": "CY"},
-       {"regionName": "Czech Republic", "regionId": "CZ"},
-       {"regionName": "Denmark", "regionId": "DK"},
-       {"regionName": "Djibouti", "regionId": "DJ"},
-       {"regionName": "Dominica", "regionId": "DM"},
-       {"regionName": "Dominican Republic", "regionId": "DO"},
-       {"regionName": "Ecuador", "regionId": "EC"},
-       {"regionName": "Egypt", "regionId": "EG"},
-       {"regionName": "El Salvador", "regionId": "SV"},
-       {"regionName": "Equatorial Guinea", "regionId": "GQ"},
-       {"regionName": "Eritrea", "regionId": "ER"},
-       {"regionName": "Estonia", "regionId": "EE"},
-       {"regionName": "Ethiopia", "regionId": "ET"},
-       {"regionName": "Falkland Islands (Malvinas)", "regionId": "FK"},
-       {"regionName": "Faroe Islands", "regionId": "FO"},
-       {"regionName": "Fiji", "regionId": "FJ"},
-       {"regionName": "Finland", "regionId": "FI"},
-       {"regionName": "France", "regionId": "FR"},
-       {"regionName": "French Guiana", "regionId": "GF"},
-       {"regionName": "French Polynesia", "regionId": "PF"},
-       {"regionName": "French Southern Territories", "regionId": "TF"},
-       {"regionName": "Gabon", "regionId": "GA"},
-       {"regionName": "Gambia", "regionId": "GM"},
-       {"regionName": "Georgia", "regionId": "GE"},
-       {"regionName": "Germany", "regionId": "DE"},
-       {"regionName": "Ghana", "regionId": "GH"},
-       {"regionName": "Gibraltar", "regionId": "GI"},
-       {"regionName": "Greece", "regionId": "GR"},
-       {"regionName": "Greenland", "regionId": "GL"},
-       {"regionName": "Grenada", "regionId": "GD"},
-       {"regionName": "Guadeloupe", "regionId": "GP"},
-       {"regionName": "Guam", "regionId": "GU"},
-       {"regionName": "Guatemala", "regionId": "GT"},
-       {"regionName": "Guernsey", "regionId": "GG"},
-       {"regionName": "Guinea", "regionId": "GN"},
-       {"regionName": "Guinea-Bissau", "regionId": "GW"},
-       {"regionName": "Guyana", "regionId": "GY"},
-       {"regionName": "Haiti", "regionId": "HT"},
-       {"regionName": "Heard Island and Mcdonald Islands", "regionId": "HM"},
-       {"regionName": "Holy See (Vatican City State)", "regionId": "VA"},
-       {"regionName": "Honduras", "regionId": "HN"},
-       {"regionName": "Hong Kong", "regionId": "HK"},
-       {"regionName": "Hungary", "regionId": "HU"},
-       {"regionName": "Iceland", "regionId": "IS"},
-       {"regionName": "India", "regionId": "IN"},
-       {"regionName": "Indonesia", "regionId": "ID"},
-       {"regionName": "Iran, Islamic Republic Of", "regionId": "IR"},
-       {"regionName": "Iraq", "regionId": "IQ"},
-       {"regionName": "Ireland", "regionId": "IE"},
-       {"regionName": "Isle of Man", "regionId": "IM"},
-       {"regionName": "Israel", "regionId": "IL"},
-       {"regionName": "Italy", "regionId": "IT"},
-       {"regionName": "Jamaica", "regionId": "JM"},
-       {"regionName": "Japan", "regionId": "JP"},
-       {"regionName": "Jersey", "regionId": "JE"},
-       {"regionName": "Jordan", "regionId": "JO"},
-       {"regionName": "Kazakhstan", "regionId": "KZ"},
-       {"regionName": "Kenya", "regionId": "KE"},
-       {"regionName": "Kiribati", "regionId": "KI"},
-       {"regionName": "Korea, Democratic People\"S Republic of", "regionId": "KP"},
-       {"regionName": "Korea, Republic of", "regionId": "KR"},
-       {"regionName": "Kuwait", "regionId": "KW"},
-       {"regionName": "Kyrgyzstan", "regionId": "KG"},
-       {"regionName": "Lao People\"S Democratic Republic", "regionId": "LA"},
-       {"regionName": "Latvia", "regionId": "LV"},
-       {"regionName": "Lebanon", "regionId": "LB"},
-       {"regionName": "Lesotho", "regionId": "LS"},
-       {"regionName": "Liberia", "regionId": "LR"},
-       {"regionName": "Libyan Arab Jamahiriya", "regionId": "LY"},
-       {"regionName": "Liechtenstein", "regionId": "LI"},
-       {"regionName": "Lithuania", "regionId": "LT"},
-       {"regionName": "Luxembourg", "regionId": "LU"},
-       {"regionName": "Macao", "regionId": "MO"},
-       {"regionName": "Macedonia, The Former Yugoslav Republic of", "regionId": "MK"},
-       {"regionName": "Madagascar", "regionId": "MG"},
-       {"regionName": "Malawi", "regionId": "MW"},
-       {"regionName": "Malaysia", "regionId": "MY"},
-       {"regionName": "Maldives", "regionId": "MV"},
-       {"regionName": "Mali", "regionId": "ML"},
-       {"regionName": "Malta", "regionId": "MT"},
-       {"regionName": "Marshall Islands", "regionId": "MH"},
-       {"regionName": "Martinique", "regionId": "MQ"},
-       {"regionName": "Mauritania", "regionId": "MR"},
-       {"regionName": "Mauritius", "regionId": "MU"},
-       {"regionName": "Mayotte", "regionId": "YT"},
-       {"regionName": "Mexico", "regionId": "MX"},
-       {"regionName": "Micronesia, Federated States of", "regionId": "FM"},
-       {"regionName": "Moldova, Republic of", "regionId": "MD"},
-       {"regionName": "Monaco", "regionId": "MC"},
-       {"regionName": "Mongolia", "regionId": "MN"},
-       {"regionName": "Montserrat", "regionId": "MS"},
-       {"regionName": "Morocco", "regionId": "MA"},
-       {"regionName": "Mozambique", "regionId": "MZ"},
-       {"regionName": "Myanmar", "regionId": "MM"},
-       {"regionName": "Namibia", "regionId": "NA"},
-       {"regionName": "Nauru", "regionId": "NR"},
-       {"regionName": "Nepal", "regionId": "NP"},
-       {"regionName": "Netherlands", "regionId": "NL"},
-       {"regionName": "Netherlands Antilles", "regionId": "AN"},
-       {"regionName": "New Caledonia", "regionId": "NC"},
-       {"regionName": "New Zealand", "regionId": "NZ"},
-       {"regionName": "Nicaragua", "regionId": "NI"},
-       {"regionName": "Niger", "regionId": "NE"},
-       {"regionName": "Nigeria", "regionId": "NG"},
-       {"regionName": "Niue", "regionId": "NU"},
-       {"regionName": "Norfolk Island", "regionId": "NF"},
-       {"regionName": "Northern Mariana Islands", "regionId": "MP"},
-       {"regionName": "Norway", "regionId": "NO"},
-       {"regionName": "Oman", "regionId": "OM"},
-       {"regionName": "Pakistan", "regionId": "PK"},
-       {"regionName": "Palau", "regionId": "PW"},
-       {"regionName": "Palestinian Territory, Occupied", "regionId": "PS"},
-       {"regionName": "Panama", "regionId": "PA"},
-       {"regionName": "Papua New Guinea", "regionId": "PG"},
-       {"regionName": "Paraguay", "regionId": "PY"},
-       {"regionName": "Peru", "regionId": "PE"},
-       {"regionName": "Philippines", "regionId": "PH"},
-       {"regionName": "Pitcairn", "regionId": "PN"},
-       {"regionName": "Poland", "regionId": "PL"},
-       {"regionName": "Portugal", "regionId": "PT"},
-       {"regionName": "Puerto Rico", "regionId": "PR"},
-       {"regionName": "Qatar", "regionId": "QA"},
-       {"regionName": "Reunion", "regionId": "RE"},
-       {"regionName": "Romania", "regionId": "RO"},
-       {"regionName": "Russian Federation", "regionId": "RU"},
-       {"regionName": "RWANDA", "regionId": "RW"},
-       {"regionName": "Saint Helena", "regionId": "SH"},
-       {"regionName": "Saint Kitts and Nevis", "regionId": "KN"},
-       {"regionName": "Saint Lucia", "regionId": "LC"},
-       {"regionName": "Saint Pierre and Miquelon", "regionId": "PM"},
-       {"regionName": "Saint Vincent and the Grenadines", "regionId": "VC"},
-       {"regionName": "Samoa", "regionId": "WS"},
-       {"regionName": "San Marino", "regionId": "SM"},
-       {"regionName": "Sao Tome and Principe", "regionId": "ST"},
-       {"regionName": "Saudi Arabia", "regionId": "SA"},
-       {"regionName": "Senegal", "regionId": "SN"},
-       {"regionName": "Serbia and Montenegro", "regionId": "CS"},
-       {"regionName": "Seychelles", "regionId": "SC"},
-       {"regionName": "Sierra Leone", "regionId": "SL"},
-       {"regionName": "Singapore", "regionId": "SG"},
-       {"regionName": "Slovakia", "regionId": "SK"},
-       {"regionName": "Slovenia", "regionId": "SI"},
-       {"regionName": "Solomon Islands", "regionId": "SB"},
-       {"regionName": "Somalia", "regionId": "SO"},
-       {"regionName": "South Africa", "regionId": "ZA"},
-       {"regionName": "South Georgia and the South Sandwich Islands", "regionId": "GS"},
-       {"regionName": "Spain", "regionId": "ES"},
-       {"regionName": "Sri Lanka", "regionId": "LK"},
-       {"regionName": "Sudan", "regionId": "SD"},
-       {"regionName": "Suriname", "regionId": "SR"},
-       {"regionName": "Svalbard and Jan Mayen", "regionId": "SJ"},
-       {"regionName": "Swaziland", "regionId": "SZ"},
-       {"regionName": "Sweden", "regionId": "SE"},
-       {"regionName": "Switzerland", "regionId": "CH"},
-       {"regionName": "Syrian Arab Republic", "regionId": "SY"},
-       {"regionName": "Taiwan, Province of China", "regionId": "TW"},
-       {"regionName": "Tajikistan", "regionId": "TJ"},
-       {"regionName": "Tanzania, United Republic of", "regionId": "TZ"},
-       {"regionName": "Thailand", "regionId": "TH"},
-       {"regionName": "Timor-Leste", "regionId": "TL"},
-       {"regionName": "Togo", "regionId": "TG"},
-       {"regionName": "Tokelau", "regionId": "TK"},
-       {"regionName": "Tonga", "regionId": "TO"},
-       {"regionName": "Trinidad and Tobago", "regionId": "TT"},
-       {"regionName": "Tunisia", "regionId": "TN"},
-       {"regionName": "Turkey", "regionId": "TR"},
-       {"regionName": "Turkmenistan", "regionId": "TM"},
-       {"regionName": "Turks and Caicos Islands", "regionId": "TC"},
-       {"regionName": "Tuvalu", "regionId": "TV"},
-       {"regionName": "Uganda", "regionId": "UG"},
-       {"regionName": "Ukraine", "regionId": "UA"},
-       {"regionName": "United Arab Emirates", "regionId": "AE"},
-       {"regionName": "United Kingdom", "regionId": "GB"},
-       {"regionName": "United States", "regionId": "US"},
-       {"regionName": "United States Minor Outlying Islands", "regionId": "UM"},
-       {"regionName": "Uruguay", "regionId": "UY"},
-       {"regionName": "Uzbekistan", "regionId": "UZ"},
-       {"regionName": "Vanuatu", "regionId": "VU"},
-       {"regionName": "Venezuela", "regionId": "VE"},
-       {"regionName": "Viet Nam", "regionId": "VN"},
-       {"regionName": "Virgin Islands, British", "regionId": "VG"},
-       {"regionName": "Virgin Islands, U.S.", "regionId": "VI"},
-       {"regionName": "Wallis and Futuna", "regionId": "WF"},
-       {"regionName": "Western Sahara", "regionId": "EH"},
-       {"regionName": "Yemen", "regionId": "YE"},
-       {"regionName": "Zambia", "regionId": "ZM"},
-       {"regionName": "Zimbabwe", "regionId": "ZW"}
-       ],
+        {
+            "regionId": 1,
+            "regionName": "US"
+        },
+        {
+            "regionId": 2,
+            "regionName": "Canada"
+        },
+        {
+            "regionId": 3,
+            "regionName": "ME"
+        },
+        {
+            "regionId": 4,
+            "regionName": "Europe"
+        },
+        {
+            "regionId": 5,
+            "regionName": "Africa"
+        },
+        {
+            "regionId": 6,
+            "regionName": "ASEAN"
+        },
+        {
+            "regionId": 7,
+            "regionName": "India"
+        },
+        {
+            "regionId": 8,
+            "regionName": "ANZ"
+        }
+    ],
    "account": [
            {
                "accountId": "001",
@@ -366,30 +185,93 @@
    ],
    "customerList": [
        {
-           "customerId": 1,
-           "customerName": "HDFC",
+           "accountId": 1,
+           "accountName": "HDFC",
            "region": {
-               "regionName": "India",
-                "regionId": "IN"
-               }
+            "regionId": 7,
+            "regionName": "India"
+        }
        },
        {
-           "customerId": 2,
-           "customerName": "SBI",
+           "accountId": 2,
+           "accountName": "SBI",
            "region": {
-               "regionName": "India",
-                "regionId": "IN"
-               }
+            "regionId": 7,
+            "regionName": "India"
+        }
        },
        {
-           "customerId": 3,
-           "customerName": "ICICI",
+           "accountId": 3,
+           "accountName": "ICICI",
            "region": {
-               "regionName": "India",
-                "regionId": "IN"
-               }
+            "regionId": 7,
+            "regionName": "India"
+        }
        }
    
-   ]
+   ],
+   "projectList" :[
+    {
+        "projectId": 10,
+        "department": {
+            "departmentId": 1,
+            "departmentName": "Solution-OFSD",
+            "departmentHead": "Vinod B",
+            "insUser": 1
+        },
+        "projectName": "Employee-DB",
+        "projectManager": "XYZkkk",
+        "projectStatus": "In-Progress",
+        "region": {
+            "regionId": 1,
+            "regionName": "US"
+        },
+        "account": {
+            "accountId": 1,
+            "accountName": "HDFC",
+            "region": {
+                "regionId": 1,
+                "regionName": "US"
+            }
+        },
+        "projectTagging": {
+            "projectTaggingId": 1,
+            "projectTaggingName": "Reserved"
+        },
+        "projectEndDate": "2021-04-02",
+        "projectStartDate": "2020-04-02"
+    },
+    
+    {
+        "projectId": 11,
+        "department": {
+            "departmentId": 1,
+            "departmentName": "Solution-OFSD",
+            "departmentHead": "Vinod B",
+            "insUser": 1
+        },
+        "projectName": "Tide ",
+        "projectManager": "XYZkkk",
+        "projectStatus": "In-Progress",
+        "region": {
+            "regionId": 2,
+            "regionName": "India"
+        },
+        "account": {
+            "accountId": 2,
+            "accountName": "Tide Bank",
+            "region": {
+                "regionId": 1,
+                "regionName": "US"
+            }
+        },
+        "projectTagging": {
+            "projectTaggingId": 1,
+            "projectTaggingName": "Reserved"
+        },
+        "projectEndDate": "2021-04-03",
+        "projectStartDate": "2020-04-03"
+    }
+    ]
    }
    

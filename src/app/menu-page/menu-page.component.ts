@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { Observable } from 'rxjs';
+import { AuthenticationService } from './../login/auth.service';
 
 interface Food {
   value: string;
@@ -17,15 +18,28 @@ export class MenuPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private authService: AuthenticationService,
     //private authenticationService: AuthenticationService
     ){   }
-  ngOnInit(): void {
+
+    isUserLoggedIn$: Observable<boolean>;                 
+
+
+  ngOnInit() {
+   // this.isUserLoggedIn$ = this.authService.isUserLoggedIn;
+
   }
 
   
   onSearch(){
-
     this.router.navigate(['/employees']);
-
   }
+
+  onProjectSearch(){
+    this.router.navigate(['/search-project']);
+  }
+
+  
+
+ 
 }
