@@ -19,7 +19,7 @@ export class EmployeeCommandHandlerService {
   }
   getEmployeesList(): void {
     this.employeeDataService.getEmployeesList().subscribe((empList) => {
-      this.formStateService.updateFormState((empList  as  any).default,"employeeList");
+      this.formStateService.updateFormState(empList,"employeeList");
       console.log("EmployeeCommandHandlerService getEmployeesList success" + empList);
     }, (error) => {
       console.log("EmployeeCommandHandlerService getEmployeesList error", error);

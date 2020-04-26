@@ -14,7 +14,7 @@ export class CustomerCommandHandlerService {
 
   getCustomersListOnSearch(formData: FormData): void {
     this.customerDataService.getCustomersListOnSearch(formData).subscribe((searchData) => {
-          this.customerFormStateService.updateFormState('customerList', searchData);
+          this.customerFormStateService.updateFormState(searchData,'customerList');
           console.log("CustomerCommandHandlerService getCustomersListOnSearch success");
     }, (error)=> {
       console.log("CustomerCommandHandlerService getCustomersListOnSearch error", error);
@@ -22,7 +22,7 @@ export class CustomerCommandHandlerService {
   }
   getCustomersList(): void {
     this.customerDataService.getCustomersList().subscribe((custListData) => {
-      this.customerFormStateService.updateFormState('customerList', custListData);
+      this.customerFormStateService.updateFormState(custListData,'customerList');
       console.log("CustomerCommandHandlerService getCustomersListOnSearch success");
     }, (error)=> {
       console.log("CustomerCommandHandlerService getCustomersListOnSearch error", error);
