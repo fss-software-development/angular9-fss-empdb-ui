@@ -21,6 +21,7 @@ export class ProjectCommandHandlerService {
   }
   getProjectList(formData: FormData): void {
     this.projectDataService.getProjectList(formData).subscribe((projListData) => {
+      console.log('projList ' + projListData);
       this.ProjectFormStateService.updateFormState(projListData, 'projectList');
       console.log("ProjectCommandHandlerService getProjectListOnSearch success");
     }, (error)=> {

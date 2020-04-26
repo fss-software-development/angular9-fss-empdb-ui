@@ -7,7 +7,7 @@ interface IDepartment {
     departmentId: string,
     departmentName: string,
 }
-export class Department implements IDepartment {
+class Department implements IDepartment {
     departmentId: string;
     departmentName: string;
     constructor(department: IDepartment = {
@@ -22,7 +22,7 @@ interface IAccount {
     accountId: string,
     accountName: string
 }
-export class Account implements IAccount {
+class Account implements IAccount {
     accountId: string;
     accountName: string;
     constructor(account: IAccount = {
@@ -37,7 +37,7 @@ interface IRegion {
     regionId: string,
     regionName: string
 }
-export class Region implements IRegion {
+class Region implements IRegion {
     regionId: string;
     regionName: string;
     constructor(region: IRegion = {
@@ -52,7 +52,7 @@ interface ILocation {
     locationId: string,
     locationName: string
 }
-export class Location implements ILocation {
+class Location implements ILocation {
     locationId: string;
     locationName: string;
     constructor(location: ILocation = {
@@ -67,7 +67,7 @@ interface IGrade {
     gradeId: string,
     gradeName: string
 }
-export class Grade implements IGrade {
+class Grade implements IGrade {
     gradeId: string;
     gradeName: string;
     constructor(grade: IGrade = {
@@ -82,7 +82,7 @@ interface IDesignation {
     designationId: string,
     designationName: string
 }
-export class Designation implements IDesignation {
+class Designation implements IDesignation {
     designationId: string;
     designationName: string;
     constructor(designation: IDesignation = {
@@ -98,7 +98,7 @@ interface IBillableStatus {
     billableStatus: string
 }
 
-export class BillableStatus implements IBillableStatus {
+class BillableStatus implements IBillableStatus {
     billableStatusId: string;
     billableStatus: string;
     constructor(billableStatus: IBillableStatus = {
@@ -113,7 +113,7 @@ interface IServiceLine {
     serviceLineId: string,
     serviceLineName: string
 }
-export class ServiceLine implements IServiceLine {
+class ServiceLine implements IServiceLine {
     serviceLineId: string;
     serviceLineName: string;
     constructor(serviceLine: IServiceLine = {
@@ -128,7 +128,7 @@ interface IAcademics {
     academicsId: string,
     academicsName: string
 }
-export class Academics implements IAcademics {
+class Academics implements IAcademics {
     academicsId: string;
     academicsName: string;
     constructor(academics: IAcademics = {
@@ -143,7 +143,7 @@ interface IProject {
     projectId: string,
     projectName: string
 }
-export class Project implements IProject {
+class Project implements IProject {
     projectId: string;
     projectName: string;
     constructor(project: IProject = {

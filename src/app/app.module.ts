@@ -15,8 +15,9 @@ import { MenuComponent } from './menu/menu.component';
 import { MenuPageComponent } from './menu-page/menu-page.component';
 import { AddSearchModalComponent } from './employee-list/add-search-modal/add-search-modal.component';
 import { MasterModule } from './master/master.module';
-import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core/core.module';
+import {SharedModule} from './shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +26,12 @@ import {CoreModule} from './core/core.module';
     EmployeeListComponent,
     UpdateEmployeeComponent,
     LoginComponent,
-	  LogoutComponent,
-	  MenuComponent,
-	  AddSearchModalComponent
+    LogoutComponent,
+    MenuComponent,
+    MenuPageComponent,
+    AddSearchModalComponent,
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

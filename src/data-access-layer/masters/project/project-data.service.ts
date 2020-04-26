@@ -29,7 +29,7 @@ export class ProjectDataService implements ProjectDataInterface {
     const projSearchData = new ProjectSearchDataModel();
     this.fmConverter.setProperty(formData,projSearchData);
     const url = `${this.baseUrl}/projects/search`;
-    return this.http.post<ProjectListDataModel[]>(url, projSearchData);
+    return this.http.get<ProjectListDataModel[]>(url);
     // return of(MASTER.projectList);
   }
   getProjectById(id): Observable<any> {

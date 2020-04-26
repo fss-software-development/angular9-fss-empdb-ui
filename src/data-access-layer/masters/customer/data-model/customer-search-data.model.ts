@@ -2,8 +2,7 @@ interface IRegion {
     regionId?: string,
     regionName?: string
 }
-
-class Region implements IRegion {
+export class Region implements IRegion {
     regionId: string;
     regionName: string;
     constructor(region: IRegion = {
