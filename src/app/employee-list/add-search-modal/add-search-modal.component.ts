@@ -34,7 +34,6 @@ public academicsList: any[];
     ) { }
 
   ngOnInit(): void {
-   
     this.buidForm();
     this.getMasters();
   }

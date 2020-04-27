@@ -1,54 +1,53 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of  } from 'rxjs';
-
-@Injectable()
+import * as MASTER from '../assets/mock-api-resources/master.json';
+@Injectable({
+      providedIn: 'root'
+})
 export class MasterService {
-
-  private baseUrl = 'http://localhost:8081/empdb/services/v1/masters/';
 
   constructor(private http: HttpClient) { }
 
   getDesignation(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}` + 'designations');
+    return of(MASTER.destination);
   }
   getDepartment(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}` + 'departments');
+    return of(MASTER.department);
   }
   getRegion(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}` + 'regions');
+    return of(MASTER.region);
   }
   getAccount(): Observable<any[]>{
-    return this.http.get<any>(`${this.baseUrl}` + 'accounts');
+    return of(MASTER.account);
   }
   getServiceLine(): Observable<any[]>{
-    return this.http.get<any>(`${this.baseUrl}` + 'serviceLines');
+    return of(MASTER.serviceLine);
   }
   getBillableStatus(): Observable<any[]>{
-    return this.http.get<any>(`${this.baseUrl}` + 'billableStatus');
+    return of(MASTER.billableStatus);
   }
   getProject(): Observable<any[]>{
-    return this.http.get<any>(`${this.baseUrl}` + 'projects');
+    return of(MASTER.project);
   }
   getLocation(): Observable<any[]>{
-    return this.http.get<any>(`${this.baseUrl}` + 'locations');
+    return of(MASTER.location);
   }
   getGrade(): Observable<any[]>{
-    return this.http.get<any>(`${this.baseUrl}` + 'grades');
+    return of(MASTER.grade);
   }
   getAcademics(): Observable<any[]>{
-    return this.http.get<any>(`${this.baseUrl}` + 'academics');
-  }
-  getCustomersList(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}` + 'customers');
-  }
-  getCustomerById(id): Observable<any> {
-    return this.http.get(`${this.baseUrl}/customers/${id}`);
+    return of(MASTER.academics);
   }
   getProjectList(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}` + 'projects');
+    return of(MASTER.projectList);
   }
   getProjectById(id): Observable<any> {
-    return this.http.get(`${this.baseUrl}/projects/${id}`);
+    const custList = MASTER.projectList
+    var selectedProject =  custList.filter(function(project) {
+      return project.projectId == id;
+    });
+    return of(selectedProject);
   }
+ 
 }

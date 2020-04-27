@@ -8,12 +8,13 @@ import {
 } from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../material.module';
 import {FirstLetterCapitalizedPipe} from './pipe/first-letter-capitalized.pipe';
 import {InitialsPipe} from './pipe/initials.pipe';
 import {OnScreenMessageComponent} from '../../framework';
 import { 
-  ConfirmationModalComponent
+  ConfirmationModalComponent,
+  LoadingAnimationComponent
  } from '../../app-commons';
 
 @NgModule({
@@ -29,7 +30,8 @@ import {
     FirstLetterCapitalizedPipe,
     InitialsPipe,
     ConfirmationModalComponent,
-    OnScreenMessageComponent
+    OnScreenMessageComponent,
+    LoadingAnimationComponent
   ],
   exports: [
     CommonModule,
@@ -41,7 +43,8 @@ import {
     FirstLetterCapitalizedPipe,
     InitialsPipe,
     OnScreenMessageComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    LoadingAnimationComponent
   ],
   providers: [
   ]

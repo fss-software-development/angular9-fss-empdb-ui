@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
-import {MasterService} from '../../../master.service';
-import {ConfirmationModalComponent} from '../../../../app-commons/confirmation-modal/confirmation-modal.component';
 import { FormGroup } from '@angular/forms';
+import {MasterService} from '../../../master.service';
+import {ConfirmationModalComponent} from '../../../../app-commons';
 import {AutowireViewModel} from '../../../../framework';
 import {
   ProjectCommandHandlerService,
@@ -12,7 +12,6 @@ import {
   CustomerCommandHandlerService,
   CustomerFormStateService
 } from '../../../../services';
-
 
 @Component({
   selector: 'app-search-project',
@@ -23,12 +22,11 @@ export class SearchProjectComponent implements OnInit, OnDestroy {
 
  
   dtOptions: DataTables.Settings = {};
-  project: any;
+  projects: any;
   public temp: Object=false;
   public regionList: any[];
   public accountList: any[];
   @AutowireViewModel('ProjectSearch') projectSearchForm: FormGroup;
-  @AutowireViewModel('CustomerSearch') customerSearchForm: FormGroup;
   constructor(private masterService: MasterService,
               private route: ActivatedRoute,
               private router: Router,
@@ -41,7 +39,7 @@ export class SearchProjectComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.buidForm();
-    this.projectCommandHandlerService.getProjectList(this.projectSearchForm.value);
+    this.projectCommandHandlerService.getProjectList();
     this.customerCommandHandlerService.getCustomersList();
     this.initSubscriber();
     this.getRegionList();
@@ -60,11 +58,11 @@ export class SearchProjectComponent implements OnInit, OnDestroy {
   }
   initSubscriber(): void {
     this.projectFormStateService.projectList.subscribe((res) => {
-      this.project= res;
+
+      this.projects= res;
       this.temp = true;
     })
     this.customerFormStateService.customerList.subscribe((res) => {
-      console.log("customerList", res);
       this.accountList = res;
     })
   }
@@ -75,17 +73,16 @@ export class SearchProjectComponent implements OnInit, OnDestroy {
     })
   }
   goToAddProject(): void {
-    this.router.navigate(['add-project']);
+    this.router.navigate(['master/add-project']);
   }
 
   viewProjectDetails(id: number): void {
-    console.log("viewProjectDetails");
-    this.router.navigate(['view-project', id]);
+    this.router.navigate(['master/view-project', id]);
   }
   resetForm(): void {
     this.projectSearchForm.reset();
   }
-  deleteProject(id: number, name: string): void {
+  deleteProject(id: any, name: string): void {
     const msg = `Are you sure want to delete ${name} ?`;
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '40%',
@@ -101,7 +98,11 @@ export class SearchProjectComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.router.navigate(['master']);
+        this.projectCommandHandlerService.deleteProject(id).subscribe((data) => {
+          if(data) {
+            this.router.navigate(['master']);
+          }
+        });
       }
     });
   }

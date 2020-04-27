@@ -204,170 +204,103 @@ class PrimarySkill implements IPrimarySkill {
         this.skillName = primarySkill.skillName;
     }
 }
+
 interface IEmployeeListDataModel {
     employeeSqId: number;
     employeeId: number;
-    department: Department[];
-    account: Account[];
-    region: Region[];
-    location: Location[];
-    firstName: string;
-    middleName: string;
-    lastName: string;
+    department: Department;
+    account: Account;
+    region: Region;
+    location: Location;
+    employeeName: string;
     mobileNum: number;
     emailId: string;
-    grade: Grade[];
-    designation: Designation[];
+    grade: Grade;
+    designation: Designation;
     reportingManager: string;
     previousExp: number;
     joiningDate: string;
-    billableStatus: BillableStatus[];
-    serviceLine: ServiceLine[];
+    billableStatus: BillableStatus;
+    serviceLine: ServiceLine;
     activityName: string;
-    primarySkill: PrimarySkill[];
     experienceGaps: number;
-    role: Role[];
-    academics: Academics[];
+    academics: Academics;
     insUser: string;
     insDate: string;
     lastUpdateUser: number;
     lastUpdateDate: string;
-    designationId: number;
-    departmentId: number;
-    regionId: number;
-    accountId: number;
-    serviceLineId: number;
-    billableStatusId: number;
-    locationId: number;
-    gradeId: number;
-    academicId: number;
-    projectTaggingId: number;
-    roleId: number;
-    primarySkillId: number;
-    projectTagging: ProjectTagging[];
 }
 export class EmployeeListDataModel implements  IEmployeeListDataModel{
     employeeSqId: number;
     employeeId: number;
-    department: Department[];
-    account: Account[];
-    region: Region[];
-    location: Location[];
-    firstName: string;
-    middleName: string;
-    lastName: string;
+    department: Department;
+    account: Account;
+    region: Region;
+    location: Location;
+    employeeName: string;
     mobileNum: number;
     emailId: string;
-    grade: Grade[];
-    designation: Designation[];
+    grade: Grade;
+    designation: Designation;
     reportingManager: string;
     previousExp: number;
     joiningDate: string;
-    billableStatus: BillableStatus[];
-    serviceLine: ServiceLine[];
+    billableStatus: BillableStatus;
+    serviceLine: ServiceLine;
     activityName: string;
-    primarySkill: PrimarySkill[];
     experienceGaps: number;
-    role: Role[];
-    academics: Academics[];
+    academics: Academics;
     insUser: string;
     insDate: string;
     lastUpdateUser: number;
     lastUpdateDate: string;
-    designationId: number;
-    departmentId: number;
-    regionId: number;
-    accountId: number;
-    serviceLineId: number;
-    billableStatusId: number;
-    locationId: number;
-    gradeId: number;
-    academicId: number;
-    projectTaggingId: number;
-    roleId: number;
-    primarySkillId: number;
-    projectTagging: ProjectTagging[];
-        constructor(employeeListDataModel: EmployeeListDataModel = {
-                    employeeSqId: 0,
-                    employeeId: 0,
-                    department: [],
-                    account: [],
-                    region: [],
-                    location: [],
-                    firstName: "",
-                    middleName: "",
-                    lastName: "",
-                    mobileNum: 0,
-                    emailId: "",
-                    grade: [],
-                    designation: [],
-                    reportingManager: "",
-                    previousExp: 0,
-                    joiningDate: "",
-                    billableStatus: [],
-                    serviceLine: [],
-                    activityName: "",
-                    primarySkill: [],
-                    experienceGaps: 0,
-                    role: [],
-                    academics: [],
-                    insUser: "",
-                    insDate: "",
-                    lastUpdateUser: 0,
-                    lastUpdateDate: "",
-                    designationId: 0,
-                    departmentId: 0,
-                    regionId: 0,
-                    accountId: 0,
-                    serviceLineId: 0,
-                    billableStatusId: 0,
-                    locationId: 0,
-                    gradeId: 0,
-                    academicId: 0,
-                    projectTaggingId: 0,
-                    roleId: 0,
-                    primarySkillId: 0,
-                    projectTagging: [],
+        constructor(employeeListDataModel: IEmployeeListDataModel = {
+            employeeSqId: 0,
+            employeeId: 0,
+            department: new Department(),
+            account: new Account(),
+            region: new Region(),
+            location: new Location(),
+            employeeName: "",
+            mobileNum: 0,
+            emailId: "",
+            grade: new Grade(),
+            designation: new Designation(),
+            reportingManager: "",
+            previousExp: 0,
+            joiningDate: "",
+            billableStatus: new BillableStatus(),
+            serviceLine: new ServiceLine(),
+            activityName: "",
+            experienceGaps: 0,
+            academics: new Academics(),
+            insUser: "",
+            insDate: "",
+            lastUpdateUser: 0,
+            lastUpdateDate: "",
                 }) {
-            this.employeeSqId = employeeListDataModel.employeeSqId || 0;
-            this.employeeId = employeeListDataModel.employeeId || 0;
-            this.firstName = employeeListDataModel.firstName || '';
-            this.middleName = employeeListDataModel.middleName || '';
-            this.lastName = employeeListDataModel.lastName || '';
-            this.mobileNum = employeeListDataModel.mobileNum || 0;
-            this.emailId = employeeListDataModel.emailId || '';
-            this.department = employeeListDataModel.department || [];
-            this.account = employeeListDataModel.account || [];
-            this.region = employeeListDataModel.region || [];
-            this.location = employeeListDataModel.location || [];
-            this.grade = employeeListDataModel.grade || [];
-            this.designation = employeeListDataModel.designation || [];
-            this.billableStatus = employeeListDataModel.billableStatus || [];
-            this.serviceLine = employeeListDataModel.serviceLine || [];
-            this.academics = employeeListDataModel.academics || [];
-            this.reportingManager = employeeListDataModel.reportingManager || '';
-            this.previousExp = employeeListDataModel.previousExp || 0;
-            this.joiningDate = employeeListDataModel.joiningDate || '';
-            this.activityName = employeeListDataModel.activityName || '';
-            this.primarySkill = employeeListDataModel.primarySkill || [];
-            this.experienceGaps = employeeListDataModel.experienceGaps || 0;
-            this.role = employeeListDataModel.role ||  [],
-            this.insUser = employeeListDataModel.insUser || '';
-            this.insDate = employeeListDataModel.insDate || '';
-            this.lastUpdateUser = employeeListDataModel.lastUpdateUser || 0;
-            this.lastUpdateDate = employeeListDataModel.lastUpdateDate || '';
-            this.designationId = employeeListDataModel.designationId || 0;
-            this.departmentId = employeeListDataModel.departmentId || 0;
-            this.regionId = employeeListDataModel.regionId || 0;
-            this.accountId = employeeListDataModel.accountId || 0;
-            this.serviceLineId = employeeListDataModel.serviceLineId || 0;
-            this.billableStatusId = employeeListDataModel.billableStatusId || 0;
-            this.locationId = employeeListDataModel.locationId || 0;
-            this.gradeId = employeeListDataModel.gradeId || 0;
-            this.academicId = employeeListDataModel.academicId || 0;
-            this.projectTaggingId = employeeListDataModel.projectTaggingId || 0;
-            this.roleId = employeeListDataModel.roleId || 0;
-            this.primarySkillId = employeeListDataModel.primarySkillId || 0;
-            this.projectTagging = employeeListDataModel.projectTagging || []
+                    this.employeeSqId = employeeListDataModel.employeeSqId || 0;
+                    this.employeeId = employeeListDataModel.employeeId || 0;
+                    this.employeeName = employeeListDataModel.employeeName || '';
+                    this.mobileNum = employeeListDataModel.mobileNum || 0;
+                    this.emailId = employeeListDataModel.emailId || '';
+                    this.department = employeeListDataModel.department || new Department();
+                    this.account = employeeListDataModel.account || new Account();
+                    this.region = employeeListDataModel.region || new Region();
+                    this.location = employeeListDataModel.location || new Location();
+                    this.grade = employeeListDataModel.grade || new Grade();
+                    this.designation = employeeListDataModel.designation || new Designation();
+                    this.billableStatus = employeeListDataModel.billableStatus || new BillableStatus();
+                    this.serviceLine = employeeListDataModel.serviceLine || new ServiceLine();
+                    this.academics = employeeListDataModel.academics || new Academics();
+                    this.reportingManager = employeeListDataModel.reportingManager || '';
+                    this.previousExp = employeeListDataModel.previousExp || 0;
+                    this.joiningDate = employeeListDataModel.joiningDate || '';
+                    this.activityName = employeeListDataModel.activityName || '';
+                    this.experienceGaps = employeeListDataModel.experienceGaps || 0;
+                    this.insUser = employeeListDataModel.insUser || '';
+                    this.insDate = employeeListDataModel.insDate || '';
+                    this.lastUpdateUser = employeeListDataModel.lastUpdateUser || 0;
+                    this.lastUpdateDate = employeeListDataModel.lastUpdateDate || '';
         }
 }

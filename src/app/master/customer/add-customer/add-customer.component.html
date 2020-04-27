@@ -1,30 +1,49 @@
+<!-- <app-loading-animation></app-loading-animation> -->
 <section>
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h2 class="section-sub-title">Add Customer</h2>
+        <h2 class="section-sub-title">Add Account</h2>
         <hr>
       </div>
       <div class="panel-body">
-        <div class="row">
+        <div class="row" [formGroup]="customerAddForm">
             <div class="col-xs-8 col-md-8 mx-auto">
                 <div class="form-group">
-                    <label for="customerName">Customer name</label>
-                    <input type="text" class="form-control" [formControl] ="customerName" id="customerName" placeholder="Customer Name" required name="customerName">
+                    <label for="accountName">Account Name</label>
+                    <input type="text" 
+                        class="form-control" 
+                        formControlName="accountName" 
+                        id="accountName" 
+                        placeholder="Account Name" 
+                        name="accountName">
+                    <app-on-screen-message
+                        appFormName="CustomerAdd"
+                        appFieldName="accountName"></app-on-screen-message>
                 </div>
                 <div class="form-group">
                     <label for="region">Region</label>
-                    <mat-select placeholder="Region" class="drop-down-input form-control" [formControl] ="region" required>
-                    <mat-option *ngFor="let region of regionList" [value]="region.regionId">{{region.regionName}}</mat-option>
+                    <mat-select 
+                        placeholder="Region" 
+                        class="drop-down-input form-control" 
+                        formControlName ="region">
+                        <mat-option 
+                        *ngFor="let region of regionList" 
+                        [value]="region">
+                        {{region.regionName}}
+                    </mat-option>
                     </mat-select>
+                    <app-on-screen-message
+                        appFormName="CustomerAdd"
+                        appFieldName="region"></app-on-screen-message>
                 </div>
                 <div class="">
-                    <button class="btn btn-success margin-10px" [disabled]= "!(customerName.valid && region.valid)" (click)="addCustomer()">
+                    <button class="btn btn-success margin-10px" [disabled]= "!(customerAddForm.valid)" (click)="addCustomer()">
                         <span class="material-icons">
                             add
                         </span>
                         Add
                     </button>
-                    <button class="btn btn-secondary margin-10px" (click)="clear()">
+                    <button class="btn btn-secondary margin-10px"  (click)="clear()">
                         <span class="material-icons">
                             clear
                         </span>

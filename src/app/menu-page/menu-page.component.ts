@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from './../login/auth.service';
 
 interface Food {
@@ -31,15 +31,17 @@ export class MenuPageComponent implements OnInit {
   }
 
   
-  onSearch(){
+  onSearch(): void {
     this.router.navigate(['/employees']);
   }
 
-  onProjectSearch(){
-    this.router.navigate(['/search-project']);
+  onProjectSearch(): void{
+    this.router.navigate(['/master/search-project']);
   }
 
-  
+  onAccountSearch() {
+    this.router.navigate(['/master']);
+  }
 
  
 }

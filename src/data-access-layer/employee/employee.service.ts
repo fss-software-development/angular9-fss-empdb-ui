@@ -11,7 +11,7 @@ import {FormModalConverterService} from '../../framework'
 @Injectable()
 export class EmployeeDataService implements EmployeeDataInterface {
 
-  private baseUrl = 'http://localhost:8081/empdb/services/v1';
+  private baseUrl = 'http://localhost:8080/empdb/services/v1';
 
   constructor(
     private http: HttpClient,
@@ -23,26 +23,28 @@ export class EmployeeDataService implements EmployeeDataInterface {
     this.fmConverter.setProperty(formData, empSearchData);
     const url = `${this.baseUrl}/employees/search`;
     return this.http.post<EmployeeListDataModel[]>(url, empSearchData);
+    // return of(<any>EMP_LIST_DATA);
   }
   getEmployee(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/employees/${id}`);
-   // return of(EMP_LIST_DATA);
+    //return this.http.get(`${this.baseUrl}/${id}`);
+    return of(EMP_LIST_DATA);
   }
 
   createEmployee(employee: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/employees`, employee);
+    return this.http.post(`${this.baseUrl}`, employee);
   }
 
   updateEmployee(id: number, value: any): Observable<Object> {
-    return this.http.put(`${this.baseUrl}/employees/${id}`, value);
+    return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
   deleteEmployee(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/employees/${id}`, { responseType: 'text' });
+    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
   getEmployeesList(): Observable<EmployeeListDataModel[]> {
-     return this.http.get<any>(`${this.baseUrl}/employees`);
-    //return of(<any>EMP_LIST_DATA);
+    const url = `${this.baseUrl}/employees`;
+    return this.http.get<EmployeeListDataModel[]>(url);
+    // return of(<any>EMP_LIST_DATA);
   }
 }

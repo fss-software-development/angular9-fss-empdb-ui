@@ -1,33 +1,23 @@
 
 <!--<nav class="navbar bg-dark text-white">-->
   
- <button mat-button [matMenuTriggerFor]="belowMenu"  >EMPLOYEE</button>
+ <button mat-button [matMenuTriggerFor]="belowMenu"  >Employee</button>
 <mat-menu #belowMenu="matMenu" yPosition="below">
-  <button mat-menu-item (click)="onSearch()">SEARCH</button>
+  <button mat-menu-item (click)="onSearch()">Search</button>
 </mat-menu>
 
-<button mat-button [matMenuTriggerFor]="masters" >MASTERS</button>
+<button mat-button [matMenuTriggerFor]="masters" >Masters</button>
 <mat-menu #masters="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="vertebrates">CUSTOMERS</button>
-  <button mat-menu-item [matMenuTriggerFor]="invertebrates">USERS</button>
-  <button mat-menu-item [matMenuTriggerFor]="invertebrates2">PROJECT</button>
+  <button mat-menu-item (click)="onAccountSearch()">Accounts</button>
+  <button mat-menu-item [matMenuTriggerFor]="userSubmenu">User</button>
+  <button mat-menu-item  (click)="onProjectSearch()">Project</button>
 </mat-menu>
 
-<mat-menu #vertebrates="matMenu">
-  <button mat-menu-item >SEARCH CUSTOMER</button>
-  
+<mat-menu #userSubmenu="matMenu">
+  <button mat-menu-item>Add Users</button>
+  <button mat-menu-item>Delete User</button>
+  <button mat-menu-item>Reset Password</button>
 </mat-menu>
-
-<mat-menu #invertebrates="matMenu">
-  <button mat-menu-item>ADD USERS</button>
-  <button mat-menu-item>DELETE USER</button>
-  <button mat-menu-item>RESET PASSWORD</button>
-</mat-menu>
-
-<mat-menu #invertebrates2="matMenu">
-  <button mat-menu-item  (click)="onProjectSearch()">SEARCH PROJECT</button>
-</mat-menu>
-
 
 <button mat-button [matMenuTriggerFor]="mmr" >MMR</button>
 <mat-menu #mmr="matMenu" >

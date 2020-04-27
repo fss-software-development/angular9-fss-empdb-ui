@@ -1,9 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { 
+  Component,
+  OnInit
+ } from "@angular/core";
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import {AutowireViewModel} from '../../framework';
 import {
   EmployeeFormStateService,
-  EmployeeCommandHandlerService
+  EmployeeCommandHandlerService,
+  EmployeeSearchFormModel
 } from '../../services';
 import {AddSearchModalComponent} from './add-search-modal/add-search-modal.component'
 @Component({
@@ -12,7 +18,6 @@ import {AddSearchModalComponent} from './add-search-modal/add-search-modal.compo
   styleUrls: ["./employee-list.component.css"]
 })
 export class EmployeeListComponent implements OnInit {
-  public email: string;
   constructor(
       private commandHandlerService: EmployeeCommandHandlerService,
       private formStateService: EmployeeFormStateService,
@@ -36,6 +41,7 @@ export class EmployeeListComponent implements OnInit {
 
   initSubscriber(): void{
     this.formStateService.employeeList.subscribe((res) => {
+      console.log("initSubscriber", res);
       this.employees= res;
       this.temp = true;
     })
@@ -46,7 +52,6 @@ export class EmployeeListComponent implements OnInit {
   }
 
   employeeDetails(id: number){
-	  console.log(id);
     this.router.navigate(['details', id]);
   }
   
@@ -59,9 +64,5 @@ export class EmployeeListComponent implements OnInit {
       width: '60%',
       data: {}
     });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   this.email = result;
-    // });
   }
 }

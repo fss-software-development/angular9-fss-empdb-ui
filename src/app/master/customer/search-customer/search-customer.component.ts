@@ -12,7 +12,7 @@ import {
   CustomerSearchFormModel,
   CustomerFormStateService
 } from '../../../../services';
-import {ConfirmationModalComponent} from '../../../../app-commons/confirmation-modal/confirmation-modal.component';
+import {ConfirmationModalComponent} from '../../../../app-commons';
 @Component({
   selector: 'app-search-customer',
   templateUrl: './search-customer.component.html',
@@ -23,6 +23,7 @@ export class SearchCustomerComponent implements OnInit {
   customers: any;
   public temp: Object=false;
   public regionList: any[];
+  public title: String;
   @AutowireViewModel('CustomerSearch') customerSearchForm: FormGroup;
   constructor(private masterService: MasterService,
               private route: ActivatedRoute,
@@ -46,6 +47,9 @@ export class SearchCustomerComponent implements OnInit {
     this.customerSearchForm.reset(new CustomerSearchFormModel());
   }
   initSubscriber(): void {
+    this.route.data.subscribe((data) => {
+      this.title = data.title;
+    });
     this.formStateService.customerList.subscribe((res) => {
       this.customers= res;
       this.temp = true;
@@ -58,15 +62,14 @@ export class SearchCustomerComponent implements OnInit {
     })
   }
   goToAddCustomer(): void {
-    this.router.navigate(['master/addcustomer']);
+    this.router.navigate(['master/add-customer']);
   }
 
   viewCustomerDetails(id: number): void {
-    console.log("viewCustomerDetails");
-    this.router.navigate(['master/editcustomer', id]);
+    this.router.navigate(['master/view-customer', id]);
   }
 
-  deleteCustomer(id: number, name: string): void {
+  deleteCustomer(id: any, name: string): void {
     const msg = `Are you sure want to delete ${name} ?`;
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '40%',
@@ -82,7 +85,11 @@ export class SearchCustomerComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.router.navigate(['master']);
+        this.commandHandlerService.deleteCustomer(id).subscribe((data) => {
+          if(data) {
+            this.router.navigate(['master']);
+          }
+        });
       }
     });
   }
