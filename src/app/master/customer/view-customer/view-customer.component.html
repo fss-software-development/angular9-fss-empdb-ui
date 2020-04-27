@@ -5,21 +5,41 @@
         <hr>
       </div>
       <div class="panel-body">
-        <div class="row">
+        <div class="row" [formGroup]="customerEditForm">
             <div class="col-xs-8 col-md-8 mx-auto">
                 <div class="form-group">
-                    <label for="customerName">Customer name</label>
-                    <input type="text" class="form-control" [formControl] ="customerName" id="customerName" placeholder="Customer Name" required name="customerName">
+                    <label for="customerName">Account name</label>
+                    <input type="text" 
+                        class="form-control" 
+                        formControlName="accountName" 
+                        id="accountName" 
+                        placeholder="Account Name" 
+                        name="accountName">
+                    <app-on-screen-message
+                        appFormName="CustomerEdit"
+                        appFieldName="accountName"></app-on-screen-message>
                 </div>
                 <div class="form-group">
                     <label for="region">Region</label>
-                    <mat-select placeholder="Region" class="drop-down-input form-control" [formControl] ="region" required>
-                    <mat-option *ngFor="let region of regionList" [value]="region.regionId">{{region.regionName}}</mat-option>
+                    <mat-select
+                    #accountRegion
+                    placeholder="Region" 
+                    class="drop-down-input form-control"
+                    (selectionChange)="onRegionChange($event)"
+                    formControlName="region">
+                        <mat-option 
+                            *ngFor="let region of regionList"
+                            [value]="region.regionId">
+                            {{region.regionName}}
+                        </mat-option>
                     </mat-select>
+                    <app-on-screen-message
+                        appFormName="CustomerEdit"
+                        appFieldName="region"></app-on-screen-message>
                 </div>
                 <div class="">
                     <button class="btn btn-success margin-10px"
-                      [disabled]= "!(customerName.valid && region.valid)"
+                      [disabled]= "!(customerEditForm.valid)"
                       (click)="updateCustomer()"
                       *ngIf="isEditable">
                         <span class="material-icons">

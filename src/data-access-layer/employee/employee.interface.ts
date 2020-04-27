@@ -6,5 +6,5 @@ export abstract class EmployeeDataInterface {
   abstract createEmployee(employee: Object): Observable<Object>;
   abstract updateEmployee(id: number, value: any): Observable<Object>;
   abstract deleteEmployee(id: number): Observable<any> 
-  abstract getEmployeesList(): Observable<any[]> 
+  abstract getEmployeesList(): Observable<EmployeeListDataModel[]> 
 }

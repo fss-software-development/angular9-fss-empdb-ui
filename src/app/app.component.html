@@ -1,11 +1,11 @@
-<app-menu></app-menu>
+<app-menu ></app-menu>
 <router-outlet></router-outlet>
 <div class="container">
   
   <h2 style="text-align: center;">{{title}}</h2>
   <div class="card">
     <div class="card-body">
-      <app-menu-page></app-menu-page>
+      <app-menu-page *ngIf="enable_menu_page"></app-menu-page>
       <router-outlet></router-outlet>
     </div>
   </div>

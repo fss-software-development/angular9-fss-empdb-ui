@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CustomerFormStateService } from './form-loader.service';
+import { FormLoaderService } from './form-loader.service';
 
-describe('CustomerFormStateService', () => {
-  let service: CustomerFormStateService;
+describe('FormLoaderService', () => {
+  let service: FormLoaderService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CustomerFormStateService);
+    service = TestBed.inject(FormLoaderService);
   });
 
   it('should be created', () => {

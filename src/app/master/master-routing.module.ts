@@ -1,18 +1,13 @@
-import {NgModule} from '@angular/core';
-import {
-  RouterModule,
-  Routes
-} from '@angular/router';
-import {MasterComponent} from './master.component';
-import {SearchCustomerComponent} from './customer/search-customer/search-customer.component';
-import {AddCustomerComponent} from './customer/add-customer/add-customer.component';
-import {ViewCustomerComponent} from './customer/view-customer/view-customer.component';
-import {DeleteCustomerComponent} from './customer/delete-customer/delete-customer.component';
+import { NgModule} from '@angular/core';
+import { RouterModule,Routes} from '@angular/router';
+import { MasterComponent} from './master.component';
 import { SearchProjectComponent } from './project/search-project/search-project.component';
 import { AddProjectComponent } from './project/add-project/add-project.component';
 import { ViewProjectComponent } from './project/view-project/view-project.component';
-import { from } from 'rxjs';
-const USERS_LIST_ROUTES: Routes = [
+import {SearchCustomerComponent} from './customer/search-customer/search-customer.component';
+import {AddCustomerComponent} from './customer/add-customer/add-customer.component';
+import {ViewCustomerComponent} from './customer/view-customer/view-customer.component';
+const MASTER_ROUTES: Routes = [
   {
     path: 'master',
     data: {
@@ -24,21 +19,21 @@ const USERS_LIST_ROUTES: Routes = [
         path: '',
         component: SearchCustomerComponent,
         data: {
-          title: 'Search Customer'
+          title: 'Search Account'
         },
       },
       {
-        path: 'addcustomer',
+        path: 'add-customer',
         component: AddCustomerComponent,
         data: {
-          title: 'Add Customer'
+          title: 'Add Account'
         },
       },
       {
-        path: 'editcustomer/:id',
+        path: 'view-customer/:id',
         component: ViewCustomerComponent,
         data: {
-          title: 'View Customer'
+          title: 'View Account'
         },
       },
       {
@@ -56,10 +51,10 @@ const USERS_LIST_ROUTES: Routes = [
         },
       },
       {
-        path: 'view-project',
+        path: 'view-project/:id',
         component: ViewProjectComponent,
         data: {
-          title: 'View Project '
+          title: ' View Project '
         },
       }
     ]
@@ -67,7 +62,7 @@ const USERS_LIST_ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(USERS_LIST_ROUTES)],
+  imports: [RouterModule.forChild(MASTER_ROUTES)],
   exports: [
     RouterModule
   ],

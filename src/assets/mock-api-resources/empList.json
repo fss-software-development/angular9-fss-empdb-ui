@@ -1,88 +1,173 @@
 [
     {
-        "employeeSqid": 1,
-        "employeeId": "10453",
-        "departmentId": 1,
-        "departmentName": "",
-        "accountId": 1,
-        "accountName": "",
-        "regionId": 1,
-        "regionName": "",
-        "locationId": 1,
-        "locationName": "",
-        "firstName": "Rama",
-        "middleName": "Prabhu",
-        "lastName": "Radhakrishnan",
-        "mobileNumber": "1234",
-        "emailId": "ramaprabhur@fss.co.in",
-        "gradeId": 4,
-        "designationId": 1,
-        "designationName": "",
-        "reportingManager": "Balaji",
-        "previousExperience": 0,
-        "joiningDate": "2004-08-19",
-        "activityName": "",
-        "billableId": 1,
-        "billableName": "",
-        "serviceLineId": 1,
-        "serviceLineName": "",
-        "primarySkillId": 1,
-        "primarySkillName": "",
-        "experienceGaps": 0,
-        "academicsId": 1,
-        "academicsName": "",
-        "projectTaggingId": 1,
-        "projectTaggingName": "",
-        "definiteRoleId": 1,
-        "definiteRoleName": "",
-        "possibleRoleId": 1,
-        "possibleRoleName": "",
+        "employeeSqId": 1,
+        "employeeId": 16001,
+        "department": {
+            "departmentId": 1,
+            "departmentName": "Solution-OFSD",
+            "departmentHead": "Vinod B"
+        },
+        "account": {
+            "accountId": 1,
+            "accountName": "HDFC",
+            "region": {
+                "regionId": 1,
+                "regionName": "US"
+            }
+        },
+        "region": {
+            "regionId": 1,
+            "regionName": "US"
+        },
+        "location": {
+            "locationId": 1,
+            "locationName": "Mumbai"
+        },
+        "employeeName": "rakesh",
+        "mobileNum": 7662767,
+        "emailId": "rakeshm@fss.co.in",
+        "grade": {
+            "gradeId": 1,
+            "gradeName": "M1"
+        },
+        "designation": {
+            "designationId": 1,
+            "designationName": "PROJECT LEADER"
+        },
+        "reportingManager": "xyz",
+        "previousExp": 1,
+        "joiningDate": "2020-01-01",
+        "billableStatus": {
+            "billableStatusId": 1,
+            "billableStatus": "EARMARKED"
+        },
+        "serviceLine": {
+            "serviceLineId": 1,
+            "serviceLineName": "Engineering"
+        },
+        "activityName": "xz",
+        "experienceGaps": 1,
+        "academics": {
+            "academicsId": 1,
+            "academicsName": "BSC"
+        },
         "insUser": 1,
-        "insDate": "2020-03-28T17:57:25.000+0000",
-        "lastUpdUser": 1,
-        "lastUpdDate": null
+        "insDate": "2020-01-01",
+        "lastUpdateUser": 1,
+        "lastUpdateDate": "2020-01-01"
     },
     {
-        "employeeSqid": 1,
-        "employeeId": "10454",
-        "departmentId": 1,
-        "departmentName": "",
-        "accountId": 1,
-        "accountName": "",
-        "regionId": 1,
-        "regionName": "",
-        "locationId": 1,
-        "locationName": "",
-        "firstName": "Prasad",
-        "middleName": "",
-        "lastName": "Gidh",
-        "mobileNumber": "1234",
-        "emailId": "prasadg@fss.co.in",
-        "gradeId": 4,
-        "designationId": 1,
-        "designationName": "",
-        "reportingManager": "Anil B. Bawa",
-        "previousExperience": 0,
-        "joiningDate": "2004-08-19",
-        "activityName": "",
-        "billableId": 1,
-        "billableName": "",
-        "serviceLineId": 1,
-        "serviceLineName": "",
-        "primarySkillId": 1,
-        "primarySkillName": "",
-        "experienceGaps": 0,
-        "academicsId": 1,
-        "academicsName": "",
-        "projectTaggingId": 1,
-        "projectTaggingName": "",
-        "definiteRoleId": 1,
-        "definiteRoleName": "",
-        "possibleRoleId": 1,
-        "possibleRoleName": "",
+        "employeeSqId": 2,
+        "employeeId": 16003,
+        "department": {
+            "departmentId": 2,
+            "departmentName": "Solution-AMS",
+            "departmentHead": "Vinod B"
+        },
+        "account": {
+            "accountId": 1,
+            "accountName": "HDFC",
+            "region": {
+                "regionId": 1,
+                "regionName": "US"
+            }
+        },
+        "region": {
+            "regionId": 1,
+            "regionName": "US"
+        },
+        "location": {
+            "locationId": 1,
+            "locationName": "Mumbai"
+        },
+        "employeeName": "maaggggggggggax",
+        "mobileNum": 763767,
+        "emailId": "aaarakgggssceddshm@fss.co.in",
+        "grade": {
+            "gradeId": 1,
+            "gradeName": "M1"
+        },
+        "designation": {
+            "designationId": 1,
+            "designationName": "PROJECT LEADER"
+        },
+        "reportingManager": "xyz",
+        "previousExp": 1,
+        "joiningDate": "2020-01-01",
+        "billableStatus": {
+            "billableStatusId": 1,
+            "billableStatus": "EARMARKED"
+        },
+        "serviceLine": {
+            "serviceLineId": 1,
+            "serviceLineName": "Engineering"
+        },
+        "activityName": "xz",
+        "experienceGaps": 1,
+        "academics": {
+            "academicsId": 1,
+            "academicsName": "BSC"
+        },
         "insUser": 1,
-        "insDate": "2020-03-28T17:57:25.000+0000",
-        "lastUpdUser": 1,
-        "lastUpdDate": null
+        "insDate": "2020-04-20",
+        "lastUpdateUser": 1,
+        "lastUpdateDate": "2020-04-20"
+    },
+    {
+        "employeeSqId": 4,
+        "employeeId": 16002,
+        "department": {
+            "departmentId": 1,
+            "departmentName": "Solution-OFSD",
+            "departmentHead": "Vinod B"
+        },
+        "account": {
+            "accountId": 1,
+            "accountName": "HDFC",
+            "region": {
+                "regionId": 1,
+                "regionName": "US"
+            }
+        },
+        "region": {
+            "regionId": 1,
+            "regionName": "US"
+        },
+        "location": {
+            "locationId": 1,
+            "locationName": "Mumbai"
+        },
+        "employeeName": "maaxxggggggggggax",
+        "mobileNum": 7463767,
+        "emailId": "aaaracckgggssceddshm@fss.co.in",
+        "grade": {
+            "gradeId": 1,
+            "gradeName": "M1"
+        },
+        "designation": {
+            "designationId": 1,
+            "designationName": "PROJECT LEADER"
+        },
+        "reportingManager": "xyz",
+        "previousExp": 1,
+        "joiningDate": "2020-01-01",
+        "billableStatus": {
+            "billableStatusId": 1,
+            "billableStatus": "EARMARKED"
+        },
+        "serviceLine": {
+            "serviceLineId": 1,
+            "serviceLineName": "Engineering"
+        },
+        "activityName": "xz",
+        "experienceGaps": 1,
+        "academics": {
+            "academicsId": 1,
+            "academicsName": "BSC"
+        },
+        "insUser": 1,
+        "insDate": "2020-04-20",
+        "lastUpdateUser": 1,
+        "lastUpdateDate": "2020-04-20"
     }
 ]

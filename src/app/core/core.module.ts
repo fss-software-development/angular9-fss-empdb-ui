@@ -4,28 +4,30 @@ import {
   SkipSelf
 } from '@angular/core';
 import {DatePipe} from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 import {MasterService} from '../master.service';
 import {AuthGuardService} from '../auth-guard.service';
 import {
-  EmployeeCommandHandlerService,
-  EmployeeFormStateService,
-  ProjectFormStateService,
-  ProjectCommandHandlerService,
-  CustomerCommandHandlerService,
-  CustomerFormStateService
+ EmployeeCommandHandlerService,
+ EmployeeFormStateService,
+ ProjectFormStateService,
+ ProjectCommandHandlerService,
+ CustomerCommandHandlerService,
+ CustomerFormStateService
 } from '../../services';
 
-import {FormModalConverterService} from '../../framework';
 import {
-  EmployeeDataService,
-  EmployeeDataInterface,
-  ProjectDataInterface,
+  FormModalConverterService
+} from '../../framework';
+ import {
+    EmployeeDataService,
+    EmployeeDataInterface,
+    ProjectDataInterface,
     ProjectDataService,
-  CustomerDataInterface,
-  CustomerDataService
-} from '../../data-access-layer';
-import {AuthenticationService} from '../login/auth.service';
+    CustomerDataInterface,
+    CustomerDataService
+ } from '../../data-access-layer'
 /**
  * The Core Module
  *
@@ -43,26 +45,25 @@ import {AuthenticationService} from '../login/auth.service';
     DatePipe,
     MasterService,
     AuthGuardService,
+    FormModalConverterService,
     EmployeeCommandHandlerService,
     EmployeeFormStateService,
-    FormModalConverterService,
     ProjectCommandHandlerService,
     ProjectFormStateService,
     CustomerCommandHandlerService,
     CustomerFormStateService,
     {
-      provide: EmployeeDataInterface,
-      useClass: EmployeeDataService
-    },
-    {
       provide: CustomerDataInterface,
       useClass: CustomerDataService
     },
-    AuthenticationService,
     {
       provide: ProjectDataInterface,
       useClass: ProjectDataService
-    }
+    },
+    {
+      provide: EmployeeDataInterface,
+      useClass: EmployeeDataService
+    },
   ]
 })
 
