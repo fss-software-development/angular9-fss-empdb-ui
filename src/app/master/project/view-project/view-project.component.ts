@@ -1,6 +1,5 @@
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
-import {MasterService}  from '../../../master.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {
@@ -30,9 +29,7 @@ export class ViewProjectComponent implements OnInit {
   public title: String;
   @AutowireViewModel('ProjectEdit') projectEditForm: FormGroup;
   private projectEditFormData: ProjectEditFormModel;
-  constructor(
-              private masterService: MasterService,
-              public dialog: MatDialog,
+  constructor(public dialog: MatDialog,
               private route: ActivatedRoute,
               private router: Router,
               private projectCommandHandlerService: ProjectCommandHandlerService,

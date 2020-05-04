@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import {MasterService} from '../../../master.service';
 import {ConfirmationModalComponent} from '../../../../app-commons';
 import {
   AutowireViewModel,
@@ -14,7 +13,9 @@ import {
   ProjectListFormModel,
   ProjectFormStateService,
   CustomerCommandHandlerService,
-  CustomerFormStateService
+  CustomerFormStateService,
+  CommonFormLoaderService,
+  CommonCommandHandlerService
 } from '../../../../services';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
@@ -51,23 +52,24 @@ export class SearchProjectComponent implements OnInit, OnDestroy {
 
 
   @AutowireViewModel('ProjectSearch') projectSearchForm: FormGroup;
-  constructor(private masterService: MasterService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private router: Router,
               public dialog: MatDialog,
               private projectCommandHandlerService: ProjectCommandHandlerService,
               private customerCommandHandlerService: CustomerCommandHandlerService,
               private projectFormStateService: ProjectFormStateService,
               private customerFormStateService: CustomerFormStateService,
-              private formHelperService: FormHelperService
+              private formHelperService: FormHelperService,
+              private commonCommandHandlerService: CommonCommandHandlerService,
+              private commonFormLoaderService: CommonFormLoaderService
             ) { }
 
   ngOnInit(): void {
     this.buidForm();
     this.projectCommandHandlerService.getProjectList();
     this.customerCommandHandlerService.getCustomersList();
+    this.commonCommandHandlerService.getRegionList();
     this.initSubscriber();
-    this.getRegionList();
   }
   ngOnDestroy(): void {
     this.projectFormStateService.destroyFormState();
@@ -79,6 +81,9 @@ export class SearchProjectComponent implements OnInit, OnDestroy {
     this.projectSearchForm.reset(new ProjectSearchFormModel());
   }
   initSubscriber():void{
+    this.commonFormLoaderService.regionList.subscribe((data) => {
+      this.regionList = data;
+    })
     this.projectFormStateService.projectList.subscribe((data) => {
       this.dataSource = new MatTableDataSource<ProjectListFormModel>(data);
       this.dataSource.paginator = this.paginator;
@@ -90,11 +95,6 @@ export class SearchProjectComponent implements OnInit, OnDestroy {
 
   }
   
-  getRegionList(): void {
-    this.masterService.getRegion().subscribe((data) => {
-      this.regionList = data;
-    })
-  }
   goToAddProject(): void {
     this.router.navigate(['master/add-project']);
   }

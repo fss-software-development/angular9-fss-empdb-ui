@@ -1,7 +1,4 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { ViewProjectComponent } from '../view-project/view-project.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {MasterService} from '../../../master.service';
+import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {
@@ -11,9 +8,10 @@ import {
 import {
   ProjectAddFormModel,
   ProjectCommandHandlerService,
-  ProjectFormStateService,
   CustomerCommandHandlerService,
-  CustomerFormStateService
+  CustomerFormStateService,
+  CommonFormLoaderService,
+  CommonCommandHandlerService
 } from '../../../../services';
 
 @Component({
@@ -27,17 +25,18 @@ export class AddProjectComponent implements OnInit , OnDestroy{
   public accountList: any[];
   @AutowireViewModel('ProjectAdd') projectAddForm: FormGroup;
   constructor(
-          private masterService: MasterService,
-          private route: ActivatedRoute,
           private router: Router,
           private projectCommandHandlerService: ProjectCommandHandlerService,
           private customerCommandHandlerService: CustomerCommandHandlerService,
           private customerFormStateService: CustomerFormStateService,
-          private formHelperService:FormHelperService
+          private formHelperService:FormHelperService,
+          private commonCommandHandlerService: CommonCommandHandlerService,
+          private commonFormLoaderService: CommonFormLoaderService
           ) { }
 
   ngOnInit(): void {
     this.customerCommandHandlerService.getCustomersList();
+    this.commonCommandHandlerService.getRegionList();
     this.initSubscriber();
     this.buidForm();
   }
@@ -54,7 +53,7 @@ export class AddProjectComponent implements OnInit , OnDestroy{
     this.customerFormStateService.customerList.subscribe((data) => {
       this.accountList = data;
     })
-    this.masterService.getRegion().subscribe((data) => {
+    this.commonFormLoaderService.regionList.subscribe((data) => {
       this.regionList = data;
     })
     this.formHelperService.hideLoadingSpinner.next(true);
