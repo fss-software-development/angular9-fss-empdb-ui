@@ -6,7 +6,6 @@ import {
 import {DatePipe} from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import {MasterService} from '../master.service';
 import {AuthGuardService} from '../auth-guard.service';
 import {
  EmployeeCommandHandlerService,
@@ -52,7 +51,6 @@ import {
   ],
   providers: [
     DatePipe,
-    MasterService,
     AuthGuardService,
     FormModalConverterService,
     EmployeeCommandHandlerService,

@@ -6,12 +6,10 @@ import { ViewProjectComponent } from './project/view-project/view-project.compon
 import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './customer/add-customer/add-customer.component';
 import { SearchCustomerComponent } from './customer/search-customer/search-customer.component';
-import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 import { ViewCustomerComponent } from './customer/view-customer/view-customer.component';
 import {MasterRoutingModule} from './master-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {MasterComponent } from './master.component';
-import { DeleteProjectComponent } from './project/delete-project/delete-project.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +18,9 @@ import { DeleteProjectComponent } from './project/delete-project/delete-project.
     SearchProjectComponent,
     AddProjectComponent,
     ViewProjectComponent,
-    DeleteProjectComponent,
     CustomerComponent, 
     AddCustomerComponent, 
     SearchCustomerComponent, 
-    DeleteCustomerComponent, 
     ViewCustomerComponent
   ],
 

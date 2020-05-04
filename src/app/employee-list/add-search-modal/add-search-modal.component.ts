@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef} from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
-import {MasterService}  from '../../master.service';
 import {
   AutowireViewModel,
   FormHelperService
@@ -37,7 +36,6 @@ public academicsList: any[];
 @AutowireViewModel('EmployeeSearch') employeeSearchForm: FormGroup;
 
   constructor(
-    private masterService: MasterService,
     public dialogRef: MatDialogRef<AddSearchModalComponent>,
     private commandHandlerService: EmployeeCommandHandlerService,
     private formHelperService: FormHelperService,

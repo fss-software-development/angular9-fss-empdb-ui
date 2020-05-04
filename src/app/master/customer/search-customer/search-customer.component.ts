@@ -9,12 +9,13 @@ import {
    Router,
    ActivatedRoute
    } from '@angular/router';
-import {MasterService} from '../../../master.service';
 import {
   CustomerCommandHandlerService,
   CustomerSearchFormModel,
   CustomerFormStateService,
-  CustomerListFormModel
+  CustomerListFormModel,
+  CommonFormLoaderService,
+  CommonCommandHandlerService
 } from '../../../../services';
 import {ConfirmationModalComponent} from '../../../../app-commons';
 import {MatTableDataSource} from '@angular/material/table';
@@ -48,22 +49,20 @@ export class SearchCustomerComponent implements OnInit {
 
 
   @AutowireViewModel('CustomerSearch') customerSearchForm: FormGroup;
-  constructor(private masterService: MasterService,
-              private route: ActivatedRoute,
+  constructor(private route: ActivatedRoute,
               private router: Router,
               public dialog: MatDialog,
               private formStateService: CustomerFormStateService,
               private commandHandlerService: CustomerCommandHandlerService,
-              private formHelperService: FormHelperService
-
-              
+              private formHelperService: FormHelperService,
+              private commonCommandHandlerService: CommonCommandHandlerService,
+              private commonFormLoaderService: CommonFormLoaderService,
             ) { }
 
   ngOnInit(): void {
     this.buidForm();
     this.commandHandlerService.getCustomersList();
     this.initSubscriber();
-    this.getRegionList();
   }
   buidForm(): void {
     this.customerSearchForm.reset(new CustomerSearchFormModel());
@@ -72,6 +71,9 @@ export class SearchCustomerComponent implements OnInit {
    this.route.data.subscribe((data) => {
       this.title = data.title;
     });
+    this.commonFormLoaderService.regionList.subscribe((data) => {
+      this.regionList = data;
+    })
     this.formStateService.customerList.subscribe((data) => {
       this.dataSource = new MatTableDataSource<CustomerListFormModel>(data);
       this.dataSource.paginator = this.paginator;
@@ -86,11 +88,6 @@ export class SearchCustomerComponent implements OnInit {
 
   }
   
-  getRegionList(): void {
-    this.masterService.getRegion().subscribe((data) => {
-      this.regionList = data;
-    })
-  }
   goToAddCustomer(): void {
     this.router.navigate(['master/add-customer']);
   }

@@ -13,7 +13,6 @@ import {
   CommonFormLoaderService,
   CommonCommandHandlerService
 } from '../../../../services'
-import {MasterService}  from '../../../master.service';
 var _this;
 @Component({
   selector: 'app-view-customer',
@@ -26,9 +25,7 @@ export class ViewCustomerComponent implements OnInit, OnDestroy {
   public title: String;
   @AutowireViewModel('CustomerEdit') customerEditForm: FormGroup;
   private custEditFormData: CustomerEditFormModel;
-  constructor(
-              private masterService: MasterService,
-              public dialog: MatDialog,
+  constructor(public dialog: MatDialog,
               private route: ActivatedRoute,
               private router: Router,
               private commandHandlerService: CustomerCommandHandlerService,

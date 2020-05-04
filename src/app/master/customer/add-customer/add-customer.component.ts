@@ -8,9 +8,10 @@ import {
 import {
   CustomerAddFormModel,
   CustomerCommandHandlerService,
-  CustomerFormStateService
+  CustomerFormStateService,
+  CommonFormLoaderService,
+  CommonCommandHandlerService
 } from '../../../../services'
-import {MasterService}  from '../../../master.service';
 @Component({
   selector: 'app-add-customer',
   templateUrl: './add-customer.component.html',
@@ -20,16 +21,17 @@ export class AddCustomerComponent implements OnInit, OnDestroy {
   public regionList: any[];
   @AutowireViewModel('CustomerAdd') customerAddForm: FormGroup;
   constructor(
-          private masterService: MasterService,
-          private route: ActivatedRoute,
           private router: Router,
           private commandHandlerService: CustomerCommandHandlerService,
           private formStateService: CustomerFormStateService,
-          private formHelperService: FormHelperService
+          private formHelperService: FormHelperService,
+          private commonCommandHandlerService: CommonCommandHandlerService,
+          private commonFormLoaderService: CommonFormLoaderService,
           ) { }
 
   ngOnInit(): void {
     this.formHelperService.hideLoadingSpinner.next(true);
+    this.commonCommandHandlerService.getRegionList();
     this.buidForm();
     this.getRegion();
   }
@@ -40,7 +42,7 @@ export class AddCustomerComponent implements OnInit, OnDestroy {
     this.customerAddForm.reset(new CustomerAddFormModel());
   }
   getRegion(): void {
-    this.masterService.getRegion().subscribe((data) => {
+    this.commonFormLoaderService.regionList.subscribe((data) => {
       this.regionList = data;
     })
   }
