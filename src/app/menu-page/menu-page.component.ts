@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AuthenticationService } from './../login/auth.service';
-
+import {FormHelperService} from '../../framework';
 interface Food {
   value: string;
   viewValue: string;
@@ -14,32 +14,37 @@ interface Food {
   styleUrls: ['./menu-page.component.css']
 })
 export class MenuPageComponent implements OnInit {
-
+  enable_menu_page = false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthenticationService,
-    //private authenticationService: AuthenticationService
+    private formHelperService: FormHelperService
     ){   }
 
     isUserLoggedIn$: Observable<boolean>;                 
 
 
-  ngOnInit() {
-   // this.isUserLoggedIn$ = this.authService.isUserLoggedIn;
-
-  }
+    ngOnInit(): void{
+      this.formHelperService.isMenuEnabled.subscribe((data) => {
+        if(data){
+          this.enable_menu_page = data;
+        }
+     })
+    }
 
   
-  onSearch(){
+  onSearch(): void {
     this.router.navigate(['/employees']);
   }
 
-  onProjectSearch(){
-    this.router.navigate(['/search-project']);
+  onProjectSearch(): void{
+    this.router.navigate(['/master/search-project']);
   }
 
-  
+  onAccountSearch() {
+    this.router.navigate(['/master']);
+  }
 
  
 }

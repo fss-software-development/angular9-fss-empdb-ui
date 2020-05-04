@@ -1,55 +1,80 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
-import {MasterService}  from '../../../master.service';
-import {ConfirmationModalComponent} from '../../../../app-commons/confirmation-modal/confirmation-modal.component';
+import {
+  AutowireViewModel,
+  FormHelperService
+} from '../../../../framework';
+import {
+  CustomerEditFormModel,
+  CustomerCommandHandlerService,
+  CustomerFormStateService,
+  CommonFormLoaderService,
+  CommonCommandHandlerService
+} from '../../../../services'
+var _this;
 @Component({
   selector: 'app-view-customer',
   templateUrl: './view-customer.component.html',
   styleUrls: ['./view-customer.component.css']
 })
-export class ViewCustomerComponent implements OnInit {
+export class ViewCustomerComponent implements OnInit, OnDestroy {
   public regionList: any[];
-  public customerName: FormControl = new FormControl();
-  public region: FormControl = new FormControl();
   public isEditable: boolean = false;
   public title: String;
-  constructor(
-              private masterService: MasterService,
-              public dialog: MatDialog,
+  @AutowireViewModel('CustomerEdit') customerEditForm: FormGroup;
+  private custEditFormData: CustomerEditFormModel;
+  constructor(public dialog: MatDialog,
               private route: ActivatedRoute,
-              private router: Router
-          ) { }
+              private router: Router,
+              private commandHandlerService: CustomerCommandHandlerService,
+              private formStateService: CustomerFormStateService,
+              private formHelperService: FormHelperService,
+              private commonCommandHandlerService: CommonCommandHandlerService,
+              private commonFormLoaderService: CommonFormLoaderService,
+          ) { 
+            _this = this;
+          }
 
   ngOnInit(): void {
-    this.getRegion();
-    this.loadData();
+    this.initData();
+    this.initSubscriber();
   }
-  
-  loadData(): void {
+  ngOnDestroy(): void {
+    this.clear();
+  }
+  initData():void {
+    this.formHelperService.hideLoadingSpinner.next(true);
     const currentCustomerId = this.route.snapshot.paramMap.get('id');
+    this.commandHandlerService.getCustomerById(currentCustomerId);
+    this.commonCommandHandlerService.getRegionList();
+    
+  }
+  initSubscriber(): void {
     this.route.data.subscribe((data) => {
       this.title = data.title;
     });
-    this.masterService.getCustomerById(currentCustomerId).subscribe((data) => {
-    console.log("loadData", data);
+    this.commonFormLoaderService.regionList.subscribe((data) => {
+      this.regionList = data;
+    })
+    this.formStateService.editCustomer   
+    .subscribe((data) => {
       if(data){
-        this.customerName.setValue(data[0].customerName);
-        this.region.setValue(data[0].region.regionId);
+        this.custEditFormData = data;
+        this.customerEditForm.reset(new CustomerEditFormModel(data));
         this.enableDisableForm();
       }
     })
-  }
-
-  getRegion(): void {
-    this.masterService.getRegion().subscribe((data) => {
-      this.regionList = data;
-    })
+    this.formHelperService.hideLoadingSpinner.next(true);
+    setTimeout(function() { 
+      _this.setDefaultDropdownValues();
+     }, 1000);
   }
 
   updateCustomer(): void {
-    this.openDialog();
+    this.formHelperService.hideLoadingSpinner.next(false);
+    this.commandHandlerService.updateCustomer(this.customerEditForm.value);
   }
   editCustomer(): void {
     this.isEditable = this.isEditable? false : true;
@@ -58,41 +83,25 @@ export class ViewCustomerComponent implements OnInit {
 
   enableDisableForm(): void {
     if(this.isEditable){
-      this.customerName.enable();
-      this.region.enable();
-      this.title = "Edit Customer";
+      this.customerEditForm.enable();
+      this.title = "Edit Account";
     } else {
-      this.customerName.disable();
-      this.region.disable();
+      this.customerEditForm.disable();
     }
   }
 
   clear(): void {
-    this.customerName.reset();
-    this.region.reset();
+    this.customerEditForm.reset();
   }
 
   back(): void {
     this.router.navigate(['master']);
   }
 
-  openDialog(): void {
-    const msg = `Customer updated successfully`;
-    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-      width: '40%',
-      data: {
-        header: "Update Confirmation",
-        message: msg,
-        noButtonRequired: false,
-        yesButtonRequired: true
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.clear();
-        this.router.navigate(['master']);
-      }
-    });
+  setDefaultDropdownValues(): void {
+    let accData = {
+      region: this.regionList[this.regionList.findIndex(x => x.regionId === this.custEditFormData.region.regionId)],
+    }
+    this.customerEditForm.patchValue(accData);
   }
 }

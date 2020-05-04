@@ -16,19 +16,19 @@ class Region implements IRegion {
 interface ICustomerListFormModel {
     accountId? : number;
     accountName?: string;
-    region: Region[];
+    region: Region;
 }
 export class CustomerListFormModel implements  ICustomerListFormModel {
     accountId? : number;
     accountName: string;
-    region: Region[];
+    region: Region;
         constructor(customerListFormModel: ICustomerListFormModel = {
             accountId: 0,
             accountName: "",
-                region: [],
+                region: new Region(),
                 }) {
             this.accountId = customerListFormModel.accountId || 0;
             this.accountName = customerListFormModel.accountName || "";
-            this.region = customerListFormModel.region || [];
+            this.region = customerListFormModel.region || new Region();
         }
 }

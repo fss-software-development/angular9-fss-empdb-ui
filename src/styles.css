@@ -21,7 +21,10 @@ margin-bottom: 50px;
   color: #999999;
   text-align: center;
 }
-
+/* section {
+  border: 0 0 1px 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+} */
 footer{
   border-top: 10px solid #333333;
 }
@@ -34,6 +37,17 @@ server-side-angular-way.component.css
 .no-data-available {
   text-align: center;
 }
+table {
+  width: 100%;
+}
+
+.mat-header-cell {
+  color: #f8f9fa;
+  background-color: #da6161;
+}
+/*
+   src/styles.css (i.e. your global style)
+*/
 .dataTables_empty {
   display: none;
 }
@@ -42,7 +56,7 @@ server-side-angular-way.component.css
   margin: 10px
 }
 
-.search-button{
+.search-button {
   margin-top: 100px;
   margin-bottom: 100px;
 }
@@ -54,12 +68,9 @@ server-side-angular-way.component.css
 .space-right{
   margin-right: 5px;
 }
-.push-right {
+.push-right{
   float: right;
   text-align: right;
-}
-.center{
-  text-align: center;
 }
 .btn-search {
   background: #424242 !important;
@@ -97,11 +108,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .custom-control {
-  max-width: 40%;
+  max-width: 40% !important;
   display: inline !important;
 }
 .custom-matseclect {
-  max-width: 40%;
+  max-width: 40% !important;
   display: inline;
 }
 hr {
@@ -123,3 +134,65 @@ section {
   font-weight: 600;
   
 }
+/** validation message - starts */
+.required-text::before {
+  content: "*";
+  color: #da3941;
+}
+
+.error-text, .error-msg , .field-err-msg {
+  background: #da3941;
+  color: #fff;
+  border-radius: 0 0 5px 5px;
+  padding: 5px;
+}
+
+.error-msg {
+  margin-top: 0;
+}
+
+.field-err-msg {
+  margin-top: -0.20em;
+}
+
+.ng-dirty.ng-invalid.form-control:focus,
+.ng-dirty.ng-invalid.form-control,
+.ng-touched.ng-invalid.form-control {
+  border-color: #da3941;
+}
+
+.non-editable-warning {
+  display: inline-block;
+  width: 70%;
+  left: .7em;
+  line-height: 1em;
+  color: #e0e0e0;
+}
+.non-editable-warning > i {
+  vertical-align: middle;
+}
+.mat-error {
+  margin-top: -15px;
+}
+
+.loading {
+  color: white;
+  padding-top: 50px;
+}
+.fss-color{
+  color: red;
+  font-size: larger;
+  font-stretch: expanded;
+}
+p {
+  font-family: Lato;
+  font-weight: bolder;
+  font-style: normal;
+}
+
+.required-text::before {
+  content: "*";
+  color: red;
+}
+
+

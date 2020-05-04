@@ -18,7 +18,7 @@ export class AuthenticationService {
   }
 
   authenticationService(username: String, password: String) {
-    return this.http.get('http://localhost:8081/empdb/services/v1/employees',
+    return this.http.get('http://localhost:8081/empdb/services/empdb/v1/employees',
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
         this.username = username;
         this.password = password;
@@ -53,4 +53,6 @@ export class AuthenticationService {
     if (user === null) return ''
     return user
   }
+
+  
 }

@@ -1,108 +1,147 @@
-<section class="search-section-border">
+<section class="search-section">
   <div class="panel panel-primary">
-    <div class="panel-heading">
-    
-      <h2 class="section-sub-title">Project Search</h2>
-    </div>
-    <div class="panel-body">
-      <div class="row" [formGroup]="projectSearchForm">
-        <div class="col-xs-12 col-md-12 max-auto">
-          
-            <input type="text"  
-            class="form-control custom-control space-right" 
-            id="projectName" 
-            formControlName="projectName"
-            placeholder="Project Name" 
-            name="projectName">
-            
-            <mat-select
-            placeholder="Account" 
-            class="drop-down-input form-control custom-matseclect" 
-            formControlName="account"
-            multiple>
-              <mat-option 
-                *ngFor="let account of accountList" 
-                [value]="account">
+    <div class="w-100 p-3" style="background-color:#fff7f6;">
+      <div class="panel-heading">
+        <!--<h4 class="section-sub-title">Project Search</h4>-->
+        <span><b>Project Search</b></span>
+      </div>
+      &nbsp;
+      <div class="panel-body">
+        <div class="row" [formGroup]="projectSearchForm">
+          <div class="col-xs-12 col-md-12 max-auto">
+
+            <!-- <input type="text" class="form-control custom-control space-right" id="projectName"
+              formControlName="projectName" placeholder="Project Name" name="projectName">-->
+
+            <mat-form-field class="mat-input-change">
+              <mat-label>Project Name</mat-label>
+              <input matInput placeholder="ProjectName" id="projectName" formControlName="projectName"
+                name="projectName">
+            </mat-form-field>
+
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            <!-- <mat-select placeholder="Account" class="drop-down-input form-control custom-matseclect"
+              formControlName="account" multiple>
+              <mat-option *ngFor="let account of accountList" [value]="account">
                 {{account.accountName}}
               </mat-option>
-          </mat-select>
+            </mat-select>-->
+            <mat-form-field class="mat-input-change">
+              <mat-label>Account</mat-label>
+              <mat-select placeholder="Account" formControlName="account" multiple>
+                <mat-option *ngFor="let account of accountList" [value]="account">{{account.accountName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
 
-            <mat-select
-              placeholder="Region" 
-              class="drop-down-input form-control custom-matseclect" 
-              formControlName="region"
-              multiple>
-                <mat-option 
-                  *ngFor="let region of regionList" 
-                  [value]="region">
-                  {{region.regionName}}
-                </mat-option>
-            </mat-select>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!-- <mat-select placeholder="Region" class="drop-down-input form-control custom-matseclect"
+              formControlName="region" multiple>
+              <mat-option *ngFor="let region of regionList" [value]="region">
+                {{region.regionName}}
+              </mat-option>
+            </mat-select>-->
 
-            <button  
-              class="btn btn-search margin-10px"
-              (click)="onProjectSearch()">
-                <span class="material-icons">
-                    search
-                    </span>
-                Search
+            <mat-form-field class="mat-input-change">
+              <mat-label>Region</mat-label>
+              <mat-select placeholder="Region" formControlName="region" multiple>
+                <mat-option *ngFor="let region of regionList" [value]="region">{{region.regionName}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+            <button class="btn btn-search margin-10px" (click)="onProjectSearch()">
+              <span class="material-icons">
+                search
+              </span>
+              Search
             </button>
-           </div>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </section>
+
 <section>
+  <div class="mat-elevation-z8">
     <div class="panel panel-primary">
-      <div class="panel-heading">
-          <h2 class="section-sub-title">Project List</h2>
+      <div class="w-100 p-3" style="background-color:lightgray;">
+        <div class="panel-heading">
+          <span>Page List</span><br>
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search Project">
+          </mat-form-field>
           <div class="row push-right">
-          <button  class="btn btn-outline-secondary margin-10px" (click)="goToAddProject()">
-            <span class="material-icons">
+            <button class="btn btn-secondary margin-10px btn" (click)="goToAddProject()">
+              <span class="material-icons">
                 add
-                </span>
-                Add Project
-          </button>
+              </span>
+              Add Project
+            </button>
+          </div>
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Project-Name Column -->
+            <ng-container matColumnDef="projectName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
+              <td mat-cell *matCellDef="let project"> {{project.projectName}} </td>
+            </ng-container>
+
+
+            <!-- Account Column -->
+            <ng-container matColumnDef="account">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Account </th>
+              <td mat-cell *matCellDef="let project"> {{project.account.accountName}} </td>
+            </ng-container>
+
+            <!-- Region Column -->
+            <ng-container matColumnDef="region">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Region </th>
+              <td mat-cell *matCellDef="let project"> {{project.region.regionName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="projectStartDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date </th>
+              <td mat-cell *matCellDef="let project"> {{project.projectStartDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="projectEndDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>End Date </th>
+              <td mat-cell *matCellDef="let project"> {{project.projectEndDate}} </td>
+            </ng-container>
+
+            <!-- Get Details -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let project">
+                <button mat-icon-button color="primary" (click)="viewProjectDetails(project.projectId)"> <span
+                    class="material-icons">
+                    visibility
+                  </span></button>
+                &nbsp;&nbsp;
+                <button mat-icon-button color="warn" (click)="deleteProject(project.projectId, project.projectName)">
+                  <span class="material-icons">
+                    delete
+                  </span></button>
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
         </div>
       </div>
-      <div class="panel-body">
-        <table class="table table-striped table-bordered table-sm row-border hover"  datatable [dtOptions]="dtOptions" *ngIf="this.temp">
-          <thead>
-            <tr>
-              <th>Project Name</th>
-              <th>Customer</th>
-              <th>Region</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody >
-            <tr *ngFor="let project of projects">
-              <td>{{project.projectName}}</td>
-              <td>{{project.account.accountName}}</td>
-              <td>{{project.region.regionName}}</td>
-              <td>{{project.projectStartDate}}</td>
-              <td>{{project.projectEndDate}}</td>
-              <td>
-                    <button (click)="viewProjectDetails(project.projectId)" class="btn btn-info" style="margin-left: 10px">
-                    <span class="material-icons">
-                        visibility
-                        </span>
-                    Details
-                    </button>
-                    <button (click)="deleteProject(project.projectId, project.projectName)" class="btn btn-danger" style="margin-left: 10px">
-                    <span class="material-icons">
-                        delete
-                        </span>
-                    Delete
-                    </button>
-              </td>
-             
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
-  </section>
-  
+  </div>
+</section>

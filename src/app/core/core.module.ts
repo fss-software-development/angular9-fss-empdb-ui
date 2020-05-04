@@ -4,28 +4,38 @@ import {
   SkipSelf
 } from '@angular/core';
 import {DatePipe} from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { throwIfAlreadyLoaded } from './module-import-guard';
-import {MasterService} from '../master.service';
 import {AuthGuardService} from '../auth-guard.service';
 import {
-  EmployeeCommandHandlerService,
-  EmployeeFormStateService,
-  ProjectFormStateService,
-  ProjectCommandHandlerService,
-  CustomerCommandHandlerService,
-  CustomerFormStateService
+ EmployeeCommandHandlerService,
+ EmployeeFormStateService,
+ ProjectFormStateService,
+ ProjectCommandHandlerService,
+ CustomerCommandHandlerService,
+ CustomerFormStateService,
+ CommonCommandHandlerService,
+ CommonFormLoaderService,
+ LoginCommandHandlerService
 } from '../../services';
 
-import {FormModalConverterService} from '../../framework';
 import {
-  EmployeeDataService,
-  EmployeeDataInterface,
-  ProjectDataInterface,
+  FormModalConverterService,
+  FormHelperService,
+  CustomValidatorsService
+} from '../../framework';
+ import {
+    EmployeeDataService,
+    EmployeeDataInterface,
+    ProjectDataInterface,
     ProjectDataService,
-  CustomerDataInterface,
-  CustomerDataService
-} from '../../data-access-layer';
-import {AuthenticationService} from '../login/auth.service';
+    CustomerDataInterface,
+    CustomerDataService,
+    CommonDataInterface,
+    CommonDataService,
+    LoginDataService,
+    LoginDataInterface
+ } from '../../data-access-layer'
 /**
  * The Core Module
  *
@@ -41,27 +51,38 @@ import {AuthenticationService} from '../login/auth.service';
   ],
   providers: [
     DatePipe,
-    MasterService,
     AuthGuardService,
+    FormModalConverterService,
     EmployeeCommandHandlerService,
     EmployeeFormStateService,
-    FormModalConverterService,
     ProjectCommandHandlerService,
     ProjectFormStateService,
     CustomerCommandHandlerService,
     CustomerFormStateService,
+    CommonCommandHandlerService,
+    CommonFormLoaderService,
+    FormHelperService,
+    CustomValidatorsService,
+    LoginCommandHandlerService,
+    {
+      provide: CustomerDataInterface,
+      useClass: CustomerDataService
+    },
+    {
+      provide: ProjectDataInterface,
+      useClass: ProjectDataService
+    },
     {
       provide: EmployeeDataInterface,
       useClass: EmployeeDataService
     },
     {
-      provide: CustomerDataInterface,
-      useClass: CustomerDataService
+      provide: CommonDataInterface,
+      useClass: CommonDataService
     },
-    AuthenticationService,
     {
-      provide: ProjectDataInterface,
-      useClass: ProjectDataService
+      provide: LoginDataInterface,
+      useClass: LoginDataService
     }
   ]
 })

@@ -3,12 +3,14 @@ import {BehaviorSubject} from 'rxjs';
 import {FormModalConverterService} from "../../../framework/utils";
 import {
   EmployeeSearchFormModel,
-  EmployeeListFormModel
+  EmployeeListFormModel,
+  EmployeeEditFormModel
 } from "./form-model";
 @Injectable()
 export class EmployeeFormStateService {
   
   employeeList = new BehaviorSubject(<EmployeeListFormModel[]>[]);
+  editEmployee = new BehaviorSubject(new EmployeeEditFormModel());
   constructor(
                   private formModalConverter: FormModalConverterService
               ) {  }
@@ -20,9 +22,14 @@ export class EmployeeFormStateService {
   updateFormState(apiData, formName) {
     switch (formName) {
       case 'employeeList' : {
-        console.log("updateFormState", apiData)
         const employeeList: EmployeeListFormModel[] = this.formModalConverter.convertToArray(<any>apiData, EmployeeListFormModel);
         this.employeeList.next(employeeList);
+        break;
+      }
+      case 'employeeEdit': {
+        const employeeEditData = new EmployeeEditFormModel();
+        this.formModalConverter.setProperty(apiData, employeeEditData);
+        this.editEmployee.next(employeeEditData);
         break;
       }
     }
@@ -31,5 +38,6 @@ export class EmployeeFormStateService {
 
   destroyFormState() {
     this.employeeList.next([]);
+    this.editEmployee.next(new EmployeeEditFormModel ());
   }
 }

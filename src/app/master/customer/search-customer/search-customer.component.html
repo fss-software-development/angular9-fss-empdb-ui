@@ -1,85 +1,105 @@
-<section class="search-section-border">
+<section class="search-section">
   <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h2 class="section-sub-title">Advanced Search</h2>
-    </div>
-    <div class="panel-body">
-      <div class="row" [formGroup]="customerSearchForm">
-        <div class="col-xs-12 col-md-12 max-auto">
-            <input type="text"  
-              class="form-control custom-control space-right" 
-              id="accountName" 
-              placeholder="Account Name" 
-              name="accountName"
-              formControlName="accountName">
-            <mat-select placeholder="Region" 
-              class="drop-down-input form-control custom-matseclect" 
-              formControlName="region"
-              multiple>
-              <mat-option 
-                *ngFor="let region of regionList" 
-                [value]="region">
+    <div class="w-100 p-3" style="background-color:#fff7f6;">
+      <div class="panel-heading">
+        <span><b>{{title}}</b></span>
+      </div>
+      &nbsp;
+      <div class="panel-body">
+        <div class="row" [formGroup]="customerSearchForm">
+          <div class="col-xs-12 col-md-12 max-auto">
+           <!-- <input type="text" class="form-control custom-control space-right" id="accountName"
+              placeholder="Account Name" name="accountName" formControlName="accountName">-->
+              <mat-form-field class="mat-input-change space-right">
+                <mat-label>Account Name</mat-label>
+                <input matInput placeholder="Account Name" id="accountName"
+                formControlName="accountName" name="accountName">
+              </mat-form-field>
+
+           <!-- <mat-select placeholder="Region" class="drop-down-input form-control custom-matseclect"
+              formControlName="region" multiple>
+              <mat-option *ngFor="let region of regionList" [value]="region">
                 {{region.regionName}}
               </mat-option>
-            </mat-select>
-            <button  
-                class="btn btn-search margin-10px"
-                (click)="onCustomerSearch()">
-                <span class="material-icons">
-                    search
-                    </span>
-                Search
+            </mat-select>-->
+            <mat-form-field class="mat-input-change custom-matseclect">
+              <mat-label>Region</mat-label>
+                <mat-select placeholder="Region"
+                 formControlName="region" multiple>
+                <mat-option *ngFor="let region of regionList" [value]="region">{{region.regionName}}</mat-option>
+             </mat-select>
+           </mat-form-field>
+            <button class="btn btn-search margin-10px" (click)="onCustomerSearch()">
+              <span class="material-icons">
+                search
+              </span>
+              Search
             </button>
-            
+
+          </div>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </section>
 <section>
+  <div class="mat-elevation-z8">
     <div class="panel panel-primary">
-      <div class="panel-heading">
-          <h2 class="section-sub-title">Customer List</h2>
+      <div class="w-100 p-3" style="background-color:lightgray;">
+        <div class="panel-heading">
+          <span>Account List</span><br>
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Search Account">
+          </mat-form-field>
           <div class="row push-right">
-          <button  class="btn btn-outline-secondary margin-10px" (click)="goToAddCustomer()">
-            <span class="material-icons">
+            <button class="btn btn-secondary margin-10px btn" (click)="goToAddCustomer()">
+              <span class="material-icons">
                 person_add
-                </span>
-                Add Customer
-          </button>
+              </span>
+              Add Account
+            </button>
+          </div>
+          <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+
+            <!-- Account Column -->
+            <ng-container matColumnDef="accountName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Account </th>
+              <td mat-cell *matCellDef="let customer"> {{customer.accountName}} </td>
+            </ng-container>
+
+            <!-- Region Column -->
+            <ng-container matColumnDef="region">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Region </th>
+              <td mat-cell *matCellDef="let customer"> {{customer.region.regionName}} </td>
+            </ng-container>
+
+            <!-- Get Details -->
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let customer">
+                <button mat-icon-button color="primary" (click)="viewCustomerDetails(customer.accountId)"> <span
+                    class="material-icons">
+                    visibility
+                  </span></button>
+                &nbsp;&nbsp;
+                <button mat-icon-button color="warn" (click)="deleteCustomer(customer.accountId, customer.accountName)">
+                  <span class="material-icons">
+                    delete
+                  </span></button>
+              </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
         </div>
       </div>
-      <div class="panel-body">
-        <table class="table table-striped table-bordered table-sm row-border hover"  datatable [dtOptions]="dtOptions" *ngIf="this.temp">
-          <thead>
-            <tr>
-              <th>Customer Name</th>
-              <th>Region</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody >
-            <tr *ngFor="let customer of customers">
-              <td>{{customer.customerName}}</td>
-              <td>{{customer.region.regionName}}</td>
-              <td>
-                    <button (click)="viewCustomerDetails(customer.customerId)" class="btn btn-info" style="margin-left: 10px">
-                    <span class="material-icons">
-                        visibility
-                        </span>
-                    Details
-                    </button>
-                    <button (click)="deleteCustomer(customer.customerId, customer.customerName)" class="btn btn-danger" style="margin-left: 10px">
-                    <span class="material-icons">
-                        delete
-                        </span>
-                    Delete
-                    </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
-  </section>
-  
+  </div>
+</section>

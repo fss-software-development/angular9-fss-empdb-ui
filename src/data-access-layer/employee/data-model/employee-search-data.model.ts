@@ -134,6 +134,22 @@ class Academics implements IAcademics {
         this.academicsName = academics.academicsName;
     }
 }
+
+interface IProject {
+    projectId: string,
+    projectName: string
+}
+class Project implements IProject {
+    projectId: string;
+    projectName: string;
+    constructor(project: IProject = {
+        projectId: "",
+        projectName: ""
+    }) {
+        this.projectId = project.projectId;
+        this.projectName = project.projectName;
+    }
+}
 interface IEmployeeSearchDataModel {
     employeeSqId: string;
     employeeId: string;
@@ -145,6 +161,7 @@ interface IEmployeeSearchDataModel {
     grade: Grade[];
     designation: Designation[];
     billableStatus: BillableStatus[];
+    projects: Project[];
     serviceLine: ServiceLine[];
     academics: Academics[];
 }
@@ -159,6 +176,7 @@ export class EmployeeSearchDataModel implements  IEmployeeSearchDataModel{
     grade: Grade[];
     designation: Designation[];
     billableStatus: BillableStatus[];
+    projects: Project[];
     serviceLine: ServiceLine[];
     academics: Academics[];
         constructor(employeeSearchDataModel: IEmployeeSearchDataModel = {
@@ -172,6 +190,7 @@ export class EmployeeSearchDataModel implements  IEmployeeSearchDataModel{
             grade: [],
             designation: [],
             billableStatus: [],
+            projects:[],
             serviceLine: [],
             academics: [],
                 }) {
@@ -185,6 +204,7 @@ export class EmployeeSearchDataModel implements  IEmployeeSearchDataModel{
             this.grade = employeeSearchDataModel.grade;
             this.designation = employeeSearchDataModel.designation;
             this.billableStatus = employeeSearchDataModel.billableStatus;
+            this.projects = employeeSearchDataModel.projects;
             this.serviceLine = employeeSearchDataModel.serviceLine;
             this.academics = employeeSearchDataModel.academics;
         }

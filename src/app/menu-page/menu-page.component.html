@@ -1,36 +1,37 @@
 
 <!--<nav class="navbar bg-dark text-white">-->
+  <mat-toolbar>
+    
+    <mat-toolbar-row class="mat-elevation-z4">
+      <span>
+        <img src="../../assets/images/fss-logo-new.png">
+      </span>
+      <span class="example-spacer"></span>
+      <ng-container *ngIf="enable_menu_page">
+      <button mat-button  [matMenuTriggerFor]="belowMenu">Employee</button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item (click)="onSearch()">Search</button>
+      </mat-menu>
+
+       <button mat-button  [matMenuTriggerFor]="masters" >Masters</button>
+           <mat-menu #masters="matMenu">
+       <button mat-menu-item  (click)="onAccountSearch()">Accounts</button>
+       <button mat-menu-item [matMenuTriggerFor]="userSubmenu">User</button>
+       <button mat-menu-item  (click)="onProjectSearch()">Project</button>
+      </mat-menu>
+
+      <mat-menu #userSubmenu="matMenu">
+       <button mat-menu-item>Add Users</button>
+       <button mat-menu-item>Delete User</button>
+      <button mat-menu-item>Reset Password</button>
+      </mat-menu>
+
+        <button mat-button  [matMenuTriggerFor]="mmr" >MMR</button>
+         <mat-menu #mmr="matMenu" >
+           <button mat-menu-item>Item 1</button>
+           <button mat-menu-item>Item 2</button>
+         </mat-menu>
+      </ng-container>
+    </mat-toolbar-row>
   
- <button mat-button [matMenuTriggerFor]="belowMenu"  >EMPLOYEE</button>
-<mat-menu #belowMenu="matMenu" yPosition="below">
-  <button mat-menu-item (click)="onSearch()">SEARCH</button>
-</mat-menu>
-
-<button mat-button [matMenuTriggerFor]="masters" >MASTERS</button>
-<mat-menu #masters="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="vertebrates">CUSTOMERS</button>
-  <button mat-menu-item [matMenuTriggerFor]="invertebrates">USERS</button>
-  <button mat-menu-item [matMenuTriggerFor]="invertebrates2">PROJECT</button>
-</mat-menu>
-
-<mat-menu #vertebrates="matMenu">
-  <button mat-menu-item >SEARCH CUSTOMER</button>
-  
-</mat-menu>
-
-<mat-menu #invertebrates="matMenu">
-  <button mat-menu-item>ADD USERS</button>
-  <button mat-menu-item>DELETE USER</button>
-  <button mat-menu-item>RESET PASSWORD</button>
-</mat-menu>
-
-<mat-menu #invertebrates2="matMenu">
-  <button mat-menu-item  (click)="onProjectSearch()">SEARCH PROJECT</button>
-</mat-menu>
-
-
-<button mat-button [matMenuTriggerFor]="mmr" >MMR</button>
-<mat-menu #mmr="matMenu" >
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
+  </mat-toolbar>

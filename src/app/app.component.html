@@ -1,18 +1,15 @@
-<app-menu></app-menu>
+<!--<app-menu></app-menu>-->
+<app-menu-page></app-menu-page>
 <router-outlet></router-outlet>
-<div class="container">
-  
-  <h2 style="text-align: center;">{{title}}</h2>
   <div class="card">
+    <app-loading-animation></app-loading-animation>
     <div class="card-body">
-      <app-menu-page></app-menu-page>
       <router-outlet></router-outlet>
     </div>
-  </div>
 </div>
 
 <footer class="footer">
   <div class="container">
-      <span>Copyright © 2018 Financial Software & Systems Pvt. Ltd. All Rights Reserved</span>
+      <span>Copyright © 2018 Financial Software & Systems Pvt. Ltd. All Rights Reserved   <b>version 1.0</b> </span>
   </div>
 </footer>

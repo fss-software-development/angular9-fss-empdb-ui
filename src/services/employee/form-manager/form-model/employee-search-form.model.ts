@@ -165,7 +165,7 @@ interface IEmployeeSearchFormModel {
     grade: Grade[];
     designation: Designation[];
     billableStatus: BillableStatus[];
-    project: Project[];
+    projects: Project[];
     serviceLine: ServiceLine[];
     academics: Academics[];
 }
@@ -181,7 +181,7 @@ export class EmployeeSearchFormModel implements  IEmployeeSearchFormModel{
     grade: Grade[];
     designation: Designation[];
     billableStatus: BillableStatus[];
-    project: Project[];
+    projects: Project[];
     serviceLine: ServiceLine[];
     academics: Academics[];
         constructor(employeeSearchFormModel: IEmployeeSearchFormModel = {
@@ -195,7 +195,7 @@ export class EmployeeSearchFormModel implements  IEmployeeSearchFormModel{
             grade: [],
             designation: [],
             billableStatus: [],
-            project:[],
+            projects:[],
             serviceLine: [],
             academics: [],
                 }) {
@@ -209,7 +209,7 @@ export class EmployeeSearchFormModel implements  IEmployeeSearchFormModel{
             this.grade = employeeSearchFormModel.grade;
             this.designation = employeeSearchFormModel.designation;
             this.billableStatus = employeeSearchFormModel.billableStatus;
-            this.project = employeeSearchFormModel.project;
+            this.projects = employeeSearchFormModel.projects;
             this.serviceLine = employeeSearchFormModel.serviceLine;
             this.academics = employeeSearchFormModel.academics;
         }

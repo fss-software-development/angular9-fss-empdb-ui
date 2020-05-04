@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddSearchModalComponent } from './add-search-modal.component';
 
-describe('AddSearchModalComponent', () => {
+describe('AddSearchModelComponent', () => {
   let component: AddSearchModalComponent;
   let fixture: ComponentFixture<AddSearchModalComponent>;
 
