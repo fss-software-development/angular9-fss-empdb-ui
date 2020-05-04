@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import {AutowireViewModel} from '../../../../framework';
+import {
+  AutowireViewModel,
+  FormHelperService
+} from '../../../../framework';
 import { 
    Router,
    ActivatedRoute
@@ -10,26 +13,50 @@ import {MasterService} from '../../../master.service';
 import {
   CustomerCommandHandlerService,
   CustomerSearchFormModel,
-  CustomerFormStateService
+  CustomerFormStateService,
+  CustomerListFormModel
 } from '../../../../services';
-import {ConfirmationModalComponent} from '../../../../app-commons/confirmation-modal/confirmation-modal.component';
+import {ConfirmationModalComponent} from '../../../../app-commons';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+
+export interface customer {
+
+  accountName: string;
+  region: number;
+}
+
 @Component({
   selector: 'app-search-customer',
   templateUrl: './search-customer.component.html',
   styleUrls: ['./search-customer.component.css']
 })
 export class SearchCustomerComponent implements OnInit {
-  dtOptions: DataTables.Settings = {};
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
   customers: any;
-  public temp: Object=false;
   public regionList: any[];
+  public accountList: any[];
+  public title: String;
+  public apiResponse: CustomerSearchFormModel[];
+  public dataSource = new MatTableDataSource<CustomerListFormModel>();
+
+  public displayedColumns: string[] = [ 'accountName', 'region','action'];
+
+
+
   @AutowireViewModel('CustomerSearch') customerSearchForm: FormGroup;
   constructor(private masterService: MasterService,
               private route: ActivatedRoute,
               private router: Router,
               public dialog: MatDialog,
+              private formStateService: CustomerFormStateService,
               private commandHandlerService: CustomerCommandHandlerService,
-              private formStateService: CustomerFormStateService
+              private formHelperService: FormHelperService
+
+              
             ) { }
 
   ngOnInit(): void {
@@ -37,19 +64,26 @@ export class SearchCustomerComponent implements OnInit {
     this.commandHandlerService.getCustomersList();
     this.initSubscriber();
     this.getRegionList();
-    this.dtOptions = {
-        pagingType: 'full_numbers',
-        pageLength: 5
-      };
   }
   buidForm(): void {
     this.customerSearchForm.reset(new CustomerSearchFormModel());
   }
   initSubscriber(): void {
-    this.formStateService.customerList.subscribe((res) => {
-      this.customers= res;
-      this.temp = true;
+   this.route.data.subscribe((data) => {
+      this.title = data.title;
+    });
+    this.formStateService.customerList.subscribe((data) => {
+      this.dataSource = new MatTableDataSource<CustomerListFormModel>(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+     })
+
+     this.formStateService.customerList.subscribe((res) => {
+      this.accountList = res;
+
     })
+    this.formHelperService.hideLoadingSpinner.next(true);
+
   }
   
   getRegionList(): void {
@@ -58,15 +92,14 @@ export class SearchCustomerComponent implements OnInit {
     })
   }
   goToAddCustomer(): void {
-    this.router.navigate(['master/addcustomer']);
+    this.router.navigate(['master/add-customer']);
   }
 
   viewCustomerDetails(id: number): void {
-    console.log("viewCustomerDetails");
-    this.router.navigate(['master/editcustomer', id]);
+    this.router.navigate(['master/view-customer', id]);
   }
 
-  deleteCustomer(id: number, name: string): void {
+  deleteCustomer(id: any, name: string): void {
     const msg = `Are you sure want to delete ${name} ?`;
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '40%',
@@ -82,11 +115,21 @@ export class SearchCustomerComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result){
+        this.formHelperService.hideLoadingSpinner.next(false);
+        this.commandHandlerService.deleteCustomer(id);
         this.router.navigate(['master']);
       }
     });
   }
   onCustomerSearch(): void {
+    this.formHelperService.hideLoadingSpinner.next(false);
     this.commandHandlerService.getCustomersListOnSearch(this.customerSearchForm.value);
   }
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
+

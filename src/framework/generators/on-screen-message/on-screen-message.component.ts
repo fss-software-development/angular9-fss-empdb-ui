@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {FieldErrorHandler} from '../error-handling-decorator';
 import {SLIDE_IN} from '../../utils/animation/animation-constant';
+import {MultiKeyTranslatePipeMeta} from '../../utils/multikeytranslate.pipe';
 import {
   AutowireViewModel,
   getOnScreenMessage
@@ -30,7 +31,11 @@ export class OnScreenMessageComponent {
   /**
    * Custom object as input for MultiKeyTranslatePipe
    */
-
+  @Input() appMultiKeyTranslate: MultiKeyTranslatePipeMeta;
+  
+  @Input() multikeytranslate: String;
+  
+  @Input() isMatElement: boolean = false;
 
   constructor() {
   }

@@ -1,0 +1,90 @@
+{
+  "LOCALE": {
+    "EN": "English",
+    "ES": "Spanish"
+  },
+  "DATE_FORMAT": {
+    "24_HR_MEDIUM": "yyyy-MM-dd HH:mm:ss"
+  },
+  "NO_DATA": {
+    "TABLE_EMPTY": "No table data to display.",
+    "DROPDOWN_FILTER": "No results found."
+  },
+  "ERROR_PAGE": {
+    "PAGE_NOT_FOUND": "Page Not Found",
+    "USER_LIST_LABEL": "Go to Main Page"
+  },
+  
+  "EMPLOYEE_NAME": {
+    "VALID_ERR_MSG": {
+      "REQUIRED": "Employee name required.\n",
+      "MIN_LENGTH": "Employee name must have {{minValue}} to {{maxValue}} characters.\n",
+      "MAX_LENGTH": "Employee name must have {{minValue}} to {{maxValue}} characters.\n",
+      "INVALID": "The Employee name can only have printable characters."
+    }
+  },
+        
+        
+  "RESPONSE_CODE": {
+    "0": {
+      "MESSAGE": "The request cannot be processed because of a connection error.",
+      "TITLE": "Error in connection"
+    },
+    "400": {
+      "MESSAGE": "The server was unable to process the request. Please try again.",
+      "TITLE": "Bad Request"
+    },
+    "401": {
+      "MESSAGE": "Access has been denied because of invalid credentials.",
+      "TITLE": "Unauthorized"
+    },
+    "403": {
+      "MESSAGE": "You do not have the permission to perform this request.",
+      "TITLE": "Forbidden"
+    },
+    "404": {
+      "MESSAGE": "The requested resource was not found.",
+      "TITLE": "Not Found"
+    },
+    "405": {
+      "MESSAGE": "The request method is not supported for the requested resource.",
+      "TITLE": "Access Denied"
+    },
+    "408": {
+      "MESSAGE": "There was a server timeout. Please try again.",
+      "TITLE": "Request time out"
+    },
+    "409": {
+      "MESSAGE": "The request cannot be processed because of a conflict.",
+      "TITLE": "Conflict"
+    },
+    "422": {
+      "MESSAGE": "The server cannot handle the request because of a semantic error.",
+      "TITLE": "Unprocessable Entity"
+    },
+    "500": {
+      "MESSAGE": "A server error prevented the processing of your request.",
+      "TITLE": "Internal Server Error"
+    },
+    "502": {
+      "MESSAGE": "The server received an invalid response while trying to process the request.",
+      "TITLE": "Bad Gateway"
+    },
+    "503": {
+      "MESSAGE": "The server is unable to handle the request because of temporary unavailability or scheduled maintenance. Please try again later.",
+      "TITLE": "Service Unavailable"
+    },
+    "SUCCESS_DEFAULT": {
+      "MESSAGE": "The request has been completed successfully.",
+      "TITLE": "Success"
+    },
+    "ERROR_DEFAULT": {
+      "MESSAGE": "The request cannot be completed because of an error.",
+      "TITLE": "Error"
+    },
+    "UNKNOWN": {
+      "MESSAGE": "An unknown error has occurred. Please try again.",
+      "TITLE": "Unknown error"
+    }
+  }
+}

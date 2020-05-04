@@ -1,0 +1,22 @@
+input{
+    width:25%;
+    border-color: black;
+}
+
+.custom-matseclect {
+   max-width: 25%;
+   border-color: black;
+
+ }
+
+ p {
+    font-family: Lato;
+  }
+
+
+ 
+ .mat-input-change {
+   width: 100%;
+   min-width: 150px;
+   max-width: 600px;
+ }

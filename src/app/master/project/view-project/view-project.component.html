@@ -5,26 +5,91 @@
       <hr>
     </div>
     <div class="panel-body">
-      <div class="row">
+       <div class="content">
+
+      <div class="row" [formGroup]="projectEditForm">
           <div class="col-xs-8 col-md-8 max-auto">
               <div class="form-group">
                   <label for="projectName">Project name</label>
-                  <input type="text" class="form-control" [formControl] ="projectName" id="projectName" placeholder="Project Name" required name="projectName">
+                  <input type="text" 
+                        class="form-control" 
+                        formControlName ="projectName" 
+                        id="projectName" 
+                        placeholder="Project Name" 
+                        required 
+                        name="projectName">
+                  <app-on-screen-message
+                        appFormName="ProjectEdit"
+                        appFieldName="projectName"></app-on-screen-message>
               </div>
               <div class="form-group">
-                <label for="accountName">Customer name</label>
-                <input type="text" class="form-control" [formControl] ="accountName" id="accountName" placeholder="Account Name" required name="accountName">
-            </div>
+                  <label for="accountName">Account name</label>
+                      <mat-select 
+                            placeholder="Select Account" 
+                            class="drop-down-input form-control" 
+                            formControlName ="account">
+                         <mat-option 
+                            *ngFor="let account of accountList" 
+                            [value]="account">
+                            {{account.accountName}}
+                        </mat-option>
+                      </mat-select>
+                  <app-on-screen-message
+                        appFormName="ProjectEdit"
+                        appFieldName="account"></app-on-screen-message>
+
+              </div>
               <div class="form-group">
                   <label for="region">Region</label>
-                  <mat-select placeholder="Region" class="drop-down-input form-control" [formControl] ="region" required>
-                  <mat-option *ngFor="let region of regionList" [value]="region.regionId">{{region.regionName}}</mat-option>
+                  <mat-select 
+                        placeholder="Select Region" 
+                        class="drop-down-input form-control" 
+                        formControlName ="region">
+                    <mat-option *ngFor="let region of regionList" 
+                        [value]="region">
+                        {{region.regionName}}
+                    </mat-option>
                   </mat-select>
+                  <app-on-screen-message
+                  appFormName="ProjectEdit"
+                  appFieldName="region"></app-on-screen-message>
+              </div>
+
+                <div class="form-group">
+                  <mat-form-field>
+                     <mat-label>Project Start Date</mat-label>
+                     <input formControlName ="projectStartDate"
+                           matInput [matDatepicker]="picker">
+                     <mat-datepicker-toggle 
+                           matSuffix 
+                           [for]="picker">
+                     </mat-datepicker-toggle>
+                     <mat-datepicker 
+                           #picker>
+                     </mat-datepicker>
+                  </mat-form-field>
+                  <app-on-screen-message
+                  appFormName="ProjectEdit"
+                  appFieldName="projectStartDate"></app-on-screen-message>
+                </div>
+ 
+               <div class="form-groupS">
+                   <mat-form-field>
+                      <mat-label>Project End Date</mat-label>
+                      <input matInput 
+                         formControlName ="projectEndDate" 
+                         [matDatepicker]="picker2" >
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                  </mat-form-field>
+                  <app-on-screen-message
+                  appFormName="ProjectEdit"
+                  appFieldName="projectEndDate"></app-on-screen-message>
                 </div>
           
               <div class="">
                   <button class="btn btn-success margin-10px"
-                    [disabled]= "!(projectName.valid && region.valid)"
+                    [disabled]= "!(projectEditForm.valid)"
                     (click)="updateProject()"
                     *ngIf="isEditable">
                       <span class="material-icons">
@@ -56,6 +121,7 @@
                   </button>
               </div>
           </div>
+      </div>
       </div>
     </div>
  </div>

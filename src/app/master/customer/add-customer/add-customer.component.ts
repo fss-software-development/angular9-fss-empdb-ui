@@ -1,62 +1,58 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import {
+  AutowireViewModel,
+  FormHelperService
+} from '../../../../framework';
+import {
+  CustomerAddFormModel,
+  CustomerCommandHandlerService,
+  CustomerFormStateService
+} from '../../../../services'
 import {MasterService}  from '../../../master.service';
-import {ConfirmationModalComponent} from '../../../../app-commons/confirmation-modal/confirmation-modal.component';
 @Component({
   selector: 'app-add-customer',
   templateUrl: './add-customer.component.html',
   styleUrls: ['./add-customer.component.css']
 })
-export class AddCustomerComponent implements OnInit {
+export class AddCustomerComponent implements OnInit, OnDestroy {
   public regionList: any[];
-  public customerName: FormControl = new FormControl();
-  public region: FormControl = new FormControl();
+  @AutowireViewModel('CustomerAdd') customerAddForm: FormGroup;
   constructor(
           private masterService: MasterService,
-          public dialog: MatDialog,
           private route: ActivatedRoute,
-          private router: Router
+          private router: Router,
+          private commandHandlerService: CustomerCommandHandlerService,
+          private formStateService: CustomerFormStateService,
+          private formHelperService: FormHelperService
           ) { }
 
   ngOnInit(): void {
+    this.formHelperService.hideLoadingSpinner.next(true);
+    this.buidForm();
     this.getRegion();
   }
-
+  ngOnDestroy(): void {
+    this.clear();
+  }
+  buidForm(): void {
+    this.customerAddForm.reset(new CustomerAddFormModel());
+  }
   getRegion(): void {
     this.masterService.getRegion().subscribe((data) => {
       this.regionList = data;
     })
   }
   addCustomer(): void {
-    this.openDialog();
+    this.formHelperService.hideLoadingSpinner.next(false);
+    this.commandHandlerService.addCustomer(this.customerAddForm.value);
   }
   clear(): void {
-    this.customerName.reset();
-    this.region.reset();
+    this.customerAddForm.reset();
   }
 
   back(): void {
     this.router.navigate(['master']);
-  }
-
-  openDialog(): void {
-    const msg = `${this.customerName.value} added successfully as a new customer`;
-    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-      width: '40%',
-      data: {
-        header: "Add Confirmation",
-        message: msg,
-        noButtonRequired: false,
-        yesButtonRequired: true
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.clear();
-      }
-    });
   }
 }

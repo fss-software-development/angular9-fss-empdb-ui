@@ -1,60 +1,91 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import {MasterService}  from '../../../master.service';
-import {ConfirmationModalComponent} from '../../../../app-commons/confirmation-modal/confirmation-modal.component';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import {
+  AutowireViewModel,
+  FormHelperService
+} from '../../../../framework';
+import {
+  ProjectEditFormModel,
+  ProjectCommandHandlerService,
+  ProjectFormStateService,
+  CustomerCommandHandlerService,
+  CustomerFormStateService,
+  CommonFormLoaderService,
+  CommonCommandHandlerService
+} from '../../../../services'
 
-
+var _this;
 @Component({
   selector: 'app-view-project',
   templateUrl: './view-project.component.html',
   styleUrls: ['./view-project.component.css']
 })
 export class ViewProjectComponent implements OnInit {
-
   public regionList: any[];
-  public projectName: FormControl = new FormControl();
-  public accountName: FormControl = new FormControl();
-  public region: FormControl = new FormControl();
+  public accountList: any[];
   public isEditable: boolean = false;
   public title: String;
+  @AutowireViewModel('ProjectEdit') projectEditForm: FormGroup;
+  private projectEditFormData: ProjectEditFormModel;
   constructor(
               private masterService: MasterService,
               public dialog: MatDialog,
               private route: ActivatedRoute,
-             private router: Router
-          ) { }
+              private router: Router,
+              private projectCommandHandlerService: ProjectCommandHandlerService,
+              private customerCommandHandlerService: CustomerCommandHandlerService,
+              private projectFormStateService: ProjectFormStateService,
+              private customerFormStateService: CustomerFormStateService,
+              private formHelperService: FormHelperService,
+              private commonCommandHandlerService: CommonCommandHandlerService,
+              private commonFormLoaderService: CommonFormLoaderService,
+          ) {
+            _this = this;
+           }
 
   ngOnInit(): void {
-    this.getRegion();
-    this.loadData();
+    this.initData();
+    this.initSubscriber();
   }
-  
-  loadData(): void {
+  ngOnDestroy(): void {
+    this.clear();
+  }
+  initData():void {
     const currentProjectId = this.route.snapshot.paramMap.get('id');
+    this.projectCommandHandlerService.getProjectById(currentProjectId);
+    this.customerCommandHandlerService.getCustomersList();
+    this.commonCommandHandlerService.getRegionList();
+  }
+  initSubscriber(): void {
     this.route.data.subscribe((data) => {
       this.title = data.title;
     });
-    this.masterService.getProjectById(currentProjectId).subscribe((data) => {
-    console.log("loadData", data);
+    this.customerFormStateService.customerList.subscribe((data) => {
+      this.accountList = data;
+    })
+    this.commonFormLoaderService.regionList.subscribe((data) => {
+      this.regionList = data;
+    })
+    this.projectFormStateService.editProject  
+    .subscribe((data) => {
       if(data){
-        this.projectName.setValue(data[0].projectName);
-        this.region.setValue(data[0].region.regionId);
-        this.accountName.setValue(data[0].account.accountName);
+        this.projectEditFormData = data;
+        this.projectEditForm.reset(new ProjectEditFormModel(data));
         this.enableDisableForm();
       }
     })
+    setTimeout(function() { 
+      _this.setDefaultDropdownValues();
+     }, 1000);
+    this.formHelperService.hideLoadingSpinner.next(true);
   }
 
-  getRegion(): void {
-    this.masterService.getRegion().subscribe((data) => {
-      this.regionList = data;
-    })
-  }
-
-  updateProject() {
-    this.openDialog();
+  updateProject(): void {
+    this.formHelperService.hideLoadingSpinner.next(false);
+    this.projectCommandHandlerService.updateProject(this.projectEditForm.value);
   }
   editProject(): void {
     this.isEditable = this.isEditable? false : true;
@@ -63,45 +94,26 @@ export class ViewProjectComponent implements OnInit {
 
   enableDisableForm(): void {
     if(this.isEditable){
-      this.projectName.enable();
-      this.region.enable();
-      this.accountName.enable();
+      this.projectEditForm.enable();
       this.title = "Edit Project";
     } else {
-      this.projectName.disable();
-      this.region.disable();
+      this.projectEditForm.disable();
     }
   }
 
   clear(): void {
-    this.projectName.reset();
-    this.region.reset();
+    this.projectEditForm.reset();
   }
 
   back(): void {
-    this.router.navigate(['master']);
+    this.router.navigate(['master/search-project']);
   }
-
-  openDialog(): void {
-    const msg = `Project updated successfully`;
-    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-      width: '40%',
-      data: {
-        header: "Update Confirmation",
-        message: msg,
-        noButtonRequired: false,
-        yesButtonRequired: true
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.clear();
-        this.router.navigate(['search-project']);
-      }
-    });
+  
+  setDefaultDropdownValues(): void {
+    let projectData = {
+      region: this.regionList[this.regionList.findIndex(x => x.regionId === this.projectEditFormData.region.regionId)],
+      account: this.accountList[this.accountList.findIndex(x => x.accountId === this.projectEditFormData.account.accountId)]
+    }
+    this.projectEditForm.patchValue(projectData);
   }
-
-  
-  
 }

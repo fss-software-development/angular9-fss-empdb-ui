@@ -1,18 +1,413 @@
-<h2>Employee Details</h2> 
+<section>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2 class="section-sub-title">{{title}}</h2>
+      <hr>
+    </div>
+    <div class="container">
+    <div class="panel-body">
+      <div class="row" [formGroup]="employeeEditForm">
+            <div class="col-xs-4 col-md-4 ">
+                        <mat-form-field>
+                            <mat-label class="required-text"
+                            for="employeeId">Employee Code</mat-label>
+                            <input matInput type="text" 
+                                formControlName="employeeId" 
+                                id="employeeId" 
+                                placeholder="Employee Code" 
+                                name="employeeId">
+                        </mat-form-field>
+                        <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="employeeId"></app-on-screen-message>
+                                
 
-<hr/>
-<div *ngIf="employee">
-  <div>
-    <label><b>First Name: </b></label> {{employee.firstName}}
+                        <mat-form-field>
+                          <mat-label class="required-text" 
+                          for="employeeName">Employee Name</mat-label>
+                          <input matInput type="text" 
+                              formControlName="employeeName" 
+                              id="employeeName" 
+                              placeholder="Employee Name" 
+                              name="employeeName">
+                      </mat-form-field>
+                      <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="employeeName"></app-on-screen-message>
+                      <mat-form-field>
+                            <mat-label class="required-text" 
+                            for="mobileNum">Mobile Number</mat-label>
+                            <input matInput type="text" 
+                                formControlName="mobileNum" 
+                                id="mobileNum" 
+                                placeholder="Mobile Number" 
+                                name="mobileNum">
+                        </mat-form-field>
+                        <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="mobileNum"></app-on-screen-message>
+                        <mat-form-field>
+                            <mat-label class="required-text" 
+                            for="emailId">Email ID</mat-label>
+                            <input matInput type="text" 
+                                formControlName="emailId" 
+                                id="emailId" 
+                                placeholder="Email ID" 
+                                name="emailId">
+                        </mat-form-field>
+                        <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="emailId"></app-on-screen-message>
+                      <mat-form-field >
+                        <mat-label class="required-text"
+                        for="designation">Designation</mat-label>
+                        <mat-select placeholder="Designation" 
+                                    formControlName ="designation">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let designation of designationList" 
+                                      [value]="designation">
+                          {{designation.designationName}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="designation"></app-on-screen-message>
+                     <mat-form-field>
+                        <mat-label class="required-text"
+                        for="department">Department</mat-label>
+                        <mat-select 
+                            placeholder="Department" 
+                            formControlName ="department">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let department of departmentList" 
+                                [value]="department">
+                                {{department.departmentName}}
+                            </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="department"></app-on-screen-message>
+                     <mat-form-field>
+                          <mat-label class="required-text"
+                          for="region">Region</mat-label>
+                          <mat-select 
+                              placeholder="Region" 
+                              formControlName ="region">
+                              <mat-option>None</mat-option>
+                              <mat-option 
+                                *ngFor="let region of regionList" 
+                                [value]="region">
+                                {{region.regionName}}
+                          </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+                      <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="region"></app-on-screen-message>
+                     <mat-form-field>
+                        <mat-label class="required-text"
+                        for="account">Account</mat-label>
+                        <mat-select placeholder="Account" 
+                            formControlName ="account">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let account of accountList" 
+                                [value]="account">
+                                {{account.accountName}}
+                            </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="account"></app-on-screen-message>
+                     <mat-form-field>
+                        <mat-label for="service"
+                                class="required-text">Service Line</mat-label>
+                        <mat-select placeholder="Service Line" 
+                            formControlName ="serviceLine">
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let service of serviceList" 
+                                [value]="service">
+                                {{service.serviceLineName}}
+                            </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="serviceLine"></app-on-screen-message>
+            </div>
+            <div class="col-xs-4 col-md-4">
+               <mat-form-field>
+                <mat-label for="reportingManager">Reporting Head</mat-label>
+                <input matInput type="text" 
+                        formControlName="reportingManager" 
+                        id="reportingManager" 
+                        placeholder="Reporting Manager" 
+                        name="reportingManager">
+                </mat-form-field>
+               <mat-form-field>
+                    <mat-label for="previousExp">Previous Experience</mat-label>
+                    <input matInput type="text" 
+                        formControlName="previousExp" 
+                        id="previousExp" 
+                        placeholder="Previous Experience" 
+                        name="previousExp">
+                </mat-form-field>
+               <mat-form-field>
+                    <mat-label for="experienceCurrentRole">Experience in Current Role</mat-label>
+                    <input matInput type="text" 
+                        id="experienceCurrentRole" 
+                        placeholder="Experience in Current Role"
+                        formControlName="experienceCurrentRole"  
+                        name="experienceCurrentRole">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label for="totalExperience">Total Experience</mat-label>
+                    <input matInput type="text" 
+                        id="totalExperience" 
+                        placeholder="Total Experience" 
+                        formControlName="totalExperience" 
+                        name="totalExperience">
+                </mat-form-field>
+               <mat-form-field>
+                    <mat-label for="experienceGaps">Experience Gaps</mat-label>
+                    <input matInput type="text" 
+                        formControlName="experienceGaps" 
+                        id="experienceGaps" 
+                        placeholder="Experience Gaps" 
+                        name="experienceGaps">
+                </mat-form-field>
+               <mat-form-field>
+                <mat-label for="activityName">Activity Name</mat-label>
+                <mat-select placeholder="Reporting Manager" 
+                    formControlName ="activityName">
+                    <mat-option>None</mat-option>
+                    <mat-option *ngFor="let activityName of activityList" 
+                        [value]="activityName">
+                        {{activityName}}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
+               <mat-form-field>
+                    <mat-label  class="required-text" 
+                    for="location">Location</mat-label>
+                    <mat-select placeholder="Location" 
+                        formControlName ="location">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let location of locationList" 
+                            [value]="location">
+                            {{location.locationName}}
+                            </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="location"></app-on-screen-message>
+                 <mat-form-field>
+                    <mat-label  class="required-text" 
+                    for="grade">Grade</mat-label>
+                    <mat-select placeholder="Grade" 
+                        formControlName ="grade">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let grade of gradeList" 
+                            [value]="grade">
+                            {{grade.gradeName}}
+                            </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="grade"></app-on-screen-message>
+                  <mat-form-field>
+                    <mat-label  class="required-text"
+                    for="academics">Academics</mat-label>
+                    <mat-select placeholder="Academics" 
+                        formControlName ="academics">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let academics of academicsList" 
+                            [value]="academics">
+                            {{academics.academicsName}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="academics"></app-on-screen-message>
+            </div>
+            <div class="col-xs-4 col-md-4">
+                <mat-form-field>
+                    <mat-label  class="required-text"
+                    for="billableStatus">Billable Status</mat-label>
+                    <mat-select placeholder="Billable Status" 
+                        formControlName ="billableStatus">
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let billable of billableList" 
+                            [value]="billable">
+                            {{billable.billableStatus}}
+                            </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="billableStatus"></app-on-screen-message>
+                <mat-form-field>
+                    <mat-label  class="required-text"
+                    for="project">Project</mat-label>
+                    <mat-select placeholder="Project" 
+                        formControlName ="projects"
+                        multiple>
+                        <mat-option>None</mat-option>
+                        <mat-option *ngFor="let project of projectList" 
+                            [value]="project">
+                            {{project.projectName}}
+                        </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="projects"></app-on-screen-message>
+                <mat-form-field>
+                    <mat-label>DOJ</mat-label>
+                    <input formControlName ="joiningDate"
+                          matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle 
+                          matSuffix 
+                          [for]="picker">
+                    </mat-datepicker-toggle>
+                    <mat-datepicker 
+                          #picker>
+                    </mat-datepicker>
+                 </mat-form-field>
+                 <app-on-screen-message
+                                isMatElement = "true"
+                                appFormName="EmployeeEdit"
+                                appFieldName="joiningDate"></app-on-screen-message>
+             <mat-form-field>
+                  <mat-label for="definiteRole">Definite Role</mat-label>
+                  <mat-select 
+                      placeholder="Definite Role" 
+                      formControlName ="definiteRole"
+                      multiple>
+                      <mat-option>None</mat-option>
+                      <mat-option 
+                        *ngFor="let definiteRole of definiteRoleList" 
+                        [value]="definiteRole">
+                        {{definiteRole.roleName}}
+                  </mat-option>
+                  </mat-select>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label for="possibleRole">Possible Role</mat-label>
+                <mat-select 
+                    placeholder="Possible Role" 
+                    formControlName ="possibleRole"
+                    multiple>
+                    <mat-option>None</mat-option>
+                    <mat-option 
+                        *ngFor="let possibleRole of possibleRoleList" 
+                        [value]="possibleRole">
+                        {{possibleRole.roleName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="tools">Tools</mat-label>
+                <mat-select 
+                    placeholder="Tools" 
+                    formControlName ="tools"
+                    multiple>
+                    <mat-option>None</mat-option>
+                    <mat-option 
+                        *ngFor="let tools of toolsList" 
+                        [value]="tools">
+                        {{tools.toolName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label for="skills">Skills</mat-label>
+                <mat-select 
+                    placeholder="Skills" 
+                    formControlName ="skills"
+                    multiple>
+                    <mat-option>None</mat-option>
+                    <mat-option 
+                        *ngFor="let skills of skillsList" 
+                        [value]="skills">
+                        {{skills.skillName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label class="required-text" 
+                for="skills">Project Tagging</mat-label>
+                <mat-select formControlName ="projectTagging"
+                    placeholder="Project Tagging">
+                    <mat-option>None</mat-option>
+                    <mat-option 
+                        *ngFor="let tag of projectTaggList" 
+                        [value]="tag">
+                        {{tag.projectTaggingName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <app-on-screen-message
+            isMatElement = "true"
+            appFormName="EmployeeEdit"
+            appFieldName="projectTagging"></app-on-screen-message>
+            </div>
+      </div>
+          <div class="col-xs-12 col-md-12 mx-auto">
+            <button class="btn btn-success margin-10px"
+                      [disabled]= "!(employeeEditForm.valid)"
+                      (click)="updateEmployee()"
+                      *ngIf="isEditable">
+                        <span class="material-icons">
+                            update
+                        </span>
+                        update
+                    </button>
+              <button class="btn btn-primary margin-10px"  
+              *ngIf="!isEditable"
+              (click)="editEmployee()">
+                  <span class="material-icons">
+                      edit
+                  </span>
+                  Edit
+              </button>
+              <button class="btn btn-secondary margin-10px"  
+              (click)="clear()"
+              >
+                  <span class="material-icons">
+                      clear
+                  </span>
+                  Reset
+              </button>
+              <button class="btn btn-dark margin-10px" (click)="back()">
+                  <span class="material-icons">
+                      backspace
+                  </span>
+                  Back
+              </button>
+          </div>
+      
+    </div>
+    </div>
+    
   </div>
-  <div>
-    <label><b>Last Name: </b></label> {{employee.lastName}}
-  </div>
-  <div>
-    <label><b>Email Id: </b></label> {{employee.emailId}}
-  </div>  
-</div>
-
-<br>
-<br>
-<button (click)="list()" class="btn btn-primary">Back to Employee List</button><br>
+</section>

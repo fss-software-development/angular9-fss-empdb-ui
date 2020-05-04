@@ -1,103 +1,85 @@
-<nav class="d-block p-2 bg-light text-black ">
-    <h3 class="text-center"><b>ADD PROJECT FORM</b></h3>
-</nav>
-<br>
 <section>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-          <form>
-             <div class="form-group row">
-                 <label for="project" class="col-sm-2 col-form-label">Project<span class="required">*</span></label>
-                   <div class="form-group w-25">
-                     <input type="text" class="form-control" id="project"  placeholder="Project Name">
-                     
-
-                  </div>
-             </div>
-            
-            <!--<div class="form-group row">
-                <label for="project" class="col-sm-2 col-form-label">Region<span class="required">*</span></label>
-                  <div class="form-group w-25">
-                    <input type="text"  class="form-control" id="project" placeholder="Region">
-                 </div>
-            </div>-->
-            <div class="form-group row">
-             <label for="project" class="col-sm-2   col-form-label">Region<span class="required">*</span></label>
-             <div class="w-25">
-
-             <mat-select placeholder="Region" 
-             class="drop-down-input form-control custom-matseclect" 
-             [formControl] ="region" 
-              multiple>
-              <mat-option 
-                *ngFor="let region of regionList" 
-                [value]="region.regionId">
-                {{region.regionName}}
-              </mat-option>
-            </mat-select>
-            </div>
-            </div><br>
-
-            
-            <div class="form-group row">
-                <label for="project" class="col-sm-2 col-form-label">Customer<span class="required">*</span></label>
-                 <div class="form-group w-25">
-                    <input type="text" class="form-control" id="project" placeholder="Customer">
-                 </div>
-                 
-            </div>
-             
-            <div class="form-group row">
-                <label for="project" class="col-sm-2 col-form-label">Project Start Date</label>
-                  <!--<div class="form-group w-25">
-                    <input type="text" class="form-control" id="project" placeholder="Project Start Date">
-                 </div>-->
-                 <mat-form-field>
-                  <mat-label>Choose a date</mat-label>
-                  <input matInput [matDatepicker]="picker">
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-            </div>
-
-            <div class="form-group row">
-                <label for="project" class="col-sm-2 col-form-label">Project End Date</label>
-                  <!--<div class="form-group w-25">
-                    <input type="text" class="form-control" id="project" placeholder="Project End Date">
-                 </div>-->
-                 <mat-form-field>
-                  <mat-label>Choose a date</mat-label>
-                  <input matInput [matDatepicker]="picker2">
-                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                  <mat-datepicker #picker2></mat-datepicker>
-                </mat-form-field>
-            </div>
-
-            <p> <span class="required">*</span> = Mandatory</p>
-
-            <div class="text-center">
-                <button  class="btn btn-info margin-10px push-center" (click)="openDialog()" >
-                  <span class="material-icons">
-                    add
-                   </span>
-                   Add Project
-                </button>
-                <button  class="btn btn-success margin-10px push-center" >
-                    <span class="material-icons">
-                      refresh
-                      </span>
-                    Reset
-                    </button>
-                
-                <button  class="btn btn-danger margin-10px push-center" >
-                    <span class="material-icons">
-                      backspace
-                      </span>
-                 Back
-                </button>
-            </div>
-             
-            </form>
-        </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2 class="section-sub-title">Add Project</h2>
+      <hr>
     </div>
+    <div class="panel-body">
+      <div class="content">
+        <div class="row" [formGroup]="projectAddForm">
+          <div class="col-xs-8 col-md-8 mx-auto">
+            <div class="form-group">
+              <label for="projectName">Project name</label>
+              <input type="text" class="form-control" formControlName="projectName" id="projectName"
+                placeholder="Project Name" name="projectName">
+
+              <app-on-screen-message appFormName="ProjectAdd" appFieldName="projectName"></app-on-screen-message>
+            </div>
+
+            <div class="form-group">
+              <label for="account">Account</label>
+              <mat-select placeholder="Account" class="drop-down-input form-control " formControlName="account">
+                <mat-option *ngFor="let account of accountList" [value]="account">
+                  {{account.accountName}}
+                </mat-option>
+              </mat-select>
+
+              <app-on-screen-message appFormName="ProjectAdd" appFieldName="account"></app-on-screen-message>
+            </div>
+
+            <div class="form-group">
+              <label for="region">Region</label>
+              <mat-select placeholder="Region" class="drop-down-input form-control" formControlName="region">
+                <mat-option *ngFor="let region of regionList" [value]="region">
+                  {{region.regionName}}
+                </mat-option>
+              </mat-select>
+              <app-on-screen-message appFormName="ProjectAdd" appFieldName="region"></app-on-screen-message>
+            </div>
+
+            <div class="form-group">
+              <mat-form-field>
+                <mat-label>Project Start Date</mat-label>
+                <input formControlName="projectStartDate" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker>
+                </mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="form-groupS">
+              <mat-form-field>
+                <mat-label>Project End Date</mat-label>
+                <input matInput formControlName="projectEndDate" [matDatepicker]="picker2" [min]="todayDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="">
+              <button class="btn btn-success margin-10px" [disabled]="!(projectAddForm.valid)" (click)="addProject()">
+                <span class="material-icons">
+                  add
+                </span>
+                Add
+              </button>
+              <button class="btn btn-secondary margin-10px" (click)="clear()">
+                <span class="material-icons">
+                  clear
+                </span>
+                Reset
+              </button>
+              <button class="btn btn-dark margin-10px" (click)="back()">
+                <span class="material-icons">
+                  backspace
+                </span>
+                Back
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
